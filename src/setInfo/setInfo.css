@@ -1,0 +1,111 @@
+.setInfo_container {
+    background-color: #f4f2ed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+.setInfo_boldTitle {
+    width: 100%;
+    height: 20px;
+    margin: 103px 29px 18px 0;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+.setInfo_profile {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    margin: 18px 0 6px;
+    padding: 4px 0px 4px 0px;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+    background-color: #e8e0ce;
+}
+.setInfo_profileImg {
+    width: 40px;
+    height: 40px;
+    margin-left: 6px;
+    border-radius: 15px;
+}
+.setInfo_name {
+    width: 50%;
+    height: 20px;
+    margin: 11px 11px 9px 184px;
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: right;
+    color: #13402f;
+}
+.setInfo_explain {
+    width: 229px;
+    height: 20px;
+    margin: 6px 51px 1px 0;
+    font-family: Helvetica;
+    font-size: 8px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+.setInfo_SetAnonymous {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    margin: 6px 4px 34px 0;
+    font-size: 12px;
+}
+.setInfo_checkBox {
+    width: 16px;
+    height: 100%;
+    border-radius: 6px;
+    margin-right: 7px;
+    border: solid 1px #acb4a2;
+}
+.setInfo_boxContainer {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.setInfo_startButton {
+    width: 80px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 11px;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+    background-color: #acb4a2;
+    font-family: Helvetica;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #f4f2ed;
+}
