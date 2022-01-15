@@ -1,0 +1,39 @@
+.result_container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #f4f2ed;
+    flex-direction: column;
+}
+.result_rectangle_big {
+    width: 244px;
+    height: 20px;
+    padding: 22px 36px;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+    background-color: #e8e0ce;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1f513f;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 76px;
+}
+.result_rectangle_small {
+    width: 280px;
+    height: 20px;
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+    background-color: #e8e0ce;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Helvetica;
+    font-size: 12px;
+    font-weight: bold;
+}

@@ -8,7 +8,7 @@
 }
 .setInfo_container {
     height: 100%;
-    width: 80%;
+    width: 360px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -87,7 +87,6 @@
 }
 .setInfo_boxContainer {
     width: 90%;
-    height: 40%; /*임시*/
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
