@@ -1,0 +1,40 @@
+.scene {
+  width: 50px;
+  height: 50px;
+  perspective: 600px;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation-name: spinCube;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+
+@keyframes spinCube {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+.cubeFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.cubeFaceFront {
+  transform: rotateY(0deg) translateZ(25px);
+}
+.cubeFaceBottom {
+  transform: rotateX(-90deg) translateZ(25px);
+}
