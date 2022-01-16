@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import './cube.css';
+import '../css/cube.css';
 
-const Cube = () => {
+const MbtiCube = () => {
   const mbti: string[] = [
     'ESFJ',
     'ESFP',
@@ -24,8 +24,10 @@ const Cube = () => {
   useEffect(() => {
     const timeout = setTimeout(async () => {
       setIndex(index + 1);
-    }, 800);
-    return clearTimeout(timeout);
+    }, 1050);
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [index]);
   return (
     <div className="scene">
@@ -36,4 +38,4 @@ const Cube = () => {
     </div>
   );
 };
-export default Cube;
+export default MbtiCube;

@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import './login.css';
-import whatDoUMean from '../images/whatDoUMean.svg';
-import kakaoLogin from '../images/kakaoLogin.png';
-import Cube from './cube';
+import '../css/login.css';
+import whatDoUMean from '../../images/whatDoUMean.svg';
+import kakaoLogin from '../../images/kakaoLogin.png';
+import MbtiCube from './mbtiCube';
 import { Link } from 'react-router-dom';
 
 const { Kakao } = window;
 const loginWithKaKao = () => {
   Kakao.Auth.authorize({
-    redirectUri: 'http://127.0.0.1:8000/accounts/kakao/login/callback/',
+    redirectUri: 'http://localhost:3000/setinfo',
   });
 };
 
@@ -17,13 +17,13 @@ const Login = () => {
 
   return (
     <div className="login_container">
-      <Link to="/question/0">Go to Questions</Link>
+      {/*<Link to="/setinfo">Go to Questions</Link>*/}
 
       <div className="login_mainTitle">
         나는 정말&nbsp;
         <span className="login_mbti">
           {' '}
-          <Cube />
+          <MbtiCube />
         </span>
         가 맞을까?🤔
       </div>

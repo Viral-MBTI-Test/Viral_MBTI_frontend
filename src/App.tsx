@@ -1,16 +1,20 @@
-
-import Login from './login/login';
+import Login from './login/components/login';
 import './App.css';
-import Cube from './login/cube';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import Hello from './login/hello';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Query from './query/query';
+import Queryend from './query/queryend';
+import SetInfo from './setInfo/setInfo';
+import Result from './result/result';
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/question/0" element={<Hello />} />
+          <Route path="/setinfo" element={<SetInfo name="d" />} />
+          <Route path="/question/0" element={<Query />} />
+          <Route path="/question/0/queryend" element={<Queryend />} />
+          <Route path="/result" element={<Result />} />
         </Routes>
       </BrowserRouter>
     </div>
