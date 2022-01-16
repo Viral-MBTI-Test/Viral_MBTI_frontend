@@ -22,9 +22,10 @@ const Cube = () => {
   ];
   const [index, setIndex] = useState<number>(0);
   useEffect(() => {
-    setTimeout(async () => {
+    const timeout = setTimeout(async () => {
       setIndex(index + 1);
-    }, 1000);
+    }, 800);
+    return clearTimeout(timeout);
   }, [index]);
   return (
     <div className="scene">

@@ -3,20 +3,22 @@ import './login.css';
 import whatDoUMean from '../images/whatDoUMean.svg';
 import kakaoLogin from '../images/kakaoLogin.png';
 import Cube from './cube';
+import { Link } from 'react-router-dom';
+
+const { Kakao } = window;
+const loginWithKaKao = () => {
+  Kakao.Auth.authorize({
+    redirectUri: 'http://127.0.0.1:8000/accounts/kakao/login/callback/',
+  });
+};
+
 const Login = () => {
-  const [index, setIndex] = useState<number>(0);
   const [count, setCount] = useState<number>(0);
-  const changeMbti = (): void => {
-    setTimeout(() => {
-      setIndex((index + 1) % 16);
-    }, 1500);
-  };
-  useEffect(() => {
-    changeMbti();
-  }, [index]);
 
   return (
     <div className="login_container">
+      <Link to="/question/0">Go to Questions</Link>
+
       <div className="login_mainTitle">
         나는 정말&nbsp;
         <span className="login_mbti">
@@ -37,7 +39,14 @@ const Login = () => {
       </div>
       <div className="login_countMsg">{`${count}명이 참여했어요`}</div>
       <div>
-        <img src={kakaoLogin} alt="kakao login" className="kakao"></img>
+        <img
+          src={kakaoLogin}
+          alt="kakao login"
+          className="kakao"
+          onClick={() => {
+            loginWithKaKao();
+          }}
+        ></img>
       </div>
     </div>
   );
