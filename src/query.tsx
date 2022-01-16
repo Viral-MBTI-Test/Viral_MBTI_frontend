@@ -4,7 +4,6 @@ const Query=() => {
         {text:'짜증나지만 배고프니까 혼밥할 식당을 찾아본다.'},
         {text:'혼밥은 절대 싫으니 집으로 간다.'},
         {text:'화가나서 배고픈것도 못느낀다.'},
-        {text:'밥은 먹어야겠는데 식당 혼밥은 싫으니 편의점에서 대충 때운다.'},
     ];
 
     const renderAns = ans.map(option =>{
@@ -22,6 +21,11 @@ const Query=() => {
             </div>
             
             {renderAns}
+            <button className="query_selected">
+                밥은 먹어야겠는데 식당 혼밥은 싫으니 <br /> 편의점에서 대충 때운다.
+            </button>
+
+            <button className="query_prevBtn">이전질문</button>
         </div>
     );
 };

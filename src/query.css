@@ -1,8 +1,7 @@
   .query_container{
-    padding-right: 40px;
-    padding-left: 40px;
+    
     background-color: #1f513f;
-    width: 100%;
+    width: 360px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -12,7 +11,7 @@
   .query_question{
     width: 255px;
     height: 37px;
-    margin: 72px 52px 78px 53px;
+    margin: 72px 0 78px 0;
     font-family: Helvetica;
     font-size: 14px;
     font-weight: bold;
@@ -27,8 +26,7 @@
   .query_answer{
     width: 280px;
     height: 54px;
-    margin: 17px 0 17px 2px;
-    padding: 17px 21px;
+    margin: 0 0 17px 0;
     border-radius: 15px;
     box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
     background-color: #acb4a2;
@@ -50,14 +48,10 @@
   .query_selected {
     width: 280px;
     height: 54px;
-    margin: 25px 0 80px 2px;
-    padding: 17px 64px 17px 65px;
     border-radius: 15px;
     box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
     background-color: #e8e0ce;
     
-    width: 151px;
-    height: 20px;
     font-family: Helvetica;
     font-size: 12px;
     font-weight: bold;
@@ -70,15 +64,34 @@
     
   }
 
+  .query_prevBtn{
+    width: 80px;
+    height: 32px;
+    margin: 88px 200px 0 0px;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+    background-color: #acb4a2;
+
+    font-family: Helvetica;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: center;
+    color: #f4f2ed;
+}
+
   .progress_div {
     width: 280px;
     height: 4px;
     border-radius: 15px;
-    margin: 38px 0 72px 2px;
+    margin: 38px 0 0 0;
     background-color: #acb4a2;
 }
 
-.progress {
+.progress_state {
     width: 100px;
     height: 4px;
     margin: 6px 7px 72px 0;
