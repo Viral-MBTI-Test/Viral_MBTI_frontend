@@ -4,7 +4,6 @@ const Queryend=() =>{
         {rank:'1위', text:'INTP', percent:'33%'},
         {rank:'2위', text:'INTJ', percent:'21%'},
         {rank:'3위', text:'ENTJ', percent:'11%'},
-        {rank:'6위', text:'ENTP', percent:'9%'},
     ];
 
     const renderAns = ans.map(option =>{
@@ -26,6 +25,11 @@ const Queryend=() =>{
             <div className="query_selected"> 화가나서 배고픈것도 못느낀다 </div>
             <div className="queryend_mbti"> 나와 같은 답을 선택한 MBTI </div>
             {renderAns}
+            <div className="queryend_myresult">
+                <div className="queryend_rank">6위</div>
+                <div className="queryend_text">ENTP</div>
+                <div className="queryend_percent">9%</div>
+            </div>
             <button className="queryend_nextBtn">다음질문</button>
         </div>
         
