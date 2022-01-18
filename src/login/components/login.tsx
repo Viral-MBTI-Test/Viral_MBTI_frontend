@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const { Kakao } = window;
 const loginWithKaKao = () => {
   Kakao.Auth.authorize({
-    redirectUri: 'http://localhost:3000/setinfo',
+    redirectUri: 'http://localhost:3000/auth',
   });
 };
 
