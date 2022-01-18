@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/auth" element={<Auth />} />
-          <Route path="/setinfo" element={<SetInfo name="d" />} />
+          <Route path="/setinfo" element={<SetInfo/>} />
           <Route path="/question/0" element={<Query />} />
           <Route path="/question/0/queryend" element={<Queryend />} />
           <Route path="/result" element={<Result />} />
