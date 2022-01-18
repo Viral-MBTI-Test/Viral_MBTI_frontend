@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const { Kakao } = window;
 const loginWithKaKao = () => {
   Kakao.Auth.authorize({
-    redirectUri: 'http://localhost:3000/setinfo',
+    redirectUri: 'http://localhost:3000/auth',
   });
 };
 
@@ -23,7 +23,10 @@ const Login = () => {
         나는 정말&nbsp;
         <span className="login_mbti">
           {' '}
-          <MbtiCube />
+          <MbtiCube index={0} />
+          <MbtiCube index={1} />
+          <MbtiCube index={2} />
+          <MbtiCube index={3} />
         </span>
         가 맞을까?🤔
       </div>

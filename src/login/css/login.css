@@ -23,8 +23,7 @@
   white-space: pre-line;
 }
 .login_mbti {
-  /*transform: rotateX(180deg);*/
-  perspective: 400px;
+  display: flex;
 }
 .login_subTitle {
   margin-top: 10px;

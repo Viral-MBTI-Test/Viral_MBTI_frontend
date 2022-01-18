@@ -1,39 +1,24 @@
 import { useEffect, useState } from 'react';
 import '../css/cube.css';
 
-const MbtiCube = () => {
-  const mbti: string[] = [
-    'ESFJ',
-    'ESFP',
-    'ESTJ',
-    'ESTP',
-    'ENFJ',
-    'ENFP',
-    'ENTJ',
-    'ENTP',
-    'ISFJ',
-    'ISFP',
-    'ISTJ',
-    'ISTP',
-    'INFJ',
-    'INFP',
-    'INTJ',
-    'INTP',
-  ];
-  const [index, setIndex] = useState<number>(0);
-  useEffect(() => {
-    const timeout = setTimeout(async () => {
-      setIndex(index + 1);
-    }, 1050);
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [index]);
+interface MbtiCubeProps {
+  index: number;
+}
+const MbtiCube = (props: MbtiCubeProps) => {
+  const mbti: { [key: number]: string[] } = {
+    0: ['E', 'I'],
+    1: ['S', 'N'],
+    2: ['F', 'T'],
+    3: ['J', 'P'],
+  };
+  console.log(typeof props.index);
   return (
     <div className="scene">
-      <div className="cube">
-        <div className="cubeFace cubeFaceFront">{mbti[index % 16]}</div>
-        <div className="cubeFace cubeFaceBottom">{mbti[(index + 1) % 16]}</div>
+      <div className={`cube index${props.index}`}>
+        <div className="cubeFace cubeFaceFront">{mbti[props.index][0]}</div>
+        <div className={`cubeFace cubeFaceBottom index${props.index}`}>
+          {mbti[props.index][1]}
+        </div>
       </div>
     </div>
   );
