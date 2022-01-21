@@ -54,6 +54,20 @@ const Result = () => {
                     </div>
                 </div>
             </div>
+            <div className="result_rectangle_big_container">
+                <div className="result_title_small">가끔은...</div>
+                <div className="result_rectangle_result_box">
+                    <div className="result_personality_text">
+                        ✅ 내 의견과 상대 의견이 다르면 설득하려는 스타일이에요
+                    </div>
+                    <div className="result_personality_text">
+                        ✅ 내 의견과 상대 의견이 다르면 설득하려는 스타일이에요
+                    </div>
+                    <div className="result_personality_text">
+                        ✅ 내 의견과 상대 의견이 다르면 설득하려는 스타일이에요
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
