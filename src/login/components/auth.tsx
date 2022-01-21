@@ -1,15 +1,26 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios, { AxiosInstance } from 'axios';
 
 const Auth = () => {
   useEffect(() => {
-    getCode();
+    GetCode();
   }, []);
-  const getCode = async () => {
+
+  const GetCode = async () => {
     let code = new URL(window.location.href).searchParams.get('code');
-    console.log(code);
-    //axios로 post해주고 token 받아오기
+    await axios
+      .get(`http://34.64.75.45:8000/signin/?code=${code}`)
+      .then((response) => {
+        localStorage.setItem('access', response.data.access);
+        localStorage.setItem('refresh', response.data.refresh);
+        window.location.href = 'http://localhost:3000/setinfo';
+      });
   };
-  return <div><Link to="/setinfo">go to setInfo</Link></div>;
+  return (
+    <div>
+      <Link to="/setinfo">go to setInfo</Link>
+    </div>
+  );
 };
 export default Auth;
