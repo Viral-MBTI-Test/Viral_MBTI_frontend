@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react';
 const { Kakao } = window;
 const authForGetFriendsList = () => {
   Kakao.Auth.authorize({
-    redirectUri: 'http://localhost:3000/auth',
-    // scope: 'friends',
+    redirectUri: 'http://localhost:3000/friendsAuth',
+    scope: 'friends',
   });
 };
 
