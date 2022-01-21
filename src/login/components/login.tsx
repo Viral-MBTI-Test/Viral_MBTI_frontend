@@ -8,7 +8,6 @@ const { Kakao } = window;
 const loginWithKaKao = () => {
   Kakao.Auth.authorize({
     redirectUri: 'http://localhost:3000/auth',
-    scope: 'friends',
   });
 };
 
