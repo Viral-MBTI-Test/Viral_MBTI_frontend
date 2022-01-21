@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios, { AxiosInstance } from 'axios';
 import webClient from '../../utils/webClient';
 
-const FriendsAuth = () => {
+const FriendsAuth = (props: any) => {
   useEffect(() => {
     GetCode();
   }, []);

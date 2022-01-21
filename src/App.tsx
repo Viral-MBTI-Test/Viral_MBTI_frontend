@@ -18,7 +18,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/auth" element={<Auth />} />
-          <Route path="/friendsAuth" element={<FriendsAuth setUsername, setProfileImage />} />
+          <Route
+            path="/friendsAuth"
+            element={
+              <FriendsAuth
+                username={setUsername}
+                setProfileImage={setProfileImage}
+              />
+            }
+          />
           <Route path="/setinfo" element={<SetInfo />} />
           <Route path="/question/0" element={<Query />} />
           <Route path="/question/0/queryend" element={<Queryend />} />
