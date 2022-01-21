@@ -1,84 +1,66 @@
-.login_container {
-  background-color: #f4f2ed;
+.login_fullView {
+  background-color: #1f513f;
   height: 100%;
   width: 100%;
   display: flex;
+  justify-content: center;
+}
+
+.login_container {
+  background-color: #1f513f;
+  width: 100%;
+  height: 100%;
+  max-width: 750px;
+  display: flex;
   align-items: center;
-  /*justify-content: center;   1번*/
   flex-direction: column;
 }
 
 .login_mainTitle {
-  font-family: JejuGothic;
-  font-weight: normal;
-  font-stretch: normal;
+  margin-top: 74px;
+  font-family: Jalnan OTF;
   font-style: normal;
-  font-size: 24px;
-  line-height: 1.29;
-  letter-spacing: normal;
-  color: #000;
-  margin-top: 127px;
-  display: flex;
-  text-align: center;
-  white-space: pre-line;
+  font-weight: bold;
+  font-size: 38px;
+  line-height: 44px;
+  color: #f4f2ed;
 }
 .login_mbti {
   display: flex;
+  justify-content: center;
 }
 .login_subTitle {
+  display: flex;
   margin-top: 10px;
-  font-family: Cafe24Ssurroundair;
-  font-weight: 400;
-  font-stretch: normal;
+  font-family: Noto Sans KR;
   font-style: normal;
-  font-size: 8px;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: center;
-  display: flex;
-  color: #000;
-}
-
-.login_countMsg {
-  width: 121px;
-  height: 21px;
-  margin: 59px 76px 7px 75px;
-  font-family: Helvetica;
-  font-size: 12px;
   font-weight: normal;
-  font-stretch: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(244, 242, 237, 0.8);
+}
+.boyImg {
+  width: 202px;
+  height: 281px;
+}
+.login_countMsg {
+  color: #f4f2ed;
+  margin-top: 57px;
+  font-family: Noto Sans KR;
   font-style: normal;
-  line-height: 1.68;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-  display: flex;
-  justify-content: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
 }
 .kakao {
   width: 272px;
   height: 40px;
+  margin-top: 8px;
 }
-@media screen and (max-width > max-height) {
-  .app {
-    zoom: 0.5;
-  }
-}
-@media screen and (max-width: 375px) {
-  .app {
-    zoom: 0.9;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .app {
-    zoom: 1.5;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .app {
-    zoom: 1.8;
-  }
-  .login_mainTitle {
-    margin-top: 35px;
-  }
+
+.vectorImg {
+  position: absolute;
+  opacity: 0.3;
+  border: 4px solid #e8e0ce;
+  width: 100%;
 }
