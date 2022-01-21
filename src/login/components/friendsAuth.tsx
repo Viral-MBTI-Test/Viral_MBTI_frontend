@@ -16,7 +16,7 @@ const FriendsAuth = (props: any) => {
         props.setUsername(response.data.username);
         props.setProfileImage(response.data.kakao_profile_img_url);
         console.log(response.data.username);
-        //window.location.href = 'http://localhost:3000/setinfo';
+        // window.location.href = 'http://localhost:3000/setinfo';
       })
       .catch((e) => console.log(e));
   };

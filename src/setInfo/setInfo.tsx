@@ -1,6 +1,6 @@
 import React from 'react';
 import './setInfo.css';
-import user_empty from '../images/user_empty.svg';
+// import user_empty from '../images/user_empty.svg';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 const { Kakao } = window;
@@ -10,14 +10,6 @@ const authForGetFriendsList = () => {
     scope: 'friends',
   });
 };
-
-// const getFriends = () => {
-//   useEffect(() => {}, []);
-// };
-
-// const getMbti = () => {
-//   const []
-// }
 
 const SetInfo = (props: any) => {
   const username = props.username;
@@ -32,7 +24,7 @@ const SetInfo = (props: any) => {
           onClick={() => authForGetFriendsList()}
         >
           <img
-            src={user_empty}
+            src={profileImage}
             alt="profile_img"
             className="setInfo_profileImg"
           />

@@ -49,15 +49,16 @@
 .setInfo_name {
   width: 59px;
   height: 20px;
+  padding-top: 4px;
   font-family: Noto Sans KR;
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  margin-right: 24px;
+  margin-right: 20px;
   letter-spacing: normal;
-  text-align: left;
-  color: #f4f2ed;
+  text-align: right;
+  color: #1f513f;
 }
 .setInfo_explain {
   white-space: pre-line;
@@ -95,6 +96,7 @@
   height: 48px;
   border: 0;
   border-radius: 12px;
+  padding-top: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
