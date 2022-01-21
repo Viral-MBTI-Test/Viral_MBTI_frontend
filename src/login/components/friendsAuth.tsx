@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios, { AxiosInstance } from 'axios';
 
-const Auth = () => {
+const FriendsAuth = () => {
   useEffect(() => {
     GetCode();
   }, []);
@@ -24,4 +24,4 @@ const Auth = () => {
     </div>
   );
 };
-export default Auth;
+export default FriendsAuth;
