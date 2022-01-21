@@ -2,18 +2,32 @@ import React from 'react';
 import './setInfo.css';
 import user_empty from '../images/user_empty.svg';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+const { Kakao } = window;
+const authForGetFriendsList = () => {
+  Kakao.Auth.authorize({
+    redirectUri: 'http://localhost:3000/auth',
+    // scope: 'friends',
+  });
+};
 
 // const getFriends = () => {
 //   useEffect(() => {}, []);
 // };
+
+// const getMbti = () => {
+//   const []
+// }
 
 const SetInfo = () => {
   return (
     <div className="setInfo_containerWithPadding">
       <div className="setInfo_container">
         <div className="setInfo_boldTitle">카카오톡 프로필 연동하기</div>
-        <button className="setInfo_profile">
+        <button
+          className="setInfo_profile"
+          onClick={() => authForGetFriendsList()}
+        >
           <img
             src={user_empty}
             alt="profile_img"
