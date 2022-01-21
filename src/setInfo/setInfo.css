@@ -109,6 +109,15 @@
   text-align: left;
   color: #f4f2ed;
 }
+.setInfo_selectButton:active {
+  background-color: #e8e0ce;
+  color: #1f513f;
+}
+.setInfo_selectButton:hover {
+  background-color: #e8e0ce;
+  color: #1f513f;
+}
+
 .setInfo_emptySelect {
   width: 20px;
   height: 20px;
