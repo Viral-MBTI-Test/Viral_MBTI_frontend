@@ -2,24 +2,29 @@ import React from 'react';
 import './setInfo.css';
 import user_empty from '../images/user_empty.svg';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+
+// const getFriends = () => {
+//   useEffect(() => {}, []);
+// };
 
 const SetInfo = () => {
   return (
     <div className="setInfo_containerWithPadding">
       <div className="setInfo_container">
         <div className="setInfo_boldTitle">카카오톡 프로필 연동하기</div>
-        <div className="setInfo_profile">
+        <button className="setInfo_profile">
           <img
             src={user_empty}
             alt="profile_img"
             className="setInfo_profileImg"
           />
           <span className="setInfo_name">동의하기</span>
-        </div>
+        </button>
         <div className="setInfo_explain">
-          내 친구들의 MBTI 알아보기 등 서비스를 완전하게
+          내 친구들의 MBTI 알아보기 등 서비스를 완전하게 즐기기
           <br />
-          즐기기 위해서는 선택 항목 동의가 필요해요.
+          위해서는 선택 항목 동의가 필요해요.
           <br />위 프로필 버튼을 눌러 동의를 진행해주세요.
         </div>
         <div
