@@ -13,6 +13,9 @@ const FriendsAuth = (props: any) => {
     await webClient
       .get(`friends-auth/?code=${code}`)
       .then((response) => {
+        props.setUsername(response.data.username);
+        props.setProfileImage(response.data.kakao_profile_img_url);
+        console.log(response.data.username);
         window.location.href = 'http://localhost:3000/setinfo';
       })
       .catch((e) => console.log(e));

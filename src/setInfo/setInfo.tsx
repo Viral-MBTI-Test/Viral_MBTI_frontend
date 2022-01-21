@@ -19,7 +19,10 @@ const authForGetFriendsList = () => {
 //   const []
 // }
 
-const SetInfo = () => {
+const SetInfo = (props: any) => {
+  const username = props.username;
+  const profileImage = props.profileImage;
+
   return (
     <div className="setInfo_containerWithPadding">
       <div className="setInfo_container">
@@ -33,7 +36,7 @@ const SetInfo = () => {
             alt="profile_img"
             className="setInfo_profileImg"
           />
-          <span className="setInfo_name">동의하기</span>
+          <span className="setInfo_name">{username}</span>
         </button>
         <div className="setInfo_explain">
           내 친구들의 MBTI 알아보기 등 서비스를 완전하게 즐기기

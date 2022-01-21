@@ -8,9 +8,13 @@ import Result from './result/result';
 import Auth from './login/components/auth';
 import FriendsAuth from './login/components/friendsAuth';
 import { useState } from 'react';
+import user_empty from '../images/user_empty.svg';
+
 function App() {
-  const [username, setUsername] = useState<string>('');
-  const [profileImage, setProfileImage] = useState<string>('');
+  const [username, setUsername] = useState<string>('동의하기');
+  const [profileImage, setProfileImage] = useState<string>(
+    '../images/user_empty.svg'
+  );
 
   return (
     <div className="app">
@@ -22,12 +26,20 @@ function App() {
             path="/friendsAuth"
             element={
               <FriendsAuth
-                username={setUsername}
+                setUsername={setUsername}
                 setProfileImage={setProfileImage}
               />
             }
           />
-          <Route path="/setinfo" element={<SetInfo />} />
+          <Route
+            path="/setinfo"
+            element={
+              <SetInfo
+                setUsername={setUsername}
+                setProfileImage={setProfileImage}
+              />
+            }
+          />
           <Route path="/question/0" element={<Query />} />
           <Route path="/question/0/queryend" element={<Queryend />} />
           <Route path="/result" element={<Result />} />
