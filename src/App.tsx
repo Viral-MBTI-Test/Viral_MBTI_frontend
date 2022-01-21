@@ -13,7 +13,7 @@ import user_empty from '../images/user_empty.svg';
 function App() {
   const [username, setUsername] = useState<string>('동의하기');
   const [profileImage, setProfileImage] = useState<string>(
-    '../images/user_empty.svg'
+    'https://i.ibb.co/km2c6Zy/Frame-44.png'
   );
 
   return (
