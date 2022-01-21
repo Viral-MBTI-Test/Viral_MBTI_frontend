@@ -34,10 +34,7 @@ function App() {
           <Route
             path="/setinfo"
             element={
-              <SetInfo
-                setUsername={setUsername}
-                setProfileImage={setProfileImage}
-              />
+              <SetInfo username={username} profileImage={profileImage} />
             }
           />
           <Route path="/question/0" element={<Query />} />
