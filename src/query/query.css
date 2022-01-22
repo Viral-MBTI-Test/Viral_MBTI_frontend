@@ -1,96 +1,96 @@
 .query_container {
-  background-color: #1f513f;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    background-color: #1f513f;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .query_question {
-  width: 255px;
-  height: 37px;
-  margin: 72px 0 78px 0;
-  font-family: Helvetica;
-  font-size: 14px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.32;
-  letter-spacing: normal;
-  text-align: left;
-  color: #fff;
+    width: 255px;
+    height: 37px;
+    margin: 72px 0 78px 0;
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.32;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
 }
 
 .query_answer {
-  width: 280px;
-  height: 54px;
-  margin: 0 0 17px 0;
-  border-radius: 15px;
-  box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
-  background-color: #acb4a2;
+    width: 280px;
+    height: 54px;
+    margin: 0 0 17px 0;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+    background-color: #acb4a2;
 
-  font-family: Helvetica;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.67;
-  letter-spacing: normal;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-  color: #f4f2ed;
+    font-family: Helvetica;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    color: #f4f2ed;
 }
 
 .query_selected {
-  width: 280px;
-  height: 54px;
-  border-radius: 15px;
-  box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
-  background-color: #e8e0ce;
+    width: 280px;
+    height: 54px;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+    background-color: #e8e0ce;
 
-  font-family: Helvetica;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.67;
-  letter-spacing: normal;
-  text-align: center;
-  color: #1f513f;
+    font-family: Helvetica;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.67;
+    letter-spacing: normal;
+    text-align: center;
+    color: #1f513f;
 }
 
 .query_prevBtn {
-  width: 80px;
-  height: 32px;
-  margin: 88px 200px 0 0px;
-  border-radius: 8px;
-  box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
-  background-color: #acb4a2;
+    width: 80px;
+    height: 32px;
+    margin: 88px 200px 0 0px;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+    background-color: #acb4a2;
 
-  font-family: Helvetica;
-  font-size: 10px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2;
-  letter-spacing: normal;
-  text-align: center;
-  color: #f4f2ed;
+    font-family: Helvetica;
+    font-size: 10px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2;
+    letter-spacing: normal;
+    text-align: center;
+    color: #f4f2ed;
 }
 
 .progress_div {
-  width: 280px;
-  height: 4px;
-  border-radius: 15px;
-  margin: 38px 0 0 0;
-  background-color: #acb4a2;
+    width: 280px;
+    height: 4px;
+    border-radius: 15px;
+    margin: 38px 0 0 0;
+    background-color: #acb4a2;
 }
 
 .progress_state {
-  width: 100px;
-  height: 4px;
-  margin: 6px 7px 72px 0;
-  background-color: #e8e0ce;
+    width: 100px;
+    height: 4px;
+    margin: 6px 7px 72px 0;
+    background-color: #e8e0ce;
 }
