@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios, { AxiosInstance } from 'axios';
-import webClient from '../../utils/webClient';
+import webClient from '../../share/webClient';
 
 const FriendsAuth = (props: any) => {
   useEffect(() => {
