@@ -2,7 +2,7 @@ import Login from "./login/components/login";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Query from "./query/query";
-import Queryend from "./query/queryend";
+import QueryEnd from "./query/queryend";
 import SetInfo from "./setInfo/setInfo";
 import Result from "./result/result";
 import Auth from "./login/components/auth";
@@ -41,7 +41,7 @@ function App() {
                         }
                     />
                     <Route path="/question/0" element={<Query />} />
-                    <Route path="/question/0/queryend" element={<Queryend />} />
+                    <Route path="/queryend" element={<QueryEnd />} />
                     <Route path="/result" element={<Result />} />
                 </Routes>
             </BrowserRouter>
