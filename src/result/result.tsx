@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./result.css";
 import boy from "../images/boy.svg";
+import { Link } from 'react-router-dom';
 
 interface personalityResultProps {
     frequency: string;
@@ -69,7 +70,8 @@ const Result = () => {
             </div>
             <div className="result_buttonContainer">
                 <div className="result_button">전체 친구목록</div>
-                <div className="result_button">질문별 결과 보기</div>
+                <Link to ="/queryend" style={{ textDecoration: 'none' }}>
+                <div className="result_button">질문별 결과 보기</div> </Link>
             </div>
             <div className="result_shareContainer">
                 <span>결과 공유하기</span>
