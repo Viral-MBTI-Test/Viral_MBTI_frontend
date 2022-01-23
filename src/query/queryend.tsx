@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './queryend.css';
+import './query.css';
 const Queryend = () => {
   const ans = [
     { rank: '1위', text: 'INTP', percent: '33%' },
@@ -34,7 +35,7 @@ const Queryend = () => {
         <div className="queryend_percent">9%</div>
       </div>
       <Link to="/result">
-        <button className="queryend_nextBtn">결과보기</button>
+        <div className="queryend_nextBtn">결과보기</div>
       </Link>
     </div>
   );

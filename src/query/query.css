@@ -8,66 +8,76 @@
 }
 
 .query_question {
-    width: 255px;
-    height: 37px;
-    margin: 72px 0 78px 0;
-    font-family: Helvetica;
-    font-size: 14px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.32;
-    letter-spacing: normal;
-    text-align: left;
-    color: #fff;
+
+  width: 255px;
+  height: 37px;
+  margin: 72px 0 78px 0;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.32;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+  white-space: pre;
 }
 
 .query_answer {
-    width: 280px;
-    height: 54px;
-    margin: 0 0 17px 0;
-    border-radius: 15px;
-    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
-    background-color: #acb4a2;
+  width: 280px;
+  height: 54px;
+  margin: 0 0 17px 0;
+  border-radius: 15px;
+  box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+  background-color: #acb4a2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre;
 
-    font-family: Helvetica;
-    font-size: 12px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.67;
-    letter-spacing: normal;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    color: #f4f2ed;
+  font-family: Helvetica;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  text-align: center;
+  color: #f4f2ed;
 }
 
 .query_selected {
-    width: 280px;
-    height: 54px;
-    border-radius: 15px;
-    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
-    background-color: #e8e0ce;
+  width: 280px;
+  height: 54px;
+  border-radius: 15px;
+  box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+  background-color: #e8e0ce;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    font-family: Helvetica;
-    font-size: 12px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.67;
-    letter-spacing: normal;
-    text-align: center;
-    color: #1f513f;
+  font-family: Helvetica;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1f513f;
 }
 
 .query_prevBtn {
-    width: 80px;
-    height: 32px;
-    margin: 88px 200px 0 0px;
-    border-radius: 8px;
-    box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
-    background-color: #acb4a2;
+  width: 80px;
+  height: 32px;
+  margin: 88px 200px 0 0px;
+  border-radius: 8px;
+  box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+  background-color: #acb4a2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
     font-family: Helvetica;
     font-size: 10px;
