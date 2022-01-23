@@ -18,8 +18,9 @@
   font-style: normal;
   line-height: 1.32;
   letter-spacing: normal;
-  text-align: left;
+  text-align: center;
   color: #fff;
+  white-space: pre;
 }
 
 .query_answer {
@@ -29,6 +30,10 @@
   border-radius: 15px;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
   background-color: #acb4a2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre;
 
   font-family: Helvetica;
   font-size: 12px;
@@ -38,8 +43,6 @@
   line-height: 1.67;
   letter-spacing: normal;
   text-align: center;
-  display: table-cell;
-  vertical-align: middle;
   color: #f4f2ed;
 }
 
@@ -49,6 +52,9 @@
   border-radius: 15px;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
   background-color: #e8e0ce;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   font-family: Helvetica;
   font-size: 12px;
@@ -68,6 +74,9 @@
   border-radius: 8px;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
   background-color: #acb4a2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   font-family: Helvetica;
   font-size: 10px;
