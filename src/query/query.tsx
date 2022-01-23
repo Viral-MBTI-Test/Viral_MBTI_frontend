@@ -1,15 +1,26 @@
 import './query.css';
-import { Link } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+/*import { Link } from 'react-router-dom';*/
 import { Querylist } from './querylist';
-import React, {useState} from "react";
+import {useState} from "react";
 
 const Query = () => {
-  
+  const navigate = useNavigate();
+
   const [currentNo, setCurrentNo] = useState(0);
 
-  const handleClick = () => {
-    setCurrentNo(currentNo + 1);
+  const answerClick = () => {
+    if (currentNo === Querylist.length - 1) {
+      /* <Link to="/result" style={{ textDecoration: 'none' }}> </Link> */
+      navigate("/result");
+    } else {
+      setCurrentNo((currentNo) => currentNo + 1);
+    }
   };
+
+  const beforeClick = () => {
+    setCurrentNo((currentNo) => currentNo - 1);
+  }
 
   return (
     <div className="query_container">
@@ -21,15 +32,12 @@ const Query = () => {
 
       <div >
         {Querylist[currentNo].ans.map((answer) => (
-            <div className="query_answer"
-                onClick={handleClick}
-            > {answer.text} </div> 
+            <div className="query_answer" onClick={answerClick}> {answer.text} </div> 
         ))}
       </div>
      
-      <Link to="./queryend" style={{ textDecoration: 'none' }}>
-        <div className="query_prevBtn">이전 질문</div>
-      </Link>
+      <div className="query_prevBtn" onClick={beforeClick}>이전 질문</div>
+     
     </div>
   );
 };
