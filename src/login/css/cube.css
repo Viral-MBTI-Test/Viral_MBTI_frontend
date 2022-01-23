@@ -2,6 +2,7 @@
   width: 20px;
   height: 50px;
   perspective: 600px;
+  margin-right: 10px;
 }
 
 .cube {
