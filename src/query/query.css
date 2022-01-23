@@ -47,7 +47,7 @@
   color: #f4f2ed;
 }
 
-.query_selected {
+.query_answer:hover {
   width: 280px;
   height: 54px;
   border-radius: 15px;
