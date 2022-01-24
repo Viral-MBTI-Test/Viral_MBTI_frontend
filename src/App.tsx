@@ -43,7 +43,7 @@ function App() {
               }
             />
             <Route path="/question/0" element={<Query />} />
-            <Route path="/question/0/queryend" element={<Queryend />} />
+            <Route path="/queryend" element={<Queryend />} />
             <Route path="/result" element={<Result />} />
             <Route
               path="/friends_list"

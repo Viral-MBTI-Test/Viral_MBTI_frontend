@@ -1,7 +1,7 @@
 .query_container {
     background-color: #1f513f;
     width: 100%;
-    height: 100%;
+    height:100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -78,6 +78,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 
     font-family: Helvetica;
     font-size: 10px;
@@ -91,16 +92,16 @@
 }
 
 .progress_div {
-    width: 280px;
-    height: 4px;
-    border-radius: 15px;
-    margin: 38px 0 0 0;
-    background-color: #acb4a2;
+  width: 280px;
+  height: 4px;
+  border-radius: 15px;
+  margin: 38px 0 0 0;
+  background-color: #acb4a2;
 }
 
 .progress_state {
-    width: 100px;
-    height: 4px;
-    margin: 6px 7px 72px 0;
-    background-color: #e8e0ce;
+  width: 100px;
+  height: 4px;
+  margin: 6px 7px 72px 0;
+  background-color: #e8e0ce;
 }
