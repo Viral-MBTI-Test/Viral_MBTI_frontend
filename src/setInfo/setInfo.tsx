@@ -1,8 +1,18 @@
 import React from 'react';
 import './setInfo.css';
-// import user_empty from '../images/user_empty.svg';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
+//images
+import '../images/E.svg';
+import '../images/I.svg';
+import '../images/S.svg';
+import '../images/N.svg';
+import '../images/T.svg';
+import '../images/F.svg';
+import '../images/P.svg';
+import '../images/J.svg';
+
 const { Kakao } = window;
 const authForGetFriendsList = () => {
   Kakao.Auth.authorize({
@@ -14,6 +24,39 @@ const authForGetFriendsList = () => {
 const SetInfo = (props: any) => {
   const username = props.username;
   const profileImage = props.profileImage;
+  const [mbti1, setMbti1] = useState('');
+  const [mbti2, setMbti2] = useState('');
+  const [mbti3, setMbti3] = useState('');
+  const [mbti4, setMbti4] = useState('');
+  const completeMbti = mbti1 + mbti2 + mbti3 + mbti4;
+
+  // const [addMBTI, setAddMBTI] = useState([
+  //   {
+  //     id: 1,
+  //     mbti: '',
+  //   },
+  //   {
+  //     id: 2,
+  //     mbti: '',
+  //   },
+  //   {
+  //     id: 3,
+  //     mbti: '',
+  //   },
+  //   {
+  //     id: 4,
+  //     mbti: '',
+  //   },
+  // ]);
+
+  // const updateFieldChanged = index => e => {
+  //   console.log('index: ' + index);
+  //   console.log('property name: '+ e.target.name);
+  //   let newArr = [...addMBTI];
+  //   newArr[index] = e.target.value;
+
+  //   setAddMBTI(newArr);
+  // }
 
   return (
     <div className="setInfo_containerWithPadding">
@@ -50,46 +93,71 @@ const SetInfo = (props: any) => {
         </div>
         <div className="setInfo_selectContainer" style={{ marginTop: '46px' }}>
           <button
+            onClick={() => setMbti1('E')}
             className="setInfo_selectButton"
             style={{ marginLeft: '24px' }}
           >
             E
           </button>
-          <div className="setInfo_emptySelect"></div>
-          <button className="setInfo_selectButton">I</button>
+          <div className="setInfo_emptySelect">{mbti1}</div>
+          <button
+            onClick={() => setMbti1('I')}
+            className="setInfo_selectButton"
+          >
+            I
+          </button>
         </div>
         <div className="setInfo_selectContainer">
           <button
+            onClick={() => setMbti2('S')}
             className="setInfo_selectButton"
             style={{ marginLeft: '24px' }}
           >
             S
           </button>
-          <div className="setInfo_emptySelect"></div>
-          <button className="setInfo_selectButton">N</button>
+          <div className="setInfo_emptySelect">{mbti2}</div>
+          <button
+            onClick={() => setMbti2('N')}
+            className="setInfo_selectButton"
+          >
+            N
+          </button>
         </div>
         <div className="setInfo_selectContainer">
           <button
+            onClick={() => setMbti3('T')}
             className="setInfo_selectButton"
             style={{ marginLeft: '24px' }}
           >
             T
           </button>
-          <div className="setInfo_emptySelect"></div>
-          <button className="setInfo_selectButton">F</button>
+          <div className="setInfo_emptySelect">{mbti3}</div>
+          <button
+            onClick={() => setMbti3('F')}
+            className="setInfo_selectButton"
+          >
+            F
+          </button>
         </div>
         <div className="setInfo_selectContainer">
           <button
+            onClick={() => setMbti4('J')}
             className="setInfo_selectButton"
             style={{ marginLeft: '24px' }}
           >
             J
           </button>
-          <div className="setInfo_emptySelect"></div>
-          <button className="setInfo_selectButton">P</button>
+          <div className="setInfo_emptySelect">{mbti4}</div>
+          <button
+            onClick={() => setMbti4('P')}
+            className="setInfo_selectButton"
+          >
+            P
+          </button>
         </div>
 
         <div className="setInfo_boxContainer">
+          <div>{completeMbti}</div>
           <Link to="/question/0">
             <button
               className="setInfo_startButton"
