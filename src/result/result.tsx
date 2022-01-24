@@ -1,15 +1,18 @@
+
 import React, { useState } from 'react';
 import './result.css';
 import boy from '../images/boy.svg';
 import { Link } from 'react-router-dom';
 import MBTIProfile from '../share/MBTIProfile';
 import MBTIPercent from '../share/MBTIPercent';
+
 interface personalityResultProps {
   frequency: string;
   result: string[];
 }
 
 const Result = () => {
+
   return (
     <div className="result_container">
       <span
@@ -62,7 +65,8 @@ const Result = () => {
         <Link to="/friends_list" className="result_button">
           전체 친구목록
         </Link>
-        <div className="result_button">질문별 결과 보기</div>
+        <Link to ="/queryend" style={{ textDecoration: 'none' }}>
+                <div className="result_button">질문별 결과 보기</div> </Link>
       </div>
       <div className="result_shareContainer">
         <span>결과 공유하기</span>
@@ -107,6 +111,7 @@ const Result = () => {
               borderRadius: '15px',
             }}
           />
+
         </div>
       </div>
     </div>

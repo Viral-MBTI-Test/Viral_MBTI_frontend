@@ -1,3 +1,4 @@
+
 import Login from './login/components/login';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -11,6 +12,7 @@ import { useState } from 'react';
 import user_empty from '../images/user_empty.svg';
 import FriendsList from './friendsList/friendsList';
 import ProtectedRoute from './ProtectedRoutes';
+
 
 function App() {
   const [username, setUsername] = useState<string>('동의하기');
@@ -41,7 +43,7 @@ function App() {
               }
             />
             <Route path="/question/0" element={<Query />} />
-            <Route path="/question/0/queryend" element={<Queryend />} />
+            <Route path="/queryend" element={<Queryend />} />
             <Route path="/result" element={<Result />} />
             <Route
               path="/friends_list"
@@ -54,6 +56,7 @@ function App() {
       </BrowserRouter>
     </div>
   );
+
 }
 
 export default App;
