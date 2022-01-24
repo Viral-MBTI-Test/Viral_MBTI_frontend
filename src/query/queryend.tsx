@@ -3,7 +3,9 @@ import {useNavigate} from 'react-router-dom';
 import { Querylist } from './querylist';
 import {useState} from "react";
 import './queryend.css';
-import SimilarFriends from '../result/result';
+import MBTIPercent from '../share/MBTIPercent';
+import MBTIProfile from '../share/MBTIProfile';
+import boy from '../images/boy.svg';
 
 const QueryEnd = () => {
 
@@ -26,6 +28,8 @@ const QueryEnd = () => {
   };
 
   const beforeClick = () => {
+    if(currentNo === 1)
+      navigate("/result")
     setCurrentNo((currentNo) => currentNo - 1);
   }
 
@@ -38,7 +42,7 @@ const QueryEnd = () => {
       </div>
     );
   });
-
+/* 나랑같은 mbti
   const mineRender = ans.map((option) => {
     return (
       <div className="queryend_result">
@@ -48,9 +52,9 @@ const QueryEnd = () => {
       </div>
     );
   });
-
+*/
   return (
-    <div className="query_container">
+    <div className="queryend_container">
       <div className="progress_div"></div>
 
       <div className="queryend_question">
@@ -64,17 +68,25 @@ const QueryEnd = () => {
 
         <div className="queryend_mbti"> ENTP들은 이런 담을 골랐어요 </div>
       
-        {mineRender}
+        {/*mineRender*/}
+        <MBTIPercent index={0} mbti="ESFJ" percent={50} />
+        <MBTIPercent index={1} mbti="ESFJ" percent={50} />
+        <MBTIPercent index={2} mbti="ESFJ" percent={50} />
+        <MBTIPercent index={3} mbti="ESFJ" percent={50} />
 
         <div className="queryend_mbti"> 나랑 같은 답을 선택한 친구들 </div>
 
-        <SimilarFriends />
-        <SimilarFriends />
-        <SimilarFriends />
-
-      <div className="query_prevBtn" onClick={beforeClick}>이전 문항으로</div>
-      <div className="query_prevBtn" onClick={afterClick}>다음 문항으로</div>
-
+        
+        <div>
+        <MBTIProfile img={boy} userName="김진형" />
+        <MBTIProfile img={boy} userName="김진형" />
+        <MBTIProfile img={boy} userName="김진형" />
+          
+        </div>
+      
+        <div className="query_prevBtn" onClick={beforeClick}>이전 문항으로</div>
+        <div className="queryend_nextBtn" onClick={afterClick}>다음 문항으로</div>
+      
     </div>
   );
 };
