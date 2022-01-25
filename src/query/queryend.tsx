@@ -8,6 +8,7 @@ import MBTIProfile from "../share/MBTIProfile";
 import webClient from "../share/webClient";
 import { AxiosResponse } from "axios";
 import MBTIAnswer from "../share/MBTIAnswer";
+import { ReactComponent as Boy } from '../images/run_boy.svg';
 
 const QueryEnd = () => {
   const navigate = useNavigate();
