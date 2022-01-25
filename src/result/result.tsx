@@ -9,7 +9,7 @@ import { AxiosResponse } from "axios";
 
 interface personalityResultProps {
     frequency: string;
-    result: string[];
+    result: featureResponse[];
 }
 interface featureResponse {
     feature: string;
@@ -20,15 +20,10 @@ interface rankingResponse {
 }
 
 const Result = () => {
-    const [result, setResult] = useState<string>("hi");
+    const [result, setResult] = useState<string>();
     const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>();
     const [weakFeatures, setWeakFeatures] = useState<featureResponse[]>();
-    const [ranking, setRanking] = useState<rankingResponse[]>([
-        {
-            mbti: "ESFP",
-            percent: 50,
-        },
-    ]);
+    const [ranking, setRanking] = useState<rankingResponse[]>();
     const getResult = async () => {
         try {
             const totalResult: AxiosResponse = await webClient.get(
@@ -38,6 +33,7 @@ const Result = () => {
             setStrongFeatures(totalResult.data.result.features.strong);
             setWeakFeatures(totalResult.data.result.features.weak);
             setRanking(totalResult.data.mbti_ranking);
+            console.log(strongFeatures);
         } catch (error) {
             console.log(error);
         }
@@ -59,12 +55,20 @@ const Result = () => {
                 {result}
             </span>
             <MBTIPercent
-                mbti={ranking[0].mbti}
-                percent={ranking[0].percent}
+                mbti={ranking![0].mbti}
+                percent={ranking![0].percent}
                 index={0}
             />
-            <MBTIPercent mbti="ESFJ" percent={35} index={1} />
-            <MBTIPercent mbti="INFJ" percent={7} index={2} />
+            <MBTIPercent
+                mbti={ranking![1].mbti}
+                percent={ranking![1].percent}
+                index={1}
+            />
+            <MBTIPercent
+                mbti={ranking![2].mbti}
+                percent={ranking![2].percent}
+                index={2}
+            />
             <p>
                 테스트 결과는 참여자가 많아질수록 더 정확해져요!
                 <br /> 다음에 또 확인해보세요.😏
@@ -73,27 +77,11 @@ const Result = () => {
                 <div className="result_title_small">
                     나는 이런 성격을 갖고 있어요
                 </div>
-                <RectangleResult
-                    frequency="often"
-                    result={[
-                        "밖에 놀러가는 것도 좋지만, 집에서 쉬는 것도 좋아해요 좋아좋아 좋아해~~",
-                        "2",
-                        "밖에 놀러가는 것도 좋지만, 집에서 쉬는 것도 좋아해요 좋아좋아 좋아해~~",
-                        "2",
-                        "밖에 놀러가는 것도 좋지만, 집에서 쉬는 것도 좋아해요 좋아좋아 좋아해~~",
-                        "2",
-                    ]}
-                />
+                <RectangleResult frequency="often" result={strongFeatures!} />
             </div>
             <div className="result_rectangle_big_container">
                 <div className="result_title_small">가끔은...</div>
-                <RectangleResult
-                    frequency="sometimes"
-                    result={[
-                        "내 의견과 상대 의견이 다르면 설득하려는 스타일이에요",
-                        "2",
-                    ]}
-                />
+                <RectangleResult frequency="sometimes" result={weakFeatures!} />
             </div>
             <div className="result_myFriendsContainer">
                 <span>나와 비슷한 성향의 친구들</span>
@@ -154,8 +142,8 @@ const RectangleResult = (props: personalityResultProps) => {
                         key={index}
                         result={
                             props.frequency === "often"
-                                ? `📍 ${result}`
-                                : `✅ ${result}`
+                                ? `📍 ${result.feature}`
+                                : `✅ ${result.feature}`
                         }
                     />
                 );
