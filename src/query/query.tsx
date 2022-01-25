@@ -13,13 +13,13 @@ const Query = () => {
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
   ]);
 
-  const answerClick = (selectedAnswer: number) => {
+  const answerClick = async (selectedAnswer: number) => {
     if (currentNo === Querylist.length - 1) {
       let result = answer.map((a, i) => {
         return { question_number: i + 1, choice_number: a };
       });
       result[currentNo].choice_number = selectedAnswer;
-      webClient.post('/answer/', result);
+      await webClient.post('/answer/', result);
 
       navigate('/result');
     } else {
