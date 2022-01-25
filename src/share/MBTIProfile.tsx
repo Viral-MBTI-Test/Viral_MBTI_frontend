@@ -32,7 +32,11 @@ const MBTIProfile = (props: similarFriendsResponse) => {
             <p>{props.friend_result}</p>
           </div>
           <div className="MBTIProfile_friendProfilePercent">
-            <span>{props.similar_percent}%</span>
+            <span style={{ marginRight: '17px' }}>
+              {props.similar_percent
+                ? `${Math.floor(props.similar_percent)}%`
+                : ''}
+            </span>
           </div>
         </>
       )}
