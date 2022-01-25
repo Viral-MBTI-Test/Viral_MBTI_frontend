@@ -55,7 +55,7 @@ const QueryEnd = () => {
   return (
     <div className="queryend_container">
       <div className="progress-div" style={{ width: '296px' }}>
-        <div style={{ width: `${currentNo * 8}%` }} className="progress">
+        <div style={{ width: `${currentNo * 10}%` }} className="progress">
           {currentNo !== 0 ? <Boy className="progress-boy" /> : <></>}
         </div>
       </div>
