@@ -20,10 +20,34 @@ interface rankingResponse {
 }
 
 const Result = () => {
-    const [result, setResult] = useState<string>();
-    const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>();
-    const [weakFeatures, setWeakFeatures] = useState<featureResponse[]>();
-    const [ranking, setRanking] = useState<rankingResponse[]>();
+    const [result, setResult] = useState<string>("결과가 없습니다.");
+    const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>([
+        {
+            feature: "검사를 진행해주세요!",
+        },
+    ]);
+    const [weakFeatures, setWeakFeatures] = useState<featureResponse[]>([
+        {
+            feature: "검사를 진행해주세요!",
+        },
+    ]);
+    const [ranking, setRanking] = useState<rankingResponse[]>([
+        {
+            mbti: "XXXX",
+            percent: 0,
+        },
+        {
+            mbti: "XXXX",
+            percent: 0,
+        },
+        {
+            mbti: "XXXX",
+            percent: 0,
+        },
+    ]);
+    const [profileImg, setProfileImg] = useState<string>(
+        "https://i.ibb.co/km2c6Zy/Frame-44.png"
+    );
     const getResult = async () => {
         try {
             const totalResult: AxiosResponse = await webClient.get(
@@ -33,7 +57,7 @@ const Result = () => {
             setStrongFeatures(totalResult.data.result.features.strong);
             setWeakFeatures(totalResult.data.result.features.weak);
             setRanking(totalResult.data.mbti_ranking);
-            console.log(strongFeatures);
+            console.log(ranking);
         } catch (error) {
             console.log(error);
         }
@@ -86,9 +110,9 @@ const Result = () => {
             <div className="result_myFriendsContainer">
                 <span>나와 비슷한 성향의 친구들</span>
                 <div style={{ height: "20px" }} />
-                <MBTIProfile img={boy} userName="김진형" />
-                <MBTIProfile img={boy} userName="김진형" />
-                <MBTIProfile img={boy} userName="김진형" />
+                <MBTIProfile img={profileImg} userName="김진형" />
+                <MBTIProfile img={profileImg} userName="김진형" />
+                <MBTIProfile img={profileImg} userName="김진형" />
             </div>
             <div className="result_buttonContainer">
                 <Link to="/friends_list" className="result_button">
@@ -104,30 +128,6 @@ const Result = () => {
                     <button className="result_button">카톡 공유하기</button>
                     <button className="result_button">링크 복사하기</button>
                 </div>
-            </div>
-        </div>
-    );
-};
-
-export const SimilarFriends = () => {
-    return (
-        <div className="result_friendProfile">
-            <img
-                src={boy}
-                alt="boy"
-                style={{
-                    width: "40px",
-                    height: "40px",
-                    backgroundColor: "black",
-                    borderRadius: "15px",
-                }}
-            />
-            <div className="result_profileText">
-                <span>김진형</span>
-                <p>ENTP에 INTJ 한스푼</p>
-            </div>
-            <div className="result_friendProfilePercent">
-                <span>55%</span>
             </div>
         </div>
     );
