@@ -6,6 +6,8 @@ import MBTIProfile from "../share/MBTIProfile";
 import MBTIPercent from "../share/MBTIPercent";
 import webClient from "../share/webClient";
 import { AxiosResponse } from "axios";
+import FriendsList from "../friendsList/friendsList";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 const { Kakao } = window;
 
 interface personalityResultProps {
@@ -26,7 +28,7 @@ export interface similarFriendsResponse {
     friend_result?: string | null;
     similar_percent?: number | null;
 }
-const Result = () => {
+const Result = (props: { friendsList: similarFriendsResponse }) => {
     const [result, setResult] = useState<string>("결과가 없습니다.");
     const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>([
         {
@@ -80,7 +82,7 @@ const Result = () => {
             console.log(error);
         }
     };
-    const getSimilarFriends = async () => {
+    /*const getSimilarFriends = async () => {
         try {
             const similarFriendsResult: AxiosResponse = await webClient.get(
                 "/similar-friends/"
@@ -90,7 +92,7 @@ const Result = () => {
         } catch (error) {
             console.log(error);
         }
-    };
+    };*/
     const kakaoShare = () => {
         Kakao.Link.sendCustom({
             templateId: 69446,
@@ -98,7 +100,7 @@ const Result = () => {
     };
     useEffect(() => {
         getResult();
-        getSimilarFriends();
+        //getSimilarFriends();
     }, []);
     return (
         <div className="result_container">
@@ -111,7 +113,7 @@ const Result = () => {
                     marginBottom: "16px",
                 }}
             >
-                {result}
+                당신은...{result}
             </span>
             <MBTIPercent
                 mbti={ranking![0].mbti}
@@ -153,7 +155,9 @@ const Result = () => {
                 </div>
             )}
             <div className="result_myFriendsContainer">
-                <span>나와 비슷한 성향의 친구들</span>
+                <span style={{ fontSize: "14px" }}>
+                    나와 비슷한 성향의 친구들
+                </span>
                 <div style={{ height: "20px" }} />
                 <MBTIProfile friend_name="김진형" />
             </div>
@@ -166,12 +170,14 @@ const Result = () => {
                 </Link>
             </div>
             <div className="result_shareContainer">
-                <span>결과 공유하기</span>
+                <span style={{ fontSize: "14px" }}>결과 공유하기</span>
                 <div className="result_shareIcons">
                     <button className="result_button" onClick={kakaoShare}>
                         카톡 공유하기
                     </button>
-                    <button className="result_button">링크 복사하기</button>
+                    <CopyToClipboard text={"zz"}>
+                        <button className="result_button">링크 복사하기</button>
+                    </CopyToClipboard>
                 </div>
             </div>
         </div>

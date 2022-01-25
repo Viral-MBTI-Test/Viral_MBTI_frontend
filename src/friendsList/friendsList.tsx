@@ -7,34 +7,32 @@ import webClient from '../share/webClient';
 import './friendsList.css';
 import question from '../images/questionMark.png';
 import { similarFriendsResponse } from '../result/result';
-interface FriendsType {
-  friend_id: number | null;
-  friend_name: string;
-  friend_profile_image: string;
-  friend_result: string | null;
-  similar_percent: number | null;
-}
 
-const initValue: FriendsType = {
-  friend_id: null,
-  friend_name: '테스트를 진행한 친구가 없습니다.',
-  friend_profile_image: question,
-  friend_result: null,
-  similar_percent: null,
+const initValue: similarFriendsResponse = {
+  friend_id: undefined,
+  friend_name: '',
+  friend_profile_image: undefined,
+  friend_result: undefined,
+  similar_percent: undefined,
 };
-const FriendsList = (props: { profile: string; userName: string }) => {
-  const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>(
-    []
-  ); /*([
+const FriendsList = (props: {
+  profile: string;
+  userName: string;
+  friendsList: similarFriendsResponse[];
+}) => {
+  const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
     initValue,
     initValue,
     initValue,
     initValue,
     initValue,
-  ]);*/
+  ]);
   const getFriends = async () => {
-    const response: AxiosResponse = await webClient.get('/similar-friends/');
-    const friends: similarFriendsResponse[] = [...response.data];
+    const response: similarFriendsResponse[] = props.friendsList;
+    const friends: similarFriendsResponse[] = [...friendsList];
+    response.map((response: similarFriendsResponse, index: number) => {
+      friends[index] = response;
+    });
     setFriendsList(friends);
   };
   const getRanks = async () => {
@@ -62,21 +60,52 @@ const FriendsList = (props: { profile: string; userName: string }) => {
           <div className="friendsList_text">
             전체 친구들의 성격유형 확인하기
           </div>
-          {friendsList.map((friend) => {
-            console.log(friend);
-            return (
-              <MBTIProfile
-                friend_profile_image={friend.friend_profile_image}
-                friend_name={friend.friend_name}
-                friend_result={friend.friend_result}
-                similar_percent={friend.similar_percent}
-              />
-            );
-          })}
-
-          <Link to="/all_friendsList" className="friendsList_btn">
-            전체 친구목록
-          </Link>
+          <MBTIProfile
+            friend_profile_image={friendsList[0].friend_profile_image}
+            friend_name={friendsList[0].friend_name}
+            friend_result={friendsList[0].friend_result}
+            similar_percent={friendsList[0].similar_percent}
+          />
+          <MBTIProfile
+            friend_profile_image={friendsList[1].friend_profile_image}
+            friend_name={friendsList[1].friend_name}
+            friend_result={friendsList[1].friend_result}
+            similar_percent={friendsList[1].similar_percent}
+          />
+          <MBTIProfile
+            friend_profile_image={friendsList[2].friend_profile_image}
+            friend_name={friendsList[2].friend_name}
+            friend_result={friendsList[2].friend_result}
+            similar_percent={friendsList[2].similar_percent}
+          />
+          <MBTIProfile
+            friend_profile_image={friendsList[3].friend_profile_image}
+            friend_name={friendsList[3].friend_name}
+            friend_result={friendsList[3].friend_result}
+            similar_percent={friendsList[3].similar_percent}
+          />
+          <MBTIProfile
+            friend_profile_image={friendsList[4].friend_profile_image}
+            friend_name={friendsList[4].friend_name}
+            friend_result={friendsList[4].friend_result}
+            similar_percent={friendsList[4].similar_percent}
+          />
+          <div className="friendsList_btn_box">
+            <Link
+              to="/result"
+              className="friendsList_btn"
+              style={{ marginRight: '9px' }}
+            >
+              돌아가기
+            </Link>
+            <Link
+              to="/all_friendsList"
+              className="friendsList_btn"
+              style={{ marginLeft: '9px' }}
+            >
+              전체 친구목록
+            </Link>
+          </div>
         </div>
       </div>
     </>
