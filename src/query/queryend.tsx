@@ -1,13 +1,13 @@
-import './query.css';
-import { useNavigate } from 'react-router-dom';
-import { Querylist } from './querylist';
-import { useEffect, useState } from 'react';
-import './queryend.css';
-import MBTIPercent from '../share/MBTIPercent';
-import MBTIProfile from '../share/MBTIProfile';
-import webClient from '../share/webClient';
-import MBTIAnswer from '../share/MBTIAnswer';
-import { ReactComponent as Boy } from '../images/run_boy.svg';
+import "./query.css";
+import { useNavigate } from "react-router-dom";
+import { Querylist } from "./querylist";
+import { useEffect, useState } from "react";
+import "./queryend.css";
+import MBTIPercent from "../share/MBTIPercent";
+import MBTIProfile from "../share/MBTIProfile";
+import webClient from "../share/webClient";
+import { AxiosResponse } from "axios";
+import MBTIAnswer from "../share/MBTIAnswer";
 
 const QueryEnd = () => {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ const QueryEnd = () => {
   const [sameMbti, setSameMbti] = useState<any>([]);
   const [currentNo, setCurrentNo] = useState(0);
   const [friendAns, setFriendAns] = useState<any>([]);
+  const [myAnswer, setMyAnswer] = useState<any>([]);
 
   useEffect(() => {
     const getAnswerStat = async () => {
@@ -37,30 +38,36 @@ const QueryEnd = () => {
     getAnswerStat();
   }, [currentNo]);
 
+  /*useEffect(() => {
+    const getMyAnswer = async () => {
+      const response_my: any = await webClient.get(`/my-answer/`);
+      setMyAnswer(response_my.data);
+      console.log(myAnswer);
+    };
+
+    getMyAnswer();
+  }, []);
+*/
   const afterClick = () => {
     if (currentNo === Querylist.length - 1) {
-      navigate('/result');
+      navigate("/result");
     } else {
-      setCurrentNo(currentNo => currentNo + 1);
+      setCurrentNo((currentNo) => currentNo + 1);
     }
   };
 
   const beforeClick = () => {
     if (currentNo === 0) {
-      navigate('/result');
+      navigate("/result");
     }
-    setCurrentNo(currentNo => currentNo - 1);
+    setCurrentNo((currentNo) => currentNo - 1);
   };
 
   return (
     <div className="queryend_container">
-      <div className="progress-div" style={{ width: '296px' }}>
-        <div style={{ width: `${currentNo * 8}%` }} className="progress">
-          {currentNo !== 0 ? <Boy className="progress-boy" /> : <></>}
-        </div>
-      </div>
+      <div className="progress_div"></div>
 
-      <div className="queryend_question">{Querylist[currentNo].question}</div>
+      {/*<div className="queryend_question">{Querylist[currentNo].question}</div>*/}
 
       <div className="query_selected"> 선택한 답안 </div>
       <div className="queryend_mbti"> 나와 같은 답을 선택한 MBTI </div>
@@ -117,7 +124,7 @@ const QueryEnd = () => {
             friend_profile_image={undefined}
             friend_result={undefined}
             similar_percent={undefined}
-            friend_name={''}
+            friend_name={""}
           />
         ) : (
           friendAns.map((friend: any, index: number) => {
@@ -136,22 +143,10 @@ const QueryEnd = () => {
         )}
       </div>
 
-      <div
-        className="query_prevBtn"
-        onClick={() => {
-          beforeClick();
-          window.scrollTo(0, 0);
-        }}
-      >
+      <div className="query_prevBtn" onClick={beforeClick}>
         이전 문항
       </div>
-      <div
-        className="queryend_nextBtn"
-        onClick={() => {
-          afterClick();
-          window.scrollTo(0, 0);
-        }}
-      >
+      <div className="queryend_nextBtn" onClick={afterClick}>
         다음 문항
       </div>
     </div>
