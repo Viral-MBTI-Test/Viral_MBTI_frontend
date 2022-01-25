@@ -37,7 +37,7 @@ const MBTIPercent = (mbtiPercentProps: {
                             : "#f4f2ed",
                 }}
             >
-                {mbtiPercentProps.percent}%
+                {Math.floor(mbtiPercentProps.percent)}%
             </span>
         </div>
     );
