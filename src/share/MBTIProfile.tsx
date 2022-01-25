@@ -1,4 +1,4 @@
-import './MBTIProfile.css';
+import "./MBTIProfile.css";
 
 const MBTIProfile = (props: any) => {
   return (
@@ -7,18 +7,18 @@ const MBTIProfile = (props: any) => {
         src={props.img}
         alt="profile"
         style={{
-          width: '40px',
-          height: '40px',
-          backgroundColor: 'black',
-          borderRadius: '15px',
+          width: "40px",
+          height: "40px",
+          backgroundColor: "black",
+          borderRadius: "15px",
         }}
       />
       <div className="MBTIProfile_profileText">
         <span>{props.userName}</span>
-        <p>ENTP에 INTJ 한스푼</p>
+        <p>{props.friendResult}</p>
       </div>
       <div className="MBTIProfile_friendProfilePercent">
-        <span>55%</span>
+        <span>{props.percent}%</span>
       </div>
     </div>
   );
