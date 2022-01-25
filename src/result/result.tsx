@@ -7,7 +7,7 @@ import MBTIPercent from '../share/MBTIPercent';
 import webClient from '../share/webClient';
 import { AxiosResponse } from 'axios';
 import FriendsList from '../friendsList/friendsList';
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 const { Kakao } = window;
 
 interface personalityResultProps {
@@ -93,102 +93,63 @@ const Result = (props: { friendsList: similarFriendsResponse }) => {
             console.log(error);
         }
     };*/
-    const kakaoShare = () => {
-        Kakao.Link.sendCustom({
-            templateId: 69446,
-        });
-    };
-    useEffect(() => {
-        getResult();
-        //getSimilarFriends();
-    }, []);
-    return (
-        <div className="result_container">
-            <span
-                style={{
-                    color: "#1F513F",
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                    marginTop: "36px",
-                    marginBottom: "16px",
-                }}
-            >
-                {result}
-            </span>
-            <MBTIPercent
-                mbti={ranking![0].mbti}
-                percent={ranking![0].percent}
-                index={0}
-            />
-            <MBTIPercent
-                mbti={ranking![1].mbti}
-                percent={ranking![1].percent}
-                index={1}
-            />
-            <MBTIPercent
-                mbti={ranking![2].mbti}
-                percent={ranking![2].percent}
-                index={2}
-            />
-            <p>
-                테스트 결과는 참여자가 많아질수록 더 정확해져요!
-                <br /> 다음에 또 확인해보세요.😏
-            </p>
-            {strongFeatures.length === 0 ? null : (
-                <div className="result_rectangle_big_container">
-                    <div className="result_title_small">
-                        나는 이런 성격을 갖고 있어요
-                    </div>
-                    <RectangleResult
-                        frequency="often"
-                        result={strongFeatures!}
-                    />
-                </div>
-            )}
-            {weakFeatures.length === 0 ? null : (
-                <div className="result_rectangle_big_container">
-                    <div className="result_title_small">가끔은...</div>
-                    <RectangleResult
-                        frequency="sometimes"
-                        result={weakFeatures!}
-                    />
-                </div>
-            )}
-            <div className="result_myFriendsContainer">
-                <span>나와 비슷한 성향의 친구들</span>
-                <div style={{ height: "20px" }} />
-                <MBTIProfile friend_name="김진형" />
-            </div>
-            <div className="result_buttonContainer">
-                <Link to="/friends_list" className="result_button">
-                    친구들 결과 보기
-                </Link>
-                <Link to="/queryend" style={{ textDecoration: "none" }}>
-                    <button className="result_button">질문별 결과 보기</button>
-                </Link>
-            </div>
-            <div className="result_shareContainer">
-                <span>결과 공유하기</span>
-                <div className="result_shareIcons">
-                    <button className="result_button" onClick={kakaoShare}>
-                        카톡 공유하기
-                    </button>
-                    <CopyToClipboard text={"zz"}>
-                        <button className="result_button">링크 복사하기</button>
-                    </CopyToClipboard>
-                </div>
-            </div>
+  const kakaoShare = () => {
+    Kakao.Link.sendCustom({
+      templateId: 69446,
+    });
+  };
+  useEffect(() => {
+    getResult();
+    //getSimilarFriends();
+  }, []);
+  return (
+    <div className="result_container">
+      <span
+        style={{
+          color: '#1F513F',
+          fontWeight: 'bold',
+          fontSize: '20px',
+          marginTop: '36px',
+          marginBottom: '16px',
+        }}
+      >
+        {result}
+      </span>
+      <MBTIPercent
+        mbti={ranking![0].mbti}
+        percent={ranking![0].percent}
+        index={0}
+      />
+      <MBTIPercent
+        mbti={ranking![1].mbti}
+        percent={ranking![1].percent}
+        index={1}
+      />
+      <MBTIPercent
+        mbti={ranking![2].mbti}
+        percent={ranking![2].percent}
+        index={2}
+      />
+      <p>
+        테스트 결과는 참여자가 많아질수록 더 정확해져요!
+        <br /> 다음에 또 확인해보세요.😏
+      </p>
+      {strongFeatures.length === 0 ? null : (
+        <div className="result_rectangle_big_container">
+          <div className="result_title_small">나는 이런 성격을 갖고 있어요</div>
+          <RectangleResult frequency="often" result={strongFeatures!} />
+        </div>
+      )}
+      {weakFeatures.length === 0 ? null : (
+        <div className="result_rectangle_big_container">
+          <div className="result_title_small">가끔은...</div>
+          <RectangleResult frequency="sometimes" result={weakFeatures!} />
         </div>
       )}
       <div className="result_myFriendsContainer">
         <span>나와 비슷한 성향의 친구들</span>
         <div style={{ height: '20px' }} />
-        <MBTIProfile
-          friend_name={props.friendsList.friend_name}
-          friend_profile_image={props.friendsList.friend_profile_image}
-          friend_result={props.friendsList.friend_result}
-          similar_percent={props.friendsList.similar_percent}
-        />
+        <MBTIProfile friend_name="김진형" />
       </div>
       <div className="result_buttonContainer">
         <Link to="/friends_list" className="result_button">
@@ -201,8 +162,12 @@ const Result = (props: { friendsList: similarFriendsResponse }) => {
       <div className="result_shareContainer">
         <span>결과 공유하기</span>
         <div className="result_shareIcons">
-          <button className="result_button">카톡 공유하기</button>
-          <button className="result_button">링크 복사하기</button>
+          <button className="result_button" onClick={kakaoShare}>
+            카톡 공유하기
+          </button>
+          <CopyToClipboard text={'zz'}>
+            <button className="result_button">링크 복사하기</button>
+          </CopyToClipboard>
         </div>
       </div>
     </div>
