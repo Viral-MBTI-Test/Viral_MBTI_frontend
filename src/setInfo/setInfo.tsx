@@ -23,7 +23,11 @@ const authForGetFriendsList = () => {
   });
 };
 
-const SetInfo = (props: any) => {
+const SetInfo = (props: {
+  username: string;
+  profileImage: string;
+  setFriendsList: Function;
+}) => {
   const username = props.username;
   const profileImage = props.profileImage;
   const [mbti1, setMbti1] = useState('');
