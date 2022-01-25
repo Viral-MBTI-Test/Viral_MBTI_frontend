@@ -1,14 +1,14 @@
-import "./query.css";
-import { useNavigate } from "react-router-dom";
-import { Querylist } from "./querylist";
-import { useEffect, useState } from "react";
-import "./queryend.css";
-import MBTIPercent from "../share/MBTIPercent";
-import MBTIProfile from "../share/MBTIProfile";
-import boy from "../images/boy.svg";
-import webClient from "../share/webClient";
-import { AxiosResponse } from "axios";
-import MBTIAnswer from "../share/MBTIAnswer";
+import './query.css';
+import { useNavigate } from 'react-router-dom';
+import { Querylist } from './querylist';
+import { useEffect, useState } from 'react';
+import './queryend.css';
+import MBTIPercent from '../share/MBTIPercent';
+import MBTIProfile from '../share/MBTIProfile';
+import boy from '../images/boy.svg';
+import webClient from '../share/webClient';
+import { AxiosResponse } from 'axios';
+import MBTIAnswer from '../share/MBTIAnswer';
 
 const QueryEnd = () => {
   const navigate = useNavigate();
@@ -40,17 +40,17 @@ const QueryEnd = () => {
 
   const afterClick = () => {
     if (currentNo === Querylist.length - 1) {
-      navigate("/result");
+      navigate('/result');
     } else {
-      setCurrentNo((currentNo) => currentNo + 1);
+      setCurrentNo(currentNo => currentNo + 1);
     }
   };
 
   const beforeClick = () => {
     if (currentNo === 0) {
-      navigate("/result");
+      navigate('/result');
     }
-    setCurrentNo((currentNo) => currentNo - 1);
+    setCurrentNo(currentNo => currentNo - 1);
   };
 
   return (
@@ -114,7 +114,7 @@ const QueryEnd = () => {
             friend_profile_image={undefined}
             friend_result={undefined}
             similar_percent={undefined}
-            friend_name={""}
+            friend_name={''}
           />
         ) : (
           friendAns.map((friend: any, index: number) => {
@@ -133,10 +133,22 @@ const QueryEnd = () => {
         )}
       </div>
 
-      <div className="query_prevBtn" onClick={beforeClick}>
+      <div
+        className="query_prevBtn"
+        onClick={() => {
+          beforeClick();
+          window.scrollTo(0, 0);
+        }}
+      >
         이전 문항
       </div>
-      <div className="queryend_nextBtn" onClick={afterClick}>
+      <div
+        className="queryend_nextBtn"
+        onClick={() => {
+          afterClick();
+          window.scrollTo(0, 0);
+        }}
+      >
         다음 문항
       </div>
     </div>
