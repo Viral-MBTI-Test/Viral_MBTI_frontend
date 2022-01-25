@@ -18,7 +18,13 @@ interface rankingResponse {
     mbti: string;
     percent: number;
 }
-
+export interface similarFriendsResponse {
+    friend_id?: number | null;
+    friend_name: string;
+    friend_profile_image?: string | undefined;
+    friend_result?: string | null;
+    similar_percent?: number | null;
+}
 const Result = () => {
     const [result, setResult] = useState<string>("결과가 없습니다.");
     const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>([
@@ -48,6 +54,17 @@ const Result = () => {
     const [profileImg, setProfileImg] = useState<string>(
         "https://i.ibb.co/km2c6Zy/Frame-44.png"
     );
+    const [similarFriends, setSimilarFriends] = useState<
+        similarFriendsResponse[]
+    >([
+        {
+            friend_id: 0,
+            friend_name: "아직 검사를 진행한 친구가 없어요!",
+            friend_profile_image: "",
+            friend_result: "",
+            similar_percent: 0,
+        },
+    ]);
     const getResult = async () => {
         try {
             const totalResult: AxiosResponse = await webClient.get(
@@ -57,13 +74,25 @@ const Result = () => {
             setStrongFeatures(totalResult.data.result.features.strong);
             setWeakFeatures(totalResult.data.result.features.weak);
             setRanking(totalResult.data.mbti_ranking);
-            console.log(ranking);
+            console.log(weakFeatures);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const getSimilarFriends = async () => {
+        try {
+            const similarFriendsResult: AxiosResponse = await webClient.get(
+                "/similar-friends/"
+            );
+            setSimilarFriends(similarFriendsResult.data);
+            console.log(similarFriends);
         } catch (error) {
             console.log(error);
         }
     };
     useEffect(() => {
         getResult();
+        getSimilarFriends();
     }, []);
     return (
         <div className="result_container">
@@ -120,9 +149,7 @@ const Result = () => {
             <div className="result_myFriendsContainer">
                 <span>나와 비슷한 성향의 친구들</span>
                 <div style={{ height: "20px" }} />
-                <MBTIProfile img={profileImg} userName="김진형" />
-                <MBTIProfile img={profileImg} userName="김진형" />
-                <MBTIProfile img={profileImg} userName="김진형" />
+                <MBTIProfile friend_name="김진형" />
             </div>
             <div className="result_buttonContainer">
                 <Link to="/friends_list" className="result_button">

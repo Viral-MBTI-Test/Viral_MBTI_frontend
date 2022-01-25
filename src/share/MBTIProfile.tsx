@@ -1,10 +1,19 @@
 import "./MBTIProfile.css";
+import { similarFriendsResponse } from "../result/result";
+import { useState } from "react";
 
-const MBTIProfile = (props: any) => {
+const MBTIProfile = (props: similarFriendsResponse) => {
+    const [profileDefaultImage, setProfileDefaultImage] = useState<string>(
+        "https://i.ibb.co/km2c6Zy/Frame-44.png"
+    );
     return (
         <div className="MBTIProfile_Profile">
             <img
-                src={props.img}
+                src={
+                    props.friend_profile_image === undefined
+                        ? profileDefaultImage
+                        : props.friend_profile_image
+                }
                 alt="profile"
                 style={{
                     width: "40px",
@@ -13,13 +22,21 @@ const MBTIProfile = (props: any) => {
                     borderRadius: "15px",
                 }}
             />
-            <div className="MBTIProfile_profileText">
-                <span>{props.userName}</span>
-                <p>ENTP에 INTJ 한스푼</p>
-            </div>
-            <div className="MBTIProfile_friendProfilePercent">
-                <span>55%</span>
-            </div>
+            {props.friend_result === undefined ? (
+                <span style={{ marginLeft: "8px", fontSize: "14px" }}>
+                    아직 검사한 친구가 없어요!
+                </span>
+            ) : (
+                <>
+                    <div className="MBTIProfile_profileText">
+                        <span>{props.friend_name}</span>
+                        <p>{props.friend_result}</p>
+                    </div>
+                    <div className="MBTIProfile_friendProfilePercent">
+                        <span>{props.similar_percent}%</span>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
