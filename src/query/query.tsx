@@ -1,33 +1,46 @@
 import './query.css';
-import { Link } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import { Querylist } from './querylist';
+import {useState} from "react";
+/*import webClient from '../../share/webClient';
+import { AxiosResponse } from 'axios';
+*/
 const Query = () => {
-  const ans = [
-    { text: '짜증나지만 배고프니까 혼밥할 식당을 찾아본다.' },
-    { text: '혼밥은 절대 싫으니 집으로 간다.' },
-    { text: '화가나서 배고픈것도 못느낀다.' },
-  ];
 
-  const renderAns = ans.map((option) => {
-    return <button className="query_answer"> {option.text} </button>;
-  });
+  const navigate = useNavigate();
+  const [currentNo, setCurrentNo] = useState(0);
+
+  const answerClick = () => {
+    if (currentNo === Querylist.length - 1) {
+      navigate("/result");
+    } else {
+      setCurrentNo((currentNo) => currentNo + 1);
+    }
+  };
+
+  const beforeClick = () => {
+    if(currentNo === 0){
+      alert("첫질문 -> 예외처리")
+    }
+    setCurrentNo((currentNo) => currentNo - 1);
+  }
 
   return (
     <div className="query_container">
       <div className="progress_div"></div>
 
       <div className="query_question">
-        질문 3. 친구랑 점심 약속을 해서 약속장소에 나갔는데 약속이 5분전에
-        파토났다.
+        {Querylist[currentNo].question}
       </div>
 
-      {renderAns}
-      <button className="query_selected">
-        밥은 먹어야겠는데 식당 혼밥은 싫으니 <br /> 편의점에서 대충 때운다.
-      </button>
-
-      <Link to="./queryend" style={{ textDecoration: 'none' }}>
-        <button className="query_prevBtn">이전 질문</button>
-      </Link>
+      <div >
+        {Querylist[currentNo].ans.map((answer) => (
+            <div className="query_answer" onClick={answerClick}> {answer.text} </div> 
+        ))}
+      </div>
+     
+      <div className="query_prevBtn" onClick={beforeClick}>이전 질문</div>
+     
     </div>
   );
 };

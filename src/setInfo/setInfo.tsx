@@ -2,7 +2,7 @@ import React from 'react';
 import './setInfo.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import webClient from '../utils/webClient';
+import webClient from '../share/webClient';
 import { AxiosResponse } from 'axios';
 
 //images

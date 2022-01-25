@@ -4,6 +4,8 @@ import boy from '../../images/boy.svg';
 import kakaoLogin from '../../images/kakaoLogin.png';
 import MbtiCube from './mbtiCube';
 import vector from '../../images/vector.svg';
+import webClient from '../../share/webClient';
+import { AxiosResponse } from 'axios';
 const { Kakao } = window;
 const loginWithKaKao = () => {
   Kakao.Auth.authorize({
@@ -12,8 +14,14 @@ const loginWithKaKao = () => {
 };
 
 const Login = () => {
+  const countParticipants = async () => {
+    const participants: AxiosResponse = await webClient.get('/participants/');
+    setCount(participants.data.number_of_users);
+  };
+  useEffect(() => {
+    countParticipants();
+  }, []);
   const [count, setCount] = useState<number>(0);
-
   return (
     <div className="login_fullView">
       <div className="login_container">
