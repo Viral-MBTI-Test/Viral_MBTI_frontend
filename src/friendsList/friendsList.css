@@ -7,8 +7,7 @@
   flex-direction: column;
   padding-top: 36px;
 }
-
-.friendsList_profile {
+c .friendsList_profile {
   background-color: #e8e0ce;
   width: 80%;
   height: 56px;
@@ -48,6 +47,11 @@
   font-size: 14px;
   line-height: 20px;
   color: #1f513f;
+}
+
+.friendsList_btn_box {
+  display: flex;
+  justify-content: space-between;
 }
 
 .friendsList_btn {
