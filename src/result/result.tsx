@@ -6,6 +6,7 @@ import MBTIProfile from "../share/MBTIProfile";
 import MBTIPercent from "../share/MBTIPercent";
 import webClient from "../share/webClient";
 import { AxiosResponse } from "axios";
+const { Kakao } = window;
 
 interface personalityResultProps {
     frequency: string;
@@ -90,6 +91,11 @@ const Result = () => {
             console.log(error);
         }
     };
+    const kakaoShare = () => {
+        Kakao.Link.sendCustom({
+            templateId: 69446,
+        });
+    };
     useEffect(() => {
         getResult();
         getSimilarFriends();
@@ -162,7 +168,9 @@ const Result = () => {
             <div className="result_shareContainer">
                 <span>결과 공유하기</span>
                 <div className="result_shareIcons">
-                    <button className="result_button">카톡 공유하기</button>
+                    <button className="result_button" onClick={kakaoShare}>
+                        카톡 공유하기
+                    </button>
                     <button className="result_button">링크 복사하기</button>
                 </div>
             </div>
