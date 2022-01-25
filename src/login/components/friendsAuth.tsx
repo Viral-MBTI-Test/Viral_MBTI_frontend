@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios, { AxiosInstance } from 'axios';
 import webClient from '../../share/webClient';
+import Loading from '../../Loading';
 
 const FriendsAuth = (props: any) => {
   const navigation = useNavigate();
@@ -24,9 +25,10 @@ const FriendsAuth = (props: any) => {
   }, []);
   useEffect(() => {});
   return (
-    <div>
-      <Link to="/setinfo">go to setInfo</Link>
-    </div>
+    // <div>
+    //   <Link to="/setinfo">go to setInfo</Link>
+    // </div>
+    <Loading type={'login'}></Loading>
   );
 };
 export default FriendsAuth;
