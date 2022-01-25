@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./result.css";
-import boy from "../images/boy.svg";
-import { Link } from "react-router-dom";
+
+//component
 import MBTIProfile from "../share/MBTIProfile";
 import MBTIPercent from "../share/MBTIPercent";
-import webClient from "../share/webClient";
-import { AxiosResponse } from "axios";
 import FriendsList from "../friendsList/friendsList";
+
+//util
+import webClient from "../share/webClient";
+
+//axios
+import { AxiosResponse } from "axios";
+
+//package
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Link } from "react-router-dom";
+
+//image
+import leftQuote from "../images/quote_left.svg";
+import RightQuote from "../images/quote_right.svg";
+
 const { Kakao } = window;
 
 interface personalityResultProps {
@@ -104,17 +116,15 @@ const Result = (props: { friendsList: similarFriendsResponse }) => {
     }, []);
     return (
         <div className="result_container">
-            <span
-                style={{
-                    color: "#1F513F",
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                    marginTop: "36px",
-                    marginBottom: "16px",
-                }}
-            >
-                당신은...{result}
-            </span>
+            <div className="result_title_container">
+                <img src={leftQuote} alt="leftQuote" id="result_quote_left" />
+                <span className="result_title_text">당신은...{result}</span>
+                <img
+                    src={RightQuote}
+                    alt="RightQuote"
+                    id="result_quote_right"
+                />
+            </div>
             <MBTIPercent
                 mbti={ranking![0].mbti}
                 percent={ranking![0].percent}
