@@ -108,11 +108,10 @@
 
 .progress-div {
   margin: 38px;
-  margin-left: 30px;
-  margin-right: 30px;
   background-color: #7e8478;
   border-radius: 0.5rem;
   height: 5px;
+  position: relative;
 }
 
 .progress {
