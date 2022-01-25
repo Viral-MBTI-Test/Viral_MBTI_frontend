@@ -1,11 +1,11 @@
-import { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import MBTIPercent from '../share/MBTIPercent';
-import MBTIProfile from '../share/MBTIProfile';
-import webClient from '../share/webClient';
-import './friendsList.css';
-import question from '../images/questionMark.png';
+import { AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import MBTIPercent from "../share/MBTIPercent";
+import MBTIProfile from "../share/MBTIProfile";
+import webClient from "../share/webClient";
+import "./friendsList.css";
+import question from "../images/questionMark.png";
 
 interface FriendsType {
   friend_id: number | null;
