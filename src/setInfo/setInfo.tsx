@@ -42,6 +42,7 @@ const SetInfo = (props: any) => {
       console.log(error);
     }
   };
+  const len = completeMbti.length;
 
   // const [addMBTI, setAddMBTI] = useState([
   //   {
@@ -168,17 +169,18 @@ const SetInfo = (props: any) => {
             P
           </button>
         </div>
-
         <div className="setInfo_boxContainer">
-          <div>{completeMbti}</div>
-          <Link to="/question/0">
-            <button
-              onClick={() => putMBTIValue()}
-              className="setInfo_startButton"
-              style={{ textDecoration: 'inherit' }}
-            >
-              검사 시작하기
-            </button>
+          <Link
+            to="/question/0"
+            onClick={() =>
+              completeMbti.length === 4
+                ? putMBTIValue()
+                : alert('MBTI를 입력해주삼.')
+            }
+            className="setInfo_startButton"
+            style={{ textDecoration: 'none' }}
+          >
+            검사 시작하기
           </Link>
         </div>
       </div>
