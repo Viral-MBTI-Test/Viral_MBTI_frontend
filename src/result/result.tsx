@@ -6,6 +6,7 @@ import MBTIProfile from "../share/MBTIProfile";
 import MBTIPercent from "../share/MBTIPercent";
 import webClient from "../share/webClient";
 import { AxiosResponse } from "axios";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 const { Kakao } = window;
 
 interface personalityResultProps {
@@ -171,7 +172,9 @@ const Result = () => {
                     <button className="result_button" onClick={kakaoShare}>
                         카톡 공유하기
                     </button>
-                    <button className="result_button">링크 복사하기</button>
+                    <CopyToClipboard text={"zz"}>
+                        <button className="result_button">링크 복사하기</button>
+                    </CopyToClipboard>
                 </div>
             </div>
         </div>
