@@ -63,7 +63,7 @@
 .setInfo_explain {
   white-space: pre-line;
   width: 312px;
-  height: 54px;
+  height: 72px;
   margin-top: 5px;
   margin-bottom: 29px;
   font-family: Noto Sans KR;
@@ -157,4 +157,16 @@
 }
 .setInfo_startButton:hover {
   background-color: #dadcd2;
+}
+.mbti_E,
+.mbti_I,
+.mbti_S,
+.mbti_N,
+.mbti_T,
+.mbti_F,
+.mbti_J,
+.mbti_P {
+  width: 168px;
+  height: 48px;
+  object-fit: contain;
 }
