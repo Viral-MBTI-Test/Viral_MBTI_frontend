@@ -13,13 +13,13 @@ const Query = () => {
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
   ]);
 
-  const answerClick = (selectedAnswer: number) => {
+  const answerClick = async (selectedAnswer: number) => {
     if (currentNo === Querylist.length - 1) {
       let result = answer.map((a, i) => {
         return { question_number: i + 1, choice_number: a };
       });
       result[currentNo].choice_number = selectedAnswer;
-      webClient.post('/answer/', result);
+      await webClient.post('/answer/', result);
 
       navigate('/result');
     } else {
@@ -45,7 +45,7 @@ const Query = () => {
   return (
     <div className="query_container">
       <div className="progress-div" style={{ width: '296px' }}>
-        <div style={{ width: `${currentNo * 8}%` }} className="progress">
+        <div style={{ width: `${currentNo * 10}%` }} className="progress">
           {currentNo !== 0 ? <Boy className="progress-boy" /> : <></>}
         </div>
       </div>

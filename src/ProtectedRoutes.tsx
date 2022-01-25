@@ -21,15 +21,15 @@ const ProtectedRoute = ({ ...routeProps }: RouteProps) => {
         setIsAuth(true);
       } catch (error) {
         console.log('error');
-        /*try {
-          let response: AxiosResponse = await webClient.post('auth/refresh/', {
+        try {
+          let response: AxiosResponse = await webClient.post('/refresh/', {
             refresh: refresh,
           });
           localStorage.setItem('access', response.data.access);
           setIsAuth(true);
         } catch (error) {
           setIsAuth(false);
-        }*/
+        }
       }
     }
   };

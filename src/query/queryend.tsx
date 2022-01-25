@@ -8,6 +8,7 @@ import MBTIProfile from "../share/MBTIProfile";
 import webClient from "../share/webClient";
 import { AxiosResponse } from "axios";
 import MBTIAnswer from "../share/MBTIAnswer";
+import { ReactComponent as Boy } from '../images/run_boy.svg';
 
 const QueryEnd = () => {
   const navigate = useNavigate();
@@ -65,7 +66,11 @@ const QueryEnd = () => {
 
   return (
     <div className="queryend_container">
-      <div className="progress_div"></div>
+      <div className="progress-div" style={{ width: '296px' }}>
+        <div style={{ width: `${currentNo * 10}%` }} className="progress">
+          {currentNo !== 0 ? <Boy className="progress-boy" /> : <></>}
+        </div>
+      </div>
 
       {/*<div className="queryend_question">{Querylist[currentNo].question}</div>*/}
 

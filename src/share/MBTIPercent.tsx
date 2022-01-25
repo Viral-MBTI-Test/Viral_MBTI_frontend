@@ -12,34 +12,54 @@ const MBTIPercent = (mbtiPercentProps: {
         "#b3bbaa",
     ]);
     return (
-        <div
-            className="MBTIPercent_box"
-            style={{
-                backgroundColor: `${color[mbtiPercentProps.index]}`,
-                height: mbtiPercentProps.index === 0 ? "24px" : "20px",
-            }}
-        >
-            <span
-                style={{
-                    color:
-                        mbtiPercentProps.index % 3 === 0
-                            ? "#1f513f"
-                            : "#f4f2ed",
-                }}
-            >
-                {mbtiPercentProps.index + 1}위 {mbtiPercentProps.mbti}
-            </span>
-            <span
-                style={{
-                    color:
-                        mbtiPercentProps.index % 3 === 0
-                            ? "#1f513f"
-                            : "#f4f2ed",
-                }}
-            >
-                {Math.floor(mbtiPercentProps.percent)}%
-            </span>
-        </div>
+        <>
+            {mbtiPercentProps.percent === 0 ? (
+                <></>
+            ) : (
+                <div
+                    className="MBTIPercent_box"
+                    style={{
+                        backgroundColor: `${color[mbtiPercentProps.index]}`,
+                        height: mbtiPercentProps.index === 0 ? "28px" : "20px",
+                    }}
+                >
+                    <span
+                        style={{
+                            color:
+                                mbtiPercentProps.index % 3 === 0
+                                    ? "#1f513f"
+                                    : "#f4f2ed",
+                        }}
+                    >
+                        {mbtiPercentProps.index + 1}위
+                    </span>
+                    <span
+                        style={{
+                            color:
+                                mbtiPercentProps.index % 3 === 0
+                                    ? "#1f513f"
+                                    : "#f4f2ed",
+                            marginLeft: "20px",
+                        }}
+                    >
+                        {mbtiPercentProps.mbti}
+                    </span>
+                    <span
+                        style={{
+                            color:
+                                mbtiPercentProps.index % 3 === 0
+                                    ? "#1f513f"
+                                    : "#f4f2ed",
+                            float: "right",
+                            flexGrow: 1,
+                            textAlign: "end",
+                        }}
+                    >
+                        {Math.floor(mbtiPercentProps.percent)}점
+                    </span>
+                </div>
+            )}
+        </>
     );
 };
 export default MBTIPercent;

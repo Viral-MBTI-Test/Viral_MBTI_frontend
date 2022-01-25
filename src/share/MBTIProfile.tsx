@@ -22,17 +22,17 @@ const MBTIProfile = (props: similarFriendsResponse) => {
         }}
       />
       {props.friend_result === undefined ? (
-        <span style={{ marginLeft: '8px', fontSize: '14px' }}>
+        <span style={{ marginLeft: '8px', fontSize: '12px', color: '#13402F' }}>
           아직 검사한 친구가 없어요!
         </span>
       ) : (
         <>
           <div className="MBTIProfile_profileText">
-            <span>{props.friend_name}</span>
-            <p>{props.friend_result}</p>
+            <span style={{ color: '#13402F' }}>{props.friend_name}</span>
+            <p style={{ color: '#1F513F' }}>{props.friend_result}</p>
           </div>
           <div className="MBTIProfile_friendProfilePercent">
-            <span style={{ marginRight: '17px' }}>
+            <span style={{ marginRight: '17px', color: '#1F513F' }}>
               {props.similar_percent
                 ? `${Math.floor(props.similar_percent)}%`
                 : ''}

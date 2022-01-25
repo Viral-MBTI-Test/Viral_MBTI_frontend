@@ -22,25 +22,13 @@ function App() {
   );
   const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
     {
-      friend_id: 0,
-      friend_name: '아직 검사를 진행한 친구가 없어요!',
-      friend_profile_image: '',
-      friend_result: '',
-      similar_percent: 0,
+      friend_id: undefined,
+      friend_name: '',
+      friend_profile_image: undefined,
+      friend_result: undefined,
+      similar_percent: undefined,
     },
   ]);
-  const getSimilarFriends = async () => {
-    try {
-      console.log('hello');
-      const result: AxiosResponse = await webClient.get('/similar-friends/');
-      setFriendsList(result.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getSimilarFriends();
-  }, []);
   return (
     <div className="app">
       <BrowserRouter>
@@ -61,7 +49,11 @@ function App() {
             <Route
               path="/setinfo"
               element={
-                <SetInfo username={username} profileImage={profileImage} />
+                <SetInfo
+                  username={username}
+                  profileImage={profileImage}
+                  setFriendsList={setFriendsList}
+                />
               }
             />
             <Route path="/question/0" element={<Query />} />
