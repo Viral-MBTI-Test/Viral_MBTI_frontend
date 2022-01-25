@@ -3,7 +3,6 @@ import './setInfo.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import webClient from '../share/webClient';
-import { AxiosResponse } from 'axios';
 
 //images
 import mbti_E from '../images/E.png';
@@ -31,13 +30,15 @@ const SetInfo = (props: any) => {
   const [mbti3, setMbti3] = useState('');
   const [mbti4, setMbti4] = useState('');
   const completeMbti = mbti1 + mbti2 + mbti3 + mbti4;
+  useEffect(() => {
+    window.localStorage.setItem('completeMbti', JSON.stringify(completeMbti));
+  }, [completeMbti]);
 
   const putMBTIValue = async () => {
     try {
       await webClient.put('user-mbti/', {
         mbti: `${completeMbti}`,
       });
-      console.log({ completeMbti });
     } catch (error) {
       console.log(error);
     }
@@ -86,7 +87,7 @@ const SetInfo = (props: any) => {
           >
             E
           </button>
-          {mbti1 != 'E' && mbti1 != 'I' && (
+          {mbti1 !== 'E' && mbti1 !== 'I' && (
             <div className="setInfo_emptySelect" />
           )}
           {mbti1 === 'E' && <img src={mbti_E} className="mbti_E" />}
@@ -106,7 +107,7 @@ const SetInfo = (props: any) => {
           >
             S
           </button>
-          {mbti2 != 'S' && mbti2 != 'N' && (
+          {mbti2 !== 'S' && mbti2 !== 'N' && (
             <div className="setInfo_emptySelect" />
           )}
           {mbti2 === 'S' && <img src={mbti_S} className="mbti_S" />}
@@ -126,7 +127,7 @@ const SetInfo = (props: any) => {
           >
             T
           </button>
-          {mbti3 != 'T' && mbti3 != 'F' && (
+          {mbti3 !== 'T' && mbti3 !== 'F' && (
             <div className="setInfo_emptySelect" />
           )}
           {mbti3 === 'T' && <img src={mbti_T} className="mbti_T" />}
@@ -146,7 +147,7 @@ const SetInfo = (props: any) => {
           >
             J
           </button>
-          {mbti4 != 'J' && mbti4 != 'P' && (
+          {mbti4 !== 'J' && mbti4 !== 'P' && (
             <div className="setInfo_emptySelect" />
           )}
           {mbti4 === 'J' && <img src={mbti_J} className="mbti_J" />}
@@ -159,18 +160,24 @@ const SetInfo = (props: any) => {
           </button>
         </div>
         <div className="setInfo_boxContainer">
-          <Link
-            to="/question/0"
-            onClick={() =>
-              completeMbti.length === 4
-                ? putMBTIValue()
-                : alert('MBTI를 입력해주삼.')
-            }
-            className="setInfo_startButton"
-            style={{ textDecoration: 'none' }}
-          >
-            검사 시작하기
-          </Link>
+          {completeMbti.length === 4 ? (
+            <Link
+              to="/question/0"
+              onClick={() => putMBTIValue()}
+              className="setInfo_startButton"
+              style={{ textDecoration: 'none' }}
+            >
+              검사 시작하기
+            </Link>
+          ) : (
+            <button
+              className="setInfo_startButton"
+              onClick={() => alert('MBTI를 입력해주세요!')}
+              style={{ textDecoration: 'none' }}
+            >
+              입력해주세요!
+            </button>
+          )}
         </div>
       </div>
     </div>
