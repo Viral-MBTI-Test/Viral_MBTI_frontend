@@ -3,11 +3,11 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: #f4f2ed;
 }
 .setInfo_container {
-  height: 100%;
+  min-height: 100%;
   width: 312px;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@
 }
 .setInfo_profile {
   width: 312px;
-  height: 56px;
+  height: 56px !important;
   border-radius: 15px;
   border: 0;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
@@ -141,6 +141,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
   background-color: #acb4a2;
+  margin-bottom: 24px;
   font-family: Noto Sans KR;
   font-size: 12px;
   font-weight: bold;
