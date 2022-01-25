@@ -1,4 +1,3 @@
-
 import Login from './login/components/login';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -9,10 +8,9 @@ import Result from './result/result';
 import Auth from './login/components/auth';
 import FriendsAuth from './login/components/friendsAuth';
 import { useState } from 'react';
-import user_empty from '../images/user_empty.svg';
 import FriendsList from './friendsList/friendsList';
 import ProtectedRoute from './ProtectedRoutes';
-
+import AllFriendsList from './friendsList/allFriendsList';
 
 function App() {
   const [username, setUsername] = useState<string>('동의하기');
@@ -51,12 +49,12 @@ function App() {
                 <FriendsList profile={profileImage} userName={username} />
               }
             />
+            <Route path="/all_friendsList" element={<AllFriendsList />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
     </div>
   );
-
 }
 
 export default App;
