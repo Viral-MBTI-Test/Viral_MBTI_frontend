@@ -6,6 +6,10 @@
     background-color: #f4f2ed;
     flex-direction: column;
 }
+.result_title_container {
+    margin-top: 36px;
+    margin-bottom: 16px;
+}
 .result_rectangle_big_container {
     width: 312px;
     margin-bottom: 16px;
@@ -120,4 +124,19 @@ p {
     flex-direction: row;
     display: flex;
     justify-content: space-around;
+}
+.result_title_text {
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+    color: #1f513f;
+    z-index: 0;
+}
+#result_quote_left {
+    margin-right: -6px;
+    margin-bottom: 7px;
+}
+#result_quote_right {
+    margin-left: -6px;
+    margin-bottom: -12px;
 }

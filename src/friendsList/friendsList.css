@@ -51,7 +51,6 @@ c .friendsList_profile {
 
 .friendsList_btn_box {
   display: flex;
-  justify-content: space-between;
 }
 
 .friendsList_btn {
