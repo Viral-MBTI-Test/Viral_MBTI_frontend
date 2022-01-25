@@ -1,7 +1,6 @@
 import "./MBTIProfile.css";
 import { similarFriendsResponse } from "../result/result";
 import { useState } from "react";
-
 const MBTIProfile = (props: similarFriendsResponse) => {
     const [profileDefaultImage, setProfileDefaultImage] = useState<string>(
         "https://i.ibb.co/km2c6Zy/Frame-44.png"
