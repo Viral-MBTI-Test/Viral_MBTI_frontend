@@ -97,16 +97,26 @@ const Result = () => {
                 테스트 결과는 참여자가 많아질수록 더 정확해져요!
                 <br /> 다음에 또 확인해보세요.😏
             </p>
-            <div className="result_rectangle_big_container">
-                <div className="result_title_small">
-                    나는 이런 성격을 갖고 있어요
+            {strongFeatures.length === 0 ? null : (
+                <div className="result_rectangle_big_container">
+                    <div className="result_title_small">
+                        나는 이런 성격을 갖고 있어요
+                    </div>
+                    <RectangleResult
+                        frequency="often"
+                        result={strongFeatures!}
+                    />
                 </div>
-                <RectangleResult frequency="often" result={strongFeatures!} />
-            </div>
-            <div className="result_rectangle_big_container">
-                <div className="result_title_small">가끔은...</div>
-                <RectangleResult frequency="sometimes" result={weakFeatures!} />
-            </div>
+            )}
+            {weakFeatures.length === 0 ? null : (
+                <div className="result_rectangle_big_container">
+                    <div className="result_title_small">가끔은...</div>
+                    <RectangleResult
+                        frequency="sometimes"
+                        result={weakFeatures!}
+                    />
+                </div>
+            )}
             <div className="result_myFriendsContainer">
                 <span>나와 비슷한 성향의 친구들</span>
                 <div style={{ height: "20px" }} />
