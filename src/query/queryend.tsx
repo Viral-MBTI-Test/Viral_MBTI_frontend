@@ -7,6 +7,8 @@ import MBTIPercent from '../share/MBTIPercent';
 import MBTIProfile from '../share/MBTIProfile';
 import boy from '../images/boy.svg';
 
+
+
 const QueryEnd = () => {
 
     const ans = [
@@ -18,28 +20,27 @@ const QueryEnd = () => {
 
   const navigate = useNavigate();
   const [currentNo, setCurrentNo] = useState(0);
-
+  
+  
   const afterClick = () => {
     if (currentNo === Querylist.length - 1) {
       navigate("/result");
     } else {
+      
       setCurrentNo((currentNo) => currentNo + 1);
     }
   };
 
   const beforeClick = () => {
-    if(currentNo === 1)
-      navigate("/result")
+    if( currentNo === 0){
+      navigate("/result");
+    }
     setCurrentNo((currentNo) => currentNo - 1);
   }
 
   const mbtiRender = ans.map((option) => {
     return (
-      <div className="queryend_result">
-        <div className="queryend_rank">{option.rank}</div>
-        <div className="queryend_text">{option.text}</div>
-        <div className="queryend_percent">{option.percent}</div>
-      </div>
+      <MBTIPercent index={0} mbti="ESFJ" percent={50} />
     );
   });
 /* 나랑같은 mbti
@@ -55,6 +56,7 @@ const QueryEnd = () => {
 */
   return (
     <div className="queryend_container">
+      
       <div className="progress_div"></div>
 
       <div className="queryend_question">
@@ -83,11 +85,11 @@ const QueryEnd = () => {
         <MBTIProfile img={boy} userName="김진형" />
           
         </div>
-      
-        <div className="query_prevBtn" onClick={beforeClick}>이전 문항으로</div>
-        <div className="queryend_nextBtn" onClick={afterClick}>다음 문항으로</div>
-      
-    </div>
+          
+          <div className="query_prevBtn" onClick={beforeClick} >이전 문항</div>
+          <div className="queryend_nextBtn" onClick={afterClick} >다음 문항</div>
+        
+     </div>
   );
 };
 
