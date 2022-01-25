@@ -20,7 +20,7 @@ const Auth = () => {
   };
   return (
     <div>
-      <Link to="/setinfo">go to setInfo</Link>
+      <h1>Loading...</h1>
     </div>
   );
 };

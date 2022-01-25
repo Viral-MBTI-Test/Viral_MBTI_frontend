@@ -12,6 +12,7 @@ import { useState } from 'react';
 import user_empty from '../images/user_empty.svg';
 import FriendsList from './friendsList/friendsList';
 import ProtectedRoute from './ProtectedRoutes';
+import Loading from './Loading';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/loading" element={<Loading type="login" />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/auth" element={<Auth />} />
             <Route

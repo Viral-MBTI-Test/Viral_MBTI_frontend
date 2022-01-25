@@ -1,8 +1,20 @@
 import React from 'react';
 import './setInfo.css';
-// import user_empty from '../images/user_empty.svg';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import webClient from '../utils/webClient';
+import { AxiosResponse } from 'axios';
+
+//images
+import mbti_E from '../images/E.svg';
+import mbti_I from '../images/I.svg';
+import mbti_S from '../images/S.svg';
+import mbti_N from '../images/N.svg';
+import mbti_T from '../images/T.svg';
+import mbti_F from '../images/F.svg';
+import mbti_P from '../images/P.svg';
+import mbti_J from '../images/J.svg';
+
 const { Kakao } = window;
 const authForGetFriendsList = () => {
   Kakao.Auth.authorize({
@@ -14,6 +26,51 @@ const authForGetFriendsList = () => {
 const SetInfo = (props: any) => {
   const username = props.username;
   const profileImage = props.profileImage;
+  const [mbti1, setMbti1] = useState('');
+  const [mbti2, setMbti2] = useState('');
+  const [mbti3, setMbti3] = useState('');
+  const [mbti4, setMbti4] = useState('');
+  const completeMbti = mbti1 + mbti2 + mbti3 + mbti4;
+
+  const putMBTIValue = async () => {
+    try {
+      await webClient.put('user-mbti/', {
+        mbti: `${completeMbti}`,
+      });
+      console.log({ completeMbti });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const len = completeMbti.length;
+
+  // const [addMBTI, setAddMBTI] = useState([
+  //   {
+  //     id: 1,
+  //     mbti: '',
+  //   },
+  //   {
+  //     id: 2,
+  //     mbti: '',
+  //   },
+  //   {
+  //     id: 3,
+  //     mbti: '',
+  //   },
+  //   {
+  //     id: 4,
+  //     mbti: '',
+  //   },
+  // ]);
+
+  // const updateFieldChanged = index => e => {
+  //   console.log('index: ' + index);
+  //   console.log('property name: '+ e.target.name);
+  //   let newArr = [...addMBTI];
+  //   newArr[index] = e.target.value;
+
+  //   setAddMBTI(newArr);
+  // }
 
   return (
     <div className="setInfo_containerWithPadding">
@@ -50,53 +107,80 @@ const SetInfo = (props: any) => {
         </div>
         <div className="setInfo_selectContainer" style={{ marginTop: '46px' }}>
           <button
+            onClick={() => setMbti1('E')}
             className="setInfo_selectButton"
             style={{ marginLeft: '24px' }}
           >
             E
           </button>
-          <div className="setInfo_emptySelect"></div>
-          <button className="setInfo_selectButton">I</button>
+          <div className="setInfo_emptySelect">{mbti1}</div>
+          <button
+            onClick={() => setMbti1('I')}
+            className="setInfo_selectButton"
+          >
+            I
+          </button>
         </div>
         <div className="setInfo_selectContainer">
           <button
+            onClick={() => setMbti2('S')}
             className="setInfo_selectButton"
             style={{ marginLeft: '24px' }}
           >
             S
           </button>
-          <div className="setInfo_emptySelect"></div>
-          <button className="setInfo_selectButton">N</button>
+          <div className="setInfo_emptySelect">{mbti2}</div>
+          <button
+            onClick={() => setMbti2('N')}
+            className="setInfo_selectButton"
+          >
+            N
+          </button>
         </div>
         <div className="setInfo_selectContainer">
           <button
+            onClick={() => setMbti3('T')}
             className="setInfo_selectButton"
             style={{ marginLeft: '24px' }}
           >
             T
           </button>
-          <div className="setInfo_emptySelect"></div>
-          <button className="setInfo_selectButton">F</button>
+          <div className="setInfo_emptySelect">{mbti3}</div>
+          <button
+            onClick={() => setMbti3('F')}
+            className="setInfo_selectButton"
+          >
+            F
+          </button>
         </div>
         <div className="setInfo_selectContainer">
           <button
+            onClick={() => setMbti4('J')}
             className="setInfo_selectButton"
             style={{ marginLeft: '24px' }}
           >
             J
           </button>
-          <div className="setInfo_emptySelect"></div>
-          <button className="setInfo_selectButton">P</button>
+          <div className="setInfo_emptySelect">{mbti4}</div>
+          <button
+            onClick={() => setMbti4('P')}
+            className="setInfo_selectButton"
+          >
+            P
+          </button>
         </div>
-
         <div className="setInfo_boxContainer">
-          <Link to="/question/0">
-            <button
-              className="setInfo_startButton"
-              style={{ textDecoration: 'inherit' }}
-            >
-              검사 시작하기
-            </button>
+          <Link
+            to="/question/0"
+            onClick={() =>
+              completeMbti.length === 4
+                ? putMBTIValue()
+                : alert('MBTI를 입력해주삼.')
+            }
+            className="setInfo_startButton"
+            style={{ textDecoration: 'none' }}
+          >
+            검사 시작하기
           </Link>
         </div>
       </div>
