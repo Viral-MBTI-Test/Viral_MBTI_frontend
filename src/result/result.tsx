@@ -20,18 +20,27 @@ interface rankingResponse {
 }
 
 const Result = () => {
-    const [result, setResult] = useState<string>();
+    const [result, setResult] = useState<string>("hi");
     const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>();
     const [weakFeatures, setWeakFeatures] = useState<featureResponse[]>();
-    const [ranking, setRanking] = useState<rankingResponse[]>([]);
+    const [ranking, setRanking] = useState<rankingResponse[]>([
+        {
+            mbti: "ESFP",
+            percent: 50,
+        },
+    ]);
     const getResult = async () => {
-        const totalResult: AxiosResponse = await webClient.get(
-            "/total-statistics/"
-        );
-        setResult(totalResult.data.result.result);
-        setStrongFeatures(totalResult.data.result.features.strong);
-        setWeakFeatures(totalResult.data.result.features.weak);
-        setRanking(totalResult.data.mbti_ranking);
+        try {
+            const totalResult: AxiosResponse = await webClient.get(
+                "/total-statistics/"
+            );
+            setResult(totalResult.data.result.result);
+            setStrongFeatures(totalResult.data.result.features.strong);
+            setWeakFeatures(totalResult.data.result.features.weak);
+            setRanking(totalResult.data.mbti_ranking);
+        } catch (error) {
+            console.log(error);
+        }
     };
     useEffect(() => {
         getResult();
@@ -95,55 +104,17 @@ const Result = () => {
             </div>
             <div className="result_buttonContainer">
                 <Link to="/friends_list" className="result_button">
-                    전체 친구목록
+                    친구들 결과 보기
                 </Link>
                 <Link to="/queryend" style={{ textDecoration: "none" }}>
-                    <div className="result_button">질문별 결과 보기</div>{" "}
+                    <button className="result_button">질문별 결과 보기</button>
                 </Link>
             </div>
             <div className="result_shareContainer">
                 <span>결과 공유하기</span>
                 <div className="result_shareIcons">
-                    <img
-                        src={boy}
-                        alt="boy"
-                        style={{
-                            width: "40px",
-                            height: "40px",
-                            backgroundColor: "black",
-                            borderRadius: "15px",
-                        }}
-                    />
-                    <img
-                        src={boy}
-                        alt="boy"
-                        style={{
-                            width: "40px",
-                            height: "40px",
-                            backgroundColor: "black",
-                            borderRadius: "15px",
-                        }}
-                    />
-                    <img
-                        src={boy}
-                        alt="boy"
-                        style={{
-                            width: "40px",
-                            height: "40px",
-                            backgroundColor: "black",
-                            borderRadius: "15px",
-                        }}
-                    />
-                    <img
-                        src={boy}
-                        alt="boy"
-                        style={{
-                            width: "40px",
-                            height: "40px",
-                            backgroundColor: "black",
-                            borderRadius: "15px",
-                        }}
-                    />
+                    <button className="result_button">카톡 공유하기</button>
+                    <button className="result_button">링크 복사하기</button>
                 </div>
             </div>
         </div>

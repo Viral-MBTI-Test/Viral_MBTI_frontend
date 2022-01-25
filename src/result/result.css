@@ -90,10 +90,14 @@ p {
     font-weight: bold;
     font-family: Noto Sans KR;
     text-decoration: none;
+    border-width: 0;
 }
 .result_button:hover,
 .result_shareIcons > img:hover {
     cursor: pointer;
+}
+.result_button:active {
+    background-color: #dadcd2;
 }
 .result_shareContainer {
     flex-direction: column;
@@ -108,7 +112,7 @@ p {
 }
 .result_shareIcons {
     margin-top: 18px;
-    width: 220px;
+    width: 240px;
     flex-direction: row;
     display: flex;
     justify-content: space-around;
