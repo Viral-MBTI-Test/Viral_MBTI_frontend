@@ -1,6 +1,7 @@
 import "./MBTIProfile.css";
 
 const MBTIProfile = (props: any) => {
+
   return (
     <div className="MBTIProfile_Profile">
       <img
@@ -22,5 +23,6 @@ const MBTIProfile = (props: any) => {
       </div>
     </div>
   );
+
 };
 export default MBTIProfile;
