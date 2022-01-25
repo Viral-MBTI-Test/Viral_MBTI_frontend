@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios, { AxiosInstance } from 'axios';
+import Loading from '../../Loading';
 
 const Auth = () => {
   useEffect(() => {
@@ -18,10 +19,6 @@ const Auth = () => {
       })
       .catch((e) => console.log(e));
   };
-  return (
-    <div>
-      <h1>Loading...</h1>
-    </div>
-  );
+  return <Loading type={'login'}></Loading>;
 };
 export default Auth;

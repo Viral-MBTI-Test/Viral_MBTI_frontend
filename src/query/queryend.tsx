@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import "./queryend.css";
 import MBTIPercent from "../share/MBTIPercent";
 import MBTIProfile from "../share/MBTIProfile";
-import boy from "../images/boy.svg";
 import webClient from "../share/webClient";
 import { AxiosResponse } from "axios";
 import MBTIAnswer from "../share/MBTIAnswer";
@@ -16,6 +15,7 @@ const QueryEnd = () => {
   const [sameMbti, setSameMbti] = useState<any>([]);
   const [currentNo, setCurrentNo] = useState(0);
   const [friendAns, setFriendAns] = useState<any>([]);
+  const [myAnswer, setMyAnswer] = useState<any>([]);
 
   useEffect(() => {
     const getAnswerStat = async () => {
@@ -38,6 +38,16 @@ const QueryEnd = () => {
     getAnswerStat();
   }, [currentNo]);
 
+  /*useEffect(() => {
+    const getMyAnswer = async () => {
+      const response_my: any = await webClient.get(`/my-answer/`);
+      setMyAnswer(response_my.data);
+      console.log(myAnswer);
+    };
+
+    getMyAnswer();
+  }, []);
+*/
   const afterClick = () => {
     if (currentNo === Querylist.length - 1) {
       navigate("/result");
@@ -57,7 +67,7 @@ const QueryEnd = () => {
     <div className="queryend_container">
       <div className="progress_div"></div>
 
-      <div className="queryend_question">{Querylist[currentNo].question}</div>
+      {/*<div className="queryend_question">{Querylist[currentNo].question}</div>*/}
 
       <div className="query_selected"> 선택한 답안 </div>
       <div className="queryend_mbti"> 나와 같은 답을 선택한 MBTI </div>

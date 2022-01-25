@@ -1,9 +1,9 @@
-import "./query.css";
-import { useNavigate } from "react-router-dom";
-import { Querylist } from "./querylist";
-import { useState } from "react";
-import ProgressBar from "react-bootstrap/ProgressBar";
-import webClient from "../share/webClient";
+import './query.css';
+import { useNavigate } from 'react-router-dom';
+import { Querylist } from './querylist';
+import { useEffect, useState } from 'react';
+import webClient from '../share/webClient';
+import { ReactComponent as Boy } from '../images/run_boy.svg';
 
 const Query = () => {
   const navigate = useNavigate();
@@ -19,15 +19,15 @@ const Query = () => {
         return { question_number: i + 1, choice_number: a };
       });
       result[currentNo].choice_number = selectedAnswer;
-      webClient.post("/answer/", result);
+      webClient.post('/answer/', result);
 
-      navigate("/result");
+      navigate('/result');
     } else {
       setShow(true);
       let tmpAnswer = [...answer];
       tmpAnswer[currentNo] = selectedAnswer;
       setAnswer(tmpAnswer);
-      setCurrentNo((currentNo) => currentNo + 1);
+      setCurrentNo(currentNo + 1);
     }
   };
 
@@ -35,14 +35,18 @@ const Query = () => {
     if (currentNo - 1 === 0 || currentNo === 0) {
       setShow(false);
     }
-    setCurrentNo((currentNo) => currentNo - 1);
+    setCurrentNo(currentNo - 1);
   };
+
+  useEffect(() => {
+    console.log(currentNo);
+  }, [currentNo]);
 
   return (
     <div className="query_container">
-      <div className="progress_div">
-        <div className="progress_state">
-          <ProgressBar now={currentNo} />
+      <div className="progress-div" style={{ width: '296px' }}>
+        <div style={{ width: `${currentNo * 8}%` }} className="progress">
+          {currentNo !== 0 ? <Boy className="progress-boy" /> : <></>}
         </div>
       </div>
 
@@ -56,8 +60,7 @@ const Query = () => {
               answerClick(index + 1);
             }}
           >
-            {" "}
-            {answer.text}{" "}
+            {answer.text}
           </div>
         ))}
       </div>
@@ -65,8 +68,8 @@ const Query = () => {
       {show && (
         <div>
           <div className="query_prevBtn" onClick={beforeClick}>
-            {" "}
-            이전 질문{" "}
+            {' '}
+            이전 질문{' '}
           </div>
         </div>
       )}
