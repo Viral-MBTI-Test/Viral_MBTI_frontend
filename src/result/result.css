@@ -1,5 +1,6 @@
 .result_container {
   width: 100%;
+  min-height: 100%;
   display: flex;
   align-items: center;
   background-color: #f4f2ed;

@@ -1,15 +1,7 @@
-.friendsList_fullView {
-  background-color: #f4f2ed;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
 .friendsList_container {
   background-color: #f4f2ed;
   width: 100%;
-  max-width: 750px;
+  min-height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -55,6 +47,7 @@
   font-weight: bold;
   font-size: 14px;
   line-height: 20px;
+  color: #1f513f;
 }
 
 .friendsList_btn {
@@ -69,4 +62,10 @@
   justify-content: center;
   align-items: center;
   margin-top: 32px;
+  margin-bottom: 32px;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 20px;
 }

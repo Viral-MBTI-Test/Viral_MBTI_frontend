@@ -2,18 +2,18 @@ import React from 'react';
 import './setInfo.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import webClient from '../utils/webClient';
+import webClient from '../share/webClient';
 import { AxiosResponse } from 'axios';
 
 //images
-import mbti_E from '../images/E.svg';
-import mbti_I from '../images/I.svg';
-import mbti_S from '../images/S.svg';
-import mbti_N from '../images/N.svg';
-import mbti_T from '../images/T.svg';
-import mbti_F from '../images/F.svg';
-import mbti_P from '../images/P.svg';
-import mbti_J from '../images/J.svg';
+import mbti_E from '../images/E.png';
+import mbti_I from '../images/I.png';
+import mbti_S from '../images/S.png';
+import mbti_N from '../images/N.png';
+import mbti_T from '../images/T.png';
+import mbti_F from '../images/F.png';
+import mbti_P from '../images/P.png';
+import mbti_J from '../images/J.png';
 
 const { Kakao } = window;
 const authForGetFriendsList = () => {
@@ -42,35 +42,6 @@ const SetInfo = (props: any) => {
       console.log(error);
     }
   };
-  const len = completeMbti.length;
-
-  // const [addMBTI, setAddMBTI] = useState([
-  //   {
-  //     id: 1,
-  //     mbti: '',
-  //   },
-  //   {
-  //     id: 2,
-  //     mbti: '',
-  //   },
-  //   {
-  //     id: 3,
-  //     mbti: '',
-  //   },
-  //   {
-  //     id: 4,
-  //     mbti: '',
-  //   },
-  // ]);
-
-  // const updateFieldChanged = index => e => {
-  //   console.log('index: ' + index);
-  //   console.log('property name: '+ e.target.name);
-  //   let newArr = [...addMBTI];
-  //   newArr[index] = e.target.value;
-
-  //   setAddMBTI(newArr);
-  // }
 
   return (
     <div className="setInfo_containerWithPadding">
@@ -92,6 +63,8 @@ const SetInfo = (props: any) => {
           <br />
           위해서는 선택 항목 동의가 필요해요.
           <br />위 프로필 버튼을 눌러 동의를 진행해주세요.
+          <br />
+          동의 없이도 검사 이용은 가능해요.
         </div>
         <div
           className="setInfo_boldTitle"
@@ -113,7 +86,11 @@ const SetInfo = (props: any) => {
           >
             E
           </button>
-          <div className="setInfo_emptySelect">{mbti1}</div>
+          {mbti1 != 'E' && mbti1 != 'I' && (
+            <div className="setInfo_emptySelect" />
+          )}
+          {mbti1 === 'E' && <img src={mbti_E} className="mbti_E" />}
+          {mbti1 === 'I' && <img src={mbti_I} className="mbti_I" />}
           <button
             onClick={() => setMbti1('I')}
             className="setInfo_selectButton"
@@ -129,7 +106,11 @@ const SetInfo = (props: any) => {
           >
             S
           </button>
-          <div className="setInfo_emptySelect">{mbti2}</div>
+          {mbti2 != 'S' && mbti2 != 'N' && (
+            <div className="setInfo_emptySelect" />
+          )}
+          {mbti2 === 'S' && <img src={mbti_S} className="mbti_S" />}
+          {mbti2 === 'N' && <img src={mbti_N} className="mbti_N" />}
           <button
             onClick={() => setMbti2('N')}
             className="setInfo_selectButton"
@@ -145,7 +126,11 @@ const SetInfo = (props: any) => {
           >
             T
           </button>
-          <div className="setInfo_emptySelect">{mbti3}</div>
+          {mbti3 != 'T' && mbti3 != 'F' && (
+            <div className="setInfo_emptySelect" />
+          )}
+          {mbti3 === 'T' && <img src={mbti_T} className="mbti_T" />}
+          {mbti3 === 'F' && <img src={mbti_F} className="mbti_F" />}
           <button
             onClick={() => setMbti3('F')}
             className="setInfo_selectButton"
@@ -161,7 +146,11 @@ const SetInfo = (props: any) => {
           >
             J
           </button>
-          <div className="setInfo_emptySelect">{mbti4}</div>
+          {mbti4 != 'J' && mbti4 != 'P' && (
+            <div className="setInfo_emptySelect" />
+          )}
+          {mbti4 === 'J' && <img src={mbti_J} className="mbti_J" />}
+          {mbti4 === 'P' && <img src={mbti_P} className="mbti_P" />}
           <button
             onClick={() => setMbti4('P')}
             className="setInfo_selectButton"
