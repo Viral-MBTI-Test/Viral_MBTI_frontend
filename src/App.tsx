@@ -11,6 +11,8 @@ import { useState } from 'react';
 import FriendsList from './friendsList/friendsList';
 import ProtectedRoute from './ProtectedRoutes';
 import AllFriendsList from './friendsList/allFriendsList';
+import Loading from './Loading';
+
 
 function App() {
   const [username, setUsername] = useState<string>('동의하기');
@@ -23,6 +25,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/loading" element={<Loading type="login" />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/auth" element={<Auth />} />
             <Route

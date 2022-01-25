@@ -1,0 +1,29 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #1F513F;
+}
+
+.loading-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading-content-image {
+    display: flex;
+    margin-bottom: 12px;
+}
+.loading-content {
+    display: flex;
+    font-family: Noto Sans KR;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 212px;
+}
