@@ -23,8 +23,8 @@ const Login = () => {
   }, []);
   const [count, setCount] = useState<number>(0);
   return (
-    <div className="login_fullView">
-      <div className="login_container">
+    <div className="login_container">
+      <div className="login_view">
         <div className="login_mainTitle">
           <div>나는 정말</div>
           <div className="login_mbti">

@@ -5,15 +5,20 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    transition: all 1s ease-in-out;
 }
 
 .query_question {
 
-  width: 255px;
-  height: 37px;
-  margin: 72px 0 78px 0;
+  width: 296px;
+  height: 78px;
+  margin: 48px 0 42px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-family: Helvetica;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -25,9 +30,9 @@
 }
 
 .query_answer {
-  width: 280px;
-  height: 54px;
-  margin: 0 0 17px 0;
+  width: 296px;
+  height: 64px;
+  margin: 0 0 24px 0;
   border-radius: 15px;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
   background-color: #acb4a2;
@@ -35,9 +40,10 @@
   justify-content: center;
   align-items: center;
   white-space: pre;
+  animation: change 0.5s ease forwards;
 
   font-family: Helvetica;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -48,9 +54,9 @@
 }
 
 .query_answer:hover {
-  width: 280px;
-  height: 54px;
-  border-radius: 15px;
+  width: 296px;
+  height: 64px;
+  border-radius: 14px;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
   background-color: #e8e0ce;
   display: flex;
@@ -58,7 +64,7 @@
   align-items: center;
 
   font-family: Helvetica;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -69,9 +75,9 @@
 }
 
 .query_prevBtn {
-  width: 80px;
-  height: 32px;
-  margin: 88px 200px 0 0px;
+  width: 93px;
+  height: 36px;
+  margin: 73px 200px 0 0;
   border-radius: 8px;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
   background-color: #acb4a2;
@@ -81,7 +87,7 @@
  
 
     font-family: Helvetica;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
@@ -91,8 +97,19 @@
     color: #f4f2ed;
 }
 
+@keyframes change {
+  from {
+    transform: translateX(100%);
+    visibility: visible;
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
 .progress_div {
-  width: 280px;
+  width: 296px;
   height: 4px;
   border-radius: 15px;
   margin: 38px 0 0 0;

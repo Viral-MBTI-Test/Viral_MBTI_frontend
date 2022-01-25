@@ -16,7 +16,7 @@
   animation-fill-mode: forwards;
 }
 .index0 {
-  animation-duration: 0.8s;
+  animation-duration: 0.5s;
 }
 .index1 {
   animation-duration: 1.1s;
@@ -25,7 +25,7 @@
   animation-duration: 1.4s;
 }
 .index3 {
-  animation-duration: 1.7s;
+  animation-duration: 0.8s;
 }
 @keyframes spinCube {
   0% {
