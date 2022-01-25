@@ -1,12 +1,12 @@
-import { AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import MBTIPercent from "../share/MBTIPercent";
-import MBTIProfile from "../share/MBTIProfile";
-import webClient from "../share/webClient";
-import "./friendsList.css";
-import question from "../images/questionMark.png";
-
+import { AxiosResponse } from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import MBTIPercent from '../share/MBTIPercent';
+import MBTIProfile from '../share/MBTIProfile';
+import webClient from '../share/webClient';
+import './friendsList.css';
+import question from '../images/questionMark.png';
+import { similarFriendsResponse } from '../result/result';
 interface FriendsType {
   friend_id: number | null;
   friend_name: string;
@@ -23,16 +23,18 @@ const initValue: FriendsType = {
   similar_percent: null,
 };
 const FriendsList = (props: { profile: string; userName: string }) => {
-  const [friendsList, setFriendsList] = useState<FriendsType[]>([
+  const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>(
+    []
+  ); /*([
     initValue,
     initValue,
     initValue,
     initValue,
     initValue,
-  ]);
+  ]);*/
   const getFriends = async () => {
     const response: AxiosResponse = await webClient.get('/similar-friends/');
-    const friends: FriendsType[] = [...response.data];
+    const friends: similarFriendsResponse[] = [...response.data];
     setFriendsList(friends);
   };
   const getRanks = async () => {
@@ -46,7 +48,7 @@ const FriendsList = (props: { profile: string; userName: string }) => {
   return (
     <>
       <div className="friendsList_container">
-        <MBTIProfile img={props.profile} userName={props.userName} />
+        {/*<MBTIProfile img={props.profile} userName={props.userName} />*/}
         <div className="friendsList_list">
           <div className="friendsList_text">
             내 친구들은 이런 유형이 가장 많았어요
@@ -64,8 +66,10 @@ const FriendsList = (props: { profile: string; userName: string }) => {
             console.log(friend);
             return (
               <MBTIProfile
-                img={friend.friend_profile_image}
-                userName={friend.friend_name}
+                friend_profile_image={friend.friend_profile_image}
+                friend_name={friend.friend_name}
+                friend_result={friend.friend_result}
+                similar_percent={friend.similar_percent}
               />
             );
           })}
