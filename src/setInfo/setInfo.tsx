@@ -2,16 +2,18 @@ import React from 'react';
 import './setInfo.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import webClient from '../utils/webClient';
+import { AxiosResponse } from 'axios';
 
 //images
-import '../images/E.svg';
-import '../images/I.svg';
-import '../images/S.svg';
-import '../images/N.svg';
-import '../images/T.svg';
-import '../images/F.svg';
-import '../images/P.svg';
-import '../images/J.svg';
+import mbti_E from '../images/E.svg';
+import mbti_I from '../images/I.svg';
+import mbti_S from '../images/S.svg';
+import mbti_N from '../images/N.svg';
+import mbti_T from '../images/T.svg';
+import mbti_F from '../images/F.svg';
+import mbti_P from '../images/P.svg';
+import mbti_J from '../images/J.svg';
 
 const { Kakao } = window;
 const authForGetFriendsList = () => {
@@ -29,6 +31,18 @@ const SetInfo = (props: any) => {
   const [mbti3, setMbti3] = useState('');
   const [mbti4, setMbti4] = useState('');
   const completeMbti = mbti1 + mbti2 + mbti3 + mbti4;
+
+  const putMBTIValue = async () => {
+    try {
+      await webClient.put('user-mbti/', {
+        mbti: `${completeMbti}`,
+      });
+      console.log({ completeMbti });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const len = completeMbti.length;
 
   // const [addMBTI, setAddMBTI] = useState([
   //   {
@@ -155,16 +169,18 @@ const SetInfo = (props: any) => {
             P
           </button>
         </div>
-
         <div className="setInfo_boxContainer">
-          <div>{completeMbti}</div>
-          <Link to="/question/0">
-            <button
-              className="setInfo_startButton"
-              style={{ textDecoration: 'inherit' }}
-            >
-              검사 시작하기
-            </button>
+          <Link
+            to="/question/0"
+            onClick={() =>
+              completeMbti.length === 4
+                ? putMBTIValue()
+                : alert('MBTI를 입력해주삼.')
+            }
+            className="setInfo_startButton"
+            style={{ textDecoration: 'none' }}
+          >
+            검사 시작하기
           </Link>
         </div>
       </div>
