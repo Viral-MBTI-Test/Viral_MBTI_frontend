@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import '../css/login.css';
 import boy from '../../images/boy.svg';
-import kakaoLogin from '../../images/kakaoLogin.png';
+import kakao_login_large_wide from '../../images/kakao_login_large_wide.png';
 import MbtiCube from './mbtiCube';
 import vector from '../../images/vector.svg';
 import webClient from '../../share/webClient';
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 const { Kakao } = window;
 const loginWithKaKao = () => {
   Kakao.Auth.authorize({
@@ -15,7 +15,9 @@ const loginWithKaKao = () => {
 
 const Login = () => {
   const countParticipants = async () => {
-    const participants: AxiosResponse = await webClient.get('/participants/');
+    const participants: AxiosResponse = await axios.get(
+      'https://mbti-test.duckdns.org/participants/'
+    );
     setCount(participants.data.number_of_users);
   };
   useEffect(() => {
@@ -47,7 +49,7 @@ const Login = () => {
         <div className="login_countMsg">{`지금까지 ${count}명이 참여했어요`}</div>
         <div>
           <img
-            src={kakaoLogin}
+            src={kakao_login_large_wide}
             alt="kakao login"
             className="kakao"
             onClick={() => {

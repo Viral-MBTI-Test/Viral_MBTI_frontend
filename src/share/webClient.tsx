@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
-const API_ROOT = 'http://34.64.75.45:8000/';
+const API_ROOT = 'https://mbti-test.duckdns.org';
 
 const webClient: AxiosInstance = axios.create({
   baseURL: API_ROOT,
