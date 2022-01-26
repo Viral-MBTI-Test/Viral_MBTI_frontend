@@ -1,12 +1,12 @@
-import { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import MBTIProfile from '../share/MBTIProfile';
-import webClient from '../share/webClient';
-import './friendsList.css';
-import question from '../images/questionMark.png';
-import { similarFriendsResponse } from '../result/result';
-import MBTIRanks from './mbtiRanks';
+import { AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import MBTIProfile from "../share/MBTIProfile";
+import webClient from "../share/webClient";
+import "./friendsList.css";
+import question from "../images/questionMark.png";
+import { similarFriendsResponse } from "../result/result";
+import MBTIRanks from "./mbtiRanks";
 
 export interface ranksProps {
   mbti: string;
@@ -15,7 +15,7 @@ export interface ranksProps {
 }
 const initValue: similarFriendsResponse = {
   friend_id: undefined,
-  friend_name: '',
+  friend_name: "",
   friend_profile_image: undefined,
   friend_result: undefined,
   similar_percent: undefined,
@@ -35,7 +35,7 @@ const FriendsList = (props: {
     initValue,
   ]);
   let flag = -1;
-  const userMbti = localStorage.getItem('completeMbti');
+  const userMbti = localStorage.getItem("completeMbti");
   const [ranks, setRanks] = useState<ranksProps[]>([]);
   const getFriends = async () => {
     const response: similarFriendsResponse[] = props.friendsList;
@@ -82,7 +82,7 @@ const FriendsList = (props: {
   return (
     <>
       <div className="friendsList_container">
-        {props.userName === '동의하기' ? (
+        {props.userName === "동의하기" ? (
           <MBTIProfile
             friend_profile_image={props.profile}
             friend_name="익명"
@@ -125,48 +125,43 @@ const FriendsList = (props: {
           <div className="friendsList_text">
             전체 친구들의 성격유형 확인하기
           </div>
-          <MBTIProfile
-            friend_profile_image={friendsList[0].friend_profile_image}
-            friend_name={friendsList[0].friend_name}
-            friend_result={friendsList[0].friend_result}
-            similar_percent={friendsList[0].similar_percent}
-          />
-          <MBTIProfile
-            friend_profile_image={friendsList[1].friend_profile_image}
-            friend_name={friendsList[1].friend_name}
-            friend_result={friendsList[1].friend_result}
-            similar_percent={friendsList[1].similar_percent}
-          />
-          <MBTIProfile
-            friend_profile_image={friendsList[2].friend_profile_image}
-            friend_name={friendsList[2].friend_name}
-            friend_result={friendsList[2].friend_result}
-            similar_percent={friendsList[2].similar_percent}
-          />
-          <MBTIProfile
-            friend_profile_image={friendsList[3].friend_profile_image}
-            friend_name={friendsList[3].friend_name}
-            friend_result={friendsList[3].friend_result}
-            similar_percent={friendsList[3].similar_percent}
-          />
-          <MBTIProfile
-            friend_profile_image={friendsList[4].friend_profile_image}
-            friend_name={friendsList[4].friend_name}
-            friend_result={friendsList[4].friend_result}
-            similar_percent={friendsList[4].similar_percent}
-          />
+          <div>
+            {props.friendsList.length === 0 ? (
+              <MBTIProfile
+                friend_profile_image={undefined}
+                friend_name={""}
+                friend_result={undefined}
+                similar_percent={undefined}
+              />
+            ) : (
+              props.friendsList.map(
+                (friend: similarFriendsResponse, index: number) => {
+                  if (index >= 5 || index >= friendsList.length) return <></>;
+                  else
+                    return (
+                      <MBTIProfile
+                        friend_profile_image={friend.friend_profile_image}
+                        friend_name={friend.friend_name}
+                        friend_result={friend.friend_result}
+                        similar_percent={friend.similar_percent}
+                      />
+                    );
+                }
+              )
+            )}
+          </div>
           <div className="friendsList_btn_box">
             <Link
               to="/result"
               className="friendsList_btn"
-              style={{ marginRight: '9px' }}
+              style={{ marginRight: "9px" }}
             >
               돌아가기
             </Link>
             <Link
               to="/all_friendsList"
               className="friendsList_btn"
-              style={{ marginLeft: '9px' }}
+              style={{ marginLeft: "9px" }}
             >
               전체 친구목록
             </Link>
