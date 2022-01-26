@@ -11,7 +11,7 @@ const Auth = () => {
   const GetCode = async () => {
     let code = new URL(window.location.href).searchParams.get('code');
     await axios
-      .get(`http://34.64.75.45:8000/signin/?code=${code}`)
+      .get(`http://mbti-test.duckdns.org/signin/?code=${code}`)
       .then((response) => {
         localStorage.setItem('access', response.data.access);
         localStorage.setItem('refresh', response.data.refresh);

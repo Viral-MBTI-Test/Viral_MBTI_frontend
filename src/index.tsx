@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://34.64.75.45:8000/';
+axios.defaults.baseURL = 'http://mbti-test.duckdns.org/';
 axios.defaults.withCredentials = true;
 ReactDOM.render(
   <React.StrictMode>
