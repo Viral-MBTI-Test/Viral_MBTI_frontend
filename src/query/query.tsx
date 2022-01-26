@@ -1,9 +1,9 @@
-import "./query.css";
-import { useNavigate } from "react-router-dom";
-import { Querylist } from "./querylist";
-import { useEffect, useState } from "react";
-import webClient from "../share/webClient";
-import { ReactComponent as Boy } from "../images/run_boy.svg";
+import './query.css';
+import { useNavigate } from 'react-router-dom';
+import { Querylist } from './querylist';
+import { useEffect, useState } from 'react';
+import webClient from '../share/webClient';
+import { ReactComponent as Boy } from '../images/run_boy.svg';
 
 const Query = () => {
   const navigate = useNavigate();
@@ -24,9 +24,9 @@ const Query = () => {
         return { question_number: i + 1, choice_number: a };
       });
       result[currentNo].choice_number = selectedAnswer;
-      await webClient.post("/answer/", result);
+      await webClient.post('/answer/', result);
 
-      navigate("/result");
+      navigate('/result');
     } else {
       setShow(true);
 
@@ -50,7 +50,7 @@ const Query = () => {
 
   return (
     <div className="query_container">
-      <div className="progress-div" style={{ width: "296px" }}>
+      <div className="progress-div" style={{ width: '296px' }}>
         <div style={{ width: `${currentNo * 10}%` }} className="progress">
           <Boy className="progress-boy" />
         </div>
@@ -62,28 +62,52 @@ const Query = () => {
 
       <div>
         {Querylist[currentNo].ans.map((answer, index) => (
-          <div
-            className="query_answer"
-            onClick={() => {
-              "background-color: #e8e0ce";
-              "color: #1f513f";
-              delay(500);
-              answerClick(index + 1);
-            }}
-          >
-            {answer.text}
-          </div>
+          <Answer
+            answer={answer.text}
+            index={index}
+            answerClick={answerClick}
+          />
         ))}
       </div>
 
       {show && (
         <div>
           <div className="query_prevBtn" onClick={beforeClick}>
-            {" "}
-            이전 질문{" "}
+            이전 질문
           </div>
         </div>
       )}
+    </div>
+  );
+};
+
+const Answer = (props: {
+  answer: string;
+  index: number;
+  answerClick: Function;
+}) => {
+  const [backgroundColor, setBackgroundColor] = useState('#ACB4A2');
+  const [fontColor, setFontColor] = useState('#F4F2ED');
+
+  return (
+    <div
+      className="query_answer"
+      onClick={() => {
+        props.answerClick(props.index + 1);
+      }}
+      style={{ backgroundColor: backgroundColor, color: fontColor }}
+      onMouseDown={() => {
+        setBackgroundColor('#E8E0CE');
+        setFontColor('#1F513F');
+      }}
+      onMouseUp={() => {
+        setTimeout(() => {
+          setBackgroundColor('#ACB4A2');
+          setFontColor('#F4F2ED');
+        }, 150);
+      }}
+    >
+      {props.answer}
     </div>
   );
 };
