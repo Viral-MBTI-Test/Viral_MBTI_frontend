@@ -14,7 +14,6 @@ const MBTIRanks = (mbtiPercentProps: {
         className="MBTIPercent_box"
         style={{
           backgroundColor: `${mbtiPercentProps.backgroundColor}`,
-          height: mbtiPercentProps.index === 0 ? '28px' : '20px',
           color: `${mbtiPercentProps.color}`,
         }}
       >
