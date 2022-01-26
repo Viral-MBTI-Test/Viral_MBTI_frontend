@@ -25,7 +25,7 @@
 .queryend_question {
   width: 255px;
   height: 37px;
-  margin: 25px;
+  margin: 25px0 16px 0;
   font-family: Noto Sans KR;
   font-size: 14px;
   font-weight: bold;
@@ -61,25 +61,22 @@
   color: #f4f2ed;
 }
 
-.queryend_rank {
-  float: left;
-  width: 19px;
-  height: 20px;
-  margin: 0 15px 0 5px;
-}
+.queryend_selected {
+  width: 294px;
+  height: 54px;
 
-.queryend_text {
-  float: left;
-  width: 28px;
-  height: 20px;
-  margin: 0 0 0 13px;
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Noto Sans KR;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 16px;
 
-.queryend_percent {
-  float: left;
-  width: 25px;
-  height: 20px;
-  margin: 0 0 0 150px;
+  background: #e8e0ce;
+  box-shadow: 0px 2px 3px rgba(172, 180, 162, 0.25);
+  border-radius: 15px;
 }
 
 .queryend_myresult {

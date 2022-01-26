@@ -56,7 +56,9 @@ const Query = () => {
         </div>
       </div>
 
-      <div className="query_question">{Querylist[currentNo].question}</div>
+      <div className="query_question" style={{ margin: "0 0 42px 0" }}>
+        {Querylist[currentNo].question}
+      </div>
 
       <div>
         {Querylist[currentNo].ans.map((answer, index) => (
