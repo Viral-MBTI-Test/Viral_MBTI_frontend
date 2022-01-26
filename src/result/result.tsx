@@ -112,7 +112,7 @@ const Result = (props: {
     <div className="result_container">
       <div className="result_title_container">
         <img src={leftQuote} alt="leftQuote" id="result_quote_left" />
-        <span className="result_title_text">당신은...{props.result}</span>
+        <span className="result_title_text">당신은... {props.result}</span>
         <img src={RightQuote} alt="RightQuote" id="result_quote_right" />
       </div>
       <MBTIPercent

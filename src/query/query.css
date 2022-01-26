@@ -40,7 +40,6 @@
   white-space: pre;
   transition: 0.15s ease;
 
-
   font-family: Noto Sans KR;
   font-size: 14px;
   font-weight: bold;
@@ -126,5 +125,5 @@
   position: absolute;
   display: block;
   right: -7px;
-  top: -7px;
+  top: -10px;
 }
