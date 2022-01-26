@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../css/login.css';
 import boy from '../../images/boy.svg';
-import kakaoLogin from '../../images/kakaoLogin.png';
+import kakao_login_large_wide from '../../images/kakao_login_large_wide.png';
 import MbtiCube from './mbtiCube';
 import vector from '../../images/vector.svg';
 import webClient from '../../share/webClient';
@@ -49,7 +49,7 @@ const Login = () => {
         <div className="login_countMsg">{`지금까지 ${count}명이 참여했어요`}</div>
         <div>
           <img
-            src={kakaoLogin}
+            src={kakao_login_large_wide}
             alt="kakao login"
             className="kakao"
             onClick={() => {
