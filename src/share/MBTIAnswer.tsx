@@ -1,4 +1,4 @@
-import "./MBTIAnswer.css";
+import './MBTIAnswer.css';
 
 const MBTIAnswer = (mbtiPercentProps: {
   index: number;
@@ -15,7 +15,7 @@ const MBTIAnswer = (mbtiPercentProps: {
       >
         <span
           style={{
-            marginLeft: "16px",
+            marginLeft: '16px',
           }}
         >
           {mbtiPercentProps.index + 1}위
@@ -23,21 +23,21 @@ const MBTIAnswer = (mbtiPercentProps: {
 
         <div
           style={{
-            marginLeft: "20px",
+            marginLeft: '20px',
           }}
         >
-          {" "}
-          {mbtiPercentProps.content}{" "}
+          {' '}
+          {mbtiPercentProps.content}{' '}
         </div>
         <span
           style={{
-            margin: "0 10px 0 16px",
-            float: "right",
+            margin: '0 10px 0 16px',
+            float: 'right',
             flexGrow: 1,
-            textAlign: "end",
+            textAlign: 'end',
           }}
         >
-          {mbtiPercentProps.percent.toFixed(1)}%
+          {mbtiPercentProps.percent?.toFixed(1)}%
         </span>
       </div>
     </div>
