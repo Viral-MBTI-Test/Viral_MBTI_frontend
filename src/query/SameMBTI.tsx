@@ -1,4 +1,4 @@
-import './MBTIAnswer.css';
+import './SameAnswer.css';
 
 const MBTIAnswer = (mbtiPercentProps: {
   index: number;

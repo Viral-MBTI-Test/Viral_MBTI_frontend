@@ -4,11 +4,15 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Query from './query/query';
 import Queryend from './query/queryend';
 import SetInfo from './setInfo/setInfo';
-import Result, { similarFriendsResponse } from './result/result';
+import Result, {
+  featureResponse,
+  rankingResponse,
+  similarFriendsResponse,
+} from './result/result';
 import Auth from './login/components/auth';
 import FriendsAuth from './login/components/friendsAuth';
 import { useEffect, useState } from 'react';
-import FriendsList from './friendsList/friendsList';
+import FriendsList, { ranksProps } from './friendsList/friendsList';
 import ProtectedRoute from './ProtectedRoutes';
 import AllFriendsList from './friendsList/allFriendsList';
 import Loading from './Loading';
@@ -22,25 +26,39 @@ function App() {
   );
   const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
     {
-      friend_id: 0,
-      friend_name: '아직 검사를 진행한 친구가 없어요!',
-      friend_profile_image: '',
-      friend_result: '',
-      similar_percent: 0,
+      friend_id: undefined,
+      friend_name: '',
+      friend_profile_image: undefined,
+      friend_result: undefined,
+      similar_percent: undefined,
     },
   ]);
-  const getSimilarFriends = async () => {
-    try {
-      console.log('hello');
-      const result: AxiosResponse = await webClient.get('/similar-friends/');
-      setFriendsList(result.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getSimilarFriends();
-  }, []);
+  const [result, setResult] = useState<string>('결과가 없습니다.');
+  const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>([
+    {
+      feature: '검사를 진행해주세요!',
+    },
+  ]);
+  const [weakFeatures, setWeakFeatures] = useState<featureResponse[]>([
+    {
+      feature: '검사를 진행해주세요!',
+    },
+  ]);
+  const [ranking, setRanking] = useState<rankingResponse[]>([
+    {
+      mbti: 'XXXX',
+      percent: 0,
+    },
+    {
+      mbti: 'XXXX',
+      percent: 0,
+    },
+    {
+      mbti: 'XXXX',
+      percent: 0,
+    },
+  ]);
+  const [ranks, setRanks] = useState<ranksProps[]>([]);
   return (
     <div className="app">
       <BrowserRouter>
@@ -48,7 +66,19 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/loading" element={<Loading type="login" />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/auth" element={<Auth />} />
+            <Route
+              path="/auth"
+              element={
+                <Auth
+                  setFriendsList={setFriendsList}
+                  setResult={setResult}
+                  setStrongFeatures={setStrongFeatures}
+                  setWeakFeatures={setWeakFeatures}
+                  setRanking={setRanking}
+                  setRanks={setRanks}
+                />
+              }
+            />
             <Route
               path="/friendsAuth"
               element={
@@ -64,11 +94,31 @@ function App() {
                 <SetInfo username={username} profileImage={profileImage} />
               }
             />
-            <Route path="/question/0" element={<Query />} />
+            <Route
+              path="/question"
+              element={
+                <Query
+                  setFriendsList={setFriendsList}
+                  setResult={setResult}
+                  setStrongFeatures={setStrongFeatures}
+                  setWeakFeatures={setWeakFeatures}
+                  setRanking={setRanking}
+                  setRanks={setRanks}
+                />
+              }
+            />
             <Route path="/queryend" element={<Queryend />} />
             <Route
               path="/result"
-              element={<Result friendsList={friendsList[0]} />}
+              element={
+                <Result
+                  friendsList={friendsList[0]}
+                  result={result}
+                  strongFeatures={strongFeatures}
+                  weakFeatures={weakFeatures}
+                  ranking={ranking}
+                />
+              }
             />
             <Route
               path="/friends_list"
@@ -77,6 +127,8 @@ function App() {
                   profile={profileImage}
                   userName={username}
                   friendsList={friendsList}
+                  result={result}
+                  ranks={ranks}
                 />
               }
             />

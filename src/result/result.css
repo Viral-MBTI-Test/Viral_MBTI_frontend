@@ -128,7 +128,7 @@ p {
 .result_title_text {
     position: relative;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     color: #1f513f;
     z-index: 0;
 }

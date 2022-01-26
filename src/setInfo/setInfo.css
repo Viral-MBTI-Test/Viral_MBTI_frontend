@@ -1,6 +1,5 @@
 .setInfo_containerWithPadding {
   display: flex;
-  align-items: center;
   justify-content: center;
   width: 100%;
   min-height: 100%;
@@ -16,7 +15,7 @@
 .setInfo_boldTitle {
   width: 200px;
   height: 20px;
-  margin-top: 76px;
+  margin-top: 50px;
   font-family: Noto Sans KR;
   font-size: 18px;
   font-weight: bold;
