@@ -31,9 +31,11 @@
 }
 
 .queryend_question {
+
   width: 296px;
   height: 100%;
   margin-bottom: 16px;
+
   font-family: Noto Sans KR;
   font-size: 15px;
   font-weight: bold;
