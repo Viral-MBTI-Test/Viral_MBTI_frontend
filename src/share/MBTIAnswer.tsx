@@ -7,38 +7,15 @@ const MBTIAnswer = (mbtiPercentProps: {
 }) => {
   return (
     <div>
-      <div
-        className="MBTIAnswer_box"
-        /*style={{
-        backgroundColor: ,
-      }}*/
-      >
-        <span
-          style={{
-            marginLeft: '16px',
-          }}
-        >
-          {mbtiPercentProps.index + 1}위
-        </span>
-
-        <div
-          style={{
-            marginLeft: '20px',
-          }}
-        >
-          {' '}
-          {mbtiPercentProps.content}{' '}
+      <div className="MBTIAnswer_box">
+        <div className="rank-div">
+          <span className="rank-font">{mbtiPercentProps.index + 1}위</span>
         </div>
-        <span
-          style={{
-            margin: '0 10px 0 16px',
-            float: 'right',
-            flexGrow: 1,
-            textAlign: 'end',
-          }}
-        >
+
+        <div className="content-div">{mbtiPercentProps.content}</div>
+        <div className="percent-div">
           {mbtiPercentProps.percent?.toFixed(1)}%
-        </span>
+        </div>
       </div>
     </div>
   );
