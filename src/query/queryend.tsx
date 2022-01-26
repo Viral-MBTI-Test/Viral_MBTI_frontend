@@ -8,7 +8,8 @@ import MBTIProfile from "../share/MBTIProfile";
 import webClient from "../share/webClient";
 import { AxiosResponse } from "axios";
 import MBTIAnswer from "../share/MBTIAnswer";
-import { ReactComponent as Boy } from '../images/run_boy.svg';
+import MBTIAllPercent from "../share/MBTIAllPercent";
+import { ReactComponent as Boy } from "../images/run_boy.svg";
 
 const QueryEnd = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const QueryEnd = () => {
   const [sameMbti, setSameMbti] = useState<any>([]);
   const [currentNo, setCurrentNo] = useState(0);
   const [friendAns, setFriendAns] = useState<any>([]);
-  const [myAnswer, setMyAnswer] = useState<any>([]);
+  // const [myAnswer, setMyAnswer] = useState<any>([]);
 
   useEffect(() => {
     const getAnswerStat = async () => {
@@ -45,7 +46,6 @@ const QueryEnd = () => {
       setMyAnswer(response_my.data);
       console.log(myAnswer);
     };
-
     getMyAnswer();
   }, []);
 */
@@ -66,7 +66,7 @@ const QueryEnd = () => {
 
   return (
     <div className="queryend_container">
-      <div className="progress-div" style={{ width: '296px' }}>
+      <div className="progress-div" style={{ width: "296px" }}>
         <div style={{ width: `${currentNo * 10}%` }} className="progress">
           {currentNo !== 0 ? <Boy className="progress-boy" /> : <></>}
         </div>
@@ -77,25 +77,29 @@ const QueryEnd = () => {
       <div className="query_selected"> 선택한 답안 </div>
       <div className="queryend_mbti"> 나와 같은 답을 선택한 MBTI </div>
 
-      <MBTIPercent
+      <MBTIAllPercent
         index={0}
         mbti={sameAns[0]?.mbti}
         percent={sameAns[0]?.percent}
+        myIndex={0}
       />
-      <MBTIPercent
+      <MBTIAllPercent
         index={1}
         mbti={sameAns[1]?.mbti}
         percent={sameAns[1]?.percent}
+        myIndex={0}
       />
-      <MBTIPercent
+      <MBTIAllPercent
         index={2}
         mbti={sameAns[2]?.mbti}
         percent={sameAns[2]?.percent}
+        myIndex={0}
       />
-      <MBTIPercent
+      <MBTIAllPercent
         index={3}
         mbti={sameAns[3]?.mbti}
         percent={sameAns[3]?.percent}
+        myIndex={0}
       />
 
       <div className="queryend_mbti"> ENTP들은 이런 담을 골랐어요 </div>
@@ -120,7 +124,6 @@ const QueryEnd = () => {
         content={sameMbti[3]?.content}
         percent={sameMbti[3]?.percent}
       />
-
       <div className="queryend_mbti"> 나랑 같은 답을 선택한 친구들 </div>
 
       <div>
@@ -149,10 +152,10 @@ const QueryEnd = () => {
       </div>
 
       <div className="query_prevBtn" onClick={beforeClick}>
-        이전 문항
+        {currentNo > 0 ? `이전 문항` : `결과창으로`}
       </div>
       <div className="queryend_nextBtn" onClick={afterClick}>
-        다음 문항
+        {currentNo < 9 ? `다음 문항` : `결과창으로`}
       </div>
     </div>
   );
