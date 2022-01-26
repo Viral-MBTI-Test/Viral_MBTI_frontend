@@ -20,13 +20,7 @@ const initValue: similarFriendsResponse = {
   friend_result: undefined,
   similar_percent: undefined,
 };
-const FriendsList = (props: {
-  profile: string;
-  userName: string;
-  friendsList: similarFriendsResponse[];
-  result: string;
-  ranks: ranksProps[];
-}) => {
+const FriendsList = (props: { userName: string; profile: string }) => {
   const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
     initValue,
     initValue,
@@ -36,17 +30,19 @@ const FriendsList = (props: {
   ]);
   let flag = -1;
   const userMbti = localStorage.getItem('completeMbti');
+  const [result, setResult] = useState<string>('');
   const [ranks, setRanks] = useState<ranksProps[]>([]);
+
   const getFriends = async () => {
-    const response: similarFriendsResponse[] = props.friendsList;
+    const response: AxiosResponse = await webClient.get('/similar-friends/');
     const friends: similarFriendsResponse[] = [...friendsList];
-    response.map((response: similarFriendsResponse, index: number) => {
+    response.data.map((response: similarFriendsResponse, index: number) => {
       friends[index] = response;
     });
     setFriendsList(friends);
   };
   const getRanks = async () => {
-    const ranksList: ranksProps[] = props.ranks;
+    const ranksList: ranksProps[] = await webClient.get('/mbti-rank/');
 
     const array: ranksProps[] = [...ranks];
     var i = 0;
@@ -76,9 +72,20 @@ const FriendsList = (props: {
     }
     setRanks(array);
   };
+  const getResult = async () => {
+    try {
+      const totalResult: AxiosResponse = await webClient.get(
+        '/total-statistics/'
+      );
+      setResult(totalResult.data.result.result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getFriends();
     getRanks();
+    getResult();
   }, []);
   return (
     <>
@@ -87,14 +94,14 @@ const FriendsList = (props: {
           <MBTIProfile
             friend_profile_image={props.profile}
             friend_name="익명"
-            friend_result={props.result}
+            friend_result={result}
             similar_percent={undefined}
           />
         ) : (
           <MBTIProfile
             friend_profile_image={props.profile}
             friend_name={props.userName}
-            friend_result={props.result}
+            friend_result={result}
             similar_percent={undefined}
           />
         )}
@@ -127,7 +134,7 @@ const FriendsList = (props: {
             전체 친구들의 성격유형 확인하기
           </div>
           <div>
-            {props.friendsList.length === 0 ? (
+            {friendsList.length === 0 ? (
               <MBTIProfile
                 friend_profile_image={undefined}
                 friend_name={''}
@@ -135,7 +142,7 @@ const FriendsList = (props: {
                 similar_percent={undefined}
               />
             ) : (
-              props.friendsList.map(
+              friendsList.map(
                 (friend: similarFriendsResponse, index: number) => {
                   if (index >= 5 || index >= friendsList.length) return <></>;
                   else
@@ -145,6 +152,7 @@ const FriendsList = (props: {
                         friend_name={friend.friend_name}
                         friend_result={friend.friend_result}
                         similar_percent={friend.similar_percent}
+                        key={index}
                       />
                     );
                 }

@@ -1,8 +1,23 @@
-import { Link } from "react-router-dom";
-import { similarFriendsResponse } from "../result/result";
-import MBTIProfile from "../share/MBTIProfile";
-import "./friendsList.css";
-const AllFriendsList = (props: { friendsList: similarFriendsResponse[] }) => {
+import { AxiosResponse } from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { similarFriendsResponse } from '../result/result';
+import MBTIProfile from '../share/MBTIProfile';
+import webClient from '../share/webClient';
+import './friendsList.css';
+const AllFriendsList = () => {
+  const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([]);
+  const getAllFriends = async () => {
+    const response: AxiosResponse = await webClient.get('/similar-friends/');
+    const array: similarFriendsResponse[] = [...response.data];
+    response.data.map((friend: similarFriendsResponse, index: number) => {
+      array[index] = friend;
+    });
+    setFriendsList(array);
+  };
+  useEffect(() => {
+    getAllFriends();
+  }, []);
   return (
     <>
       <div className="friendsList_container">
@@ -12,15 +27,15 @@ const AllFriendsList = (props: { friendsList: similarFriendsResponse[] }) => {
           </div>
 
           <div>
-            {props.friendsList.length === 0 ? (
+            {friendsList.length === 0 ? (
               <MBTIProfile
                 friend_profile_image={undefined}
-                friend_name={""}
+                friend_name={''}
                 friend_result={undefined}
                 similar_percent={undefined}
               />
             ) : (
-              props.friendsList.map(
+              friendsList.map(
                 (friend: similarFriendsResponse, index: number) => {
                   return (
                     <MBTIProfile
@@ -28,6 +43,7 @@ const AllFriendsList = (props: { friendsList: similarFriendsResponse[] }) => {
                       friend_name={friend.friend_name}
                       friend_result={friend.friend_result}
                       similar_percent={friend.similar_percent}
+                      key={index}
                     />
                   );
                 }
