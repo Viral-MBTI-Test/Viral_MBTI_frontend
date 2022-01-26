@@ -72,6 +72,7 @@ const QueryEnd = () => {
       navigate('/result');
     } else {
       setCurrentNo((currentNo) => currentNo + 1);
+      window.scrollTo(0, 0);
     }
   };
 
@@ -80,6 +81,7 @@ const QueryEnd = () => {
       navigate('/result');
     }
     setCurrentNo((currentNo) => currentNo - 1);
+    window.scrollTo(0, 0);
   };
 
   return (
