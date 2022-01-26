@@ -23,22 +23,22 @@ import RightQuote from '../images/quote_right.svg';
 const { Kakao } = window;
 
 interface personalityResultProps {
-  frequency: string;
-  result: featureResponse[];
+    frequency: string;
+    result: featureResponse[];
 }
 export interface featureResponse {
-  feature: string;
+    feature: string;
 }
 export interface rankingResponse {
-  mbti: string;
-  percent: number;
+    mbti: string;
+    percent: number;
 }
 export interface similarFriendsResponse {
-  friend_id?: number | null;
-  friend_name: string;
-  friend_profile_image?: string | undefined;
-  friend_result?: string | null;
-  similar_percent?: number | null;
+    friend_id?: number | null;
+    friend_name: string;
+    friend_profile_image?: string | undefined;
+    friend_result?: string | null;
+    similar_percent?: number | null;
 }
 const Result = () => {
   const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
@@ -51,6 +51,7 @@ const Result = () => {
     },
   ]);
   const [result, setResult] = useState<string>('결과가 없습니다.');
+
   const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>([
     {
       feature: '검사를 진행해주세요!',
@@ -80,6 +81,7 @@ const Result = () => {
   );
 
   const getResult = async () => {
+
     try {
       const totalResult: AxiosResponse = await webClient.get(
         '/total-statistics/'
@@ -183,26 +185,26 @@ const Result = () => {
 };
 
 const RectangleResult = (props: personalityResultProps) => {
-  return (
-    <div className="result_rectangle_result_box">
-      {props.result.map((result, index) => {
-        return (
-          <ResultText
-            key={index}
-            result={
-              props.frequency === 'often'
-                ? `📍 ${result.feature}`
-                : `✅ ${result.feature}`
-            }
-          />
-        );
-      })}
-    </div>
-  );
+    return (
+        <div className='result_rectangle_result_box'>
+            {props.result.map((result, index) => {
+                return (
+                    <ResultText
+                        key={index}
+                        result={
+                            props.frequency === 'often'
+                                ? `📍 ${result.feature}`
+                                : `✅ ${result.feature}`
+                        }
+                    />
+                );
+            })}
+        </div>
+    );
 };
 
 const ResultText = (props: { result: string }) => {
-  return <div className="result_personality_text">{props.result}</div>;
+    return <div className='result_personality_text'>{props.result}</div>;
 };
 
 export default Result;

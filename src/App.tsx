@@ -5,9 +5,9 @@ import Query from './query/query';
 import Queryend from './query/queryend';
 import SetInfo from './setInfo/setInfo';
 import Result, {
-  featureResponse,
-  rankingResponse,
-  similarFriendsResponse,
+    featureResponse,
+    rankingResponse,
+    similarFriendsResponse,
 } from './result/result';
 import Auth from './login/components/auth';
 import FriendsAuth from './login/components/friendsAuth';
@@ -71,6 +71,7 @@ function App() {
       </BrowserRouter>
     </div>
   );
+
 }
 
 export default App;
