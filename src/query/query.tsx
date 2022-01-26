@@ -95,6 +95,7 @@ const Query = (props: {
             answer={answer.text}
             index={index}
             answerClick={answerClick}
+            key={index}
           />
         ))}
       </div>

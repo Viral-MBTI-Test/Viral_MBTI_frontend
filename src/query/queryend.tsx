@@ -1,15 +1,15 @@
-import "./query.css";
-import { useNavigate } from "react-router-dom";
-import { Querylist } from "./querylist";
-import { useEffect, useState } from "react";
-import "./queryend.css";
-import MBTIPercent from "../share/MBTIPercent";
-import MBTIProfile from "../share/MBTIProfile";
-import webClient from "../share/webClient";
-import { AxiosResponse } from "axios";
-import MBTIAnswer from "../share/MBTIAnswer";
-import MBTIAllPercent from "../share/MBTIAllPercent";
-import { ReactComponent as Boy } from "../images/run_boy.svg";
+import './query.css';
+import { useNavigate } from 'react-router-dom';
+import { Querylist } from './querylist';
+import { useEffect, useState } from 'react';
+import './queryend.css';
+import MBTIPercent from '../share/MBTIPercent';
+import MBTIProfile from '../share/MBTIProfile';
+import webClient from '../share/webClient';
+import { AxiosResponse } from 'axios';
+import MBTIAnswer from '../share/MBTIAnswer';
+import MBTIAllPercent from '../share/MBTIAllPercent';
+import { ReactComponent as Boy } from '../images/run_boy.svg';
 
 const QueryEnd = () => {
   const navigate = useNavigate();
@@ -19,8 +19,8 @@ const QueryEnd = () => {
   const [friendAns, setFriendAns] = useState<any>([]);
   const [myAnswer, setMyAnswer] = useState<any>([]);
 
-  const myMbti = localStorage.getItem("completeMbti");
-  myMbti?.replaceAll("", "");
+  const myMbti = localStorage.getItem('completeMbti');
+  myMbti?.replaceAll('', '');
 
   let myMbtiIndex = 0;
 
@@ -29,18 +29,21 @@ const QueryEnd = () => {
       const response: any = await webClient.get(
         `/answer-statistics/?question=${currentNo + 1}`
       );
+      setSameAns(response.data);
+    };
 
-      const response_mbti: any = await webClient.get(
+    const getSameMBTI = async () => {
+      const response: any = await webClient.get(
         `/question-statistics/?question=${currentNo + 1}`
       );
+      setSameMbti(response.data);
+    };
 
-      const response_friend: any = await webClient.get(
+    const getFriendsAns = async () => {
+      const response: any = await webClient.get(
         `/same-answer-friends/?question=${currentNo + 1}`
       );
-
-      setSameAns(response.data);
-      setSameMbti(response_mbti.data);
-      setFriendAns(response_friend.data);
+      setFriendAns(response.data);
     };
     /*
     const getMyMbtiIndex = () => {
@@ -50,6 +53,8 @@ const QueryEnd = () => {
     };
 */
     getAnswerStat();
+    getSameMBTI();
+    getFriendsAns();
     // getMyMbtiIndex();
   }, [currentNo]);
 
@@ -64,7 +69,7 @@ const QueryEnd = () => {
 
   const afterClick = () => {
     if (currentNo === Querylist.length - 1) {
-      navigate("/result");
+      navigate('/result');
     } else {
       setCurrentNo((currentNo) => currentNo + 1);
     }
@@ -72,20 +77,20 @@ const QueryEnd = () => {
 
   const beforeClick = () => {
     if (currentNo === 0) {
-      navigate("/result");
+      navigate('/result');
     }
     setCurrentNo((currentNo) => currentNo - 1);
   };
 
   return (
     <div className="queryend_container">
-      <div className="progress-div" style={{ width: "296px" }}>
+      <div className="progress-div" style={{ width: '296px' }}>
         <div style={{ width: `${currentNo * 10}%` }} className="progress">
           <Boy className="progress-boy" /> : <></>
         </div>
       </div>
 
-      <div className="queryend_question" style={{ margin: "24px 0 16px 0" }}>
+      <div className="queryend_question" style={{ margin: '24px 0 16px 0' }}>
         {Querylist[currentNo].question}
       </div>
 
@@ -180,7 +185,7 @@ const QueryEnd = () => {
             friend_profile_image={undefined}
             friend_result={undefined}
             similar_percent={undefined}
-            friend_name={""}
+            friend_name={''}
           />
         ) : (
           friendAns.map((friend: any, index: number) => {
