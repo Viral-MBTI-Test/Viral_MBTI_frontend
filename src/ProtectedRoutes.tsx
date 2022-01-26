@@ -7,6 +7,7 @@ import webClient from './share/webClient';
 import { RouteProps, Route, useNavigate, Outlet } from 'react-router-dom';
 import Auth from './login/components/auth';
 
+import axios from 'axios';
 const ProtectedRoute = ({ ...routeProps }: RouteProps) => {
   const [isAuth, setIsAuth] = useState<boolean | undefined>(undefined);
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const ProtectedRoute = ({ ...routeProps }: RouteProps) => {
     if (!access) setIsAuth(false);
     else {
       try {
-        webClient.get('/participants/');
+        webClient.get('/user/');
         setIsAuth(true);
       } catch (error) {
         console.log('error');

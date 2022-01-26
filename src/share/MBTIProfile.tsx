@@ -7,7 +7,7 @@ const MBTIProfile = (props: similarFriendsResponse) => {
   );
   return (
     <div className="MBTIProfile_Profile">
-      <img
+      {/*<img
         src={
           props.friend_profile_image === undefined
             ? profileDefaultImage
@@ -20,7 +20,7 @@ const MBTIProfile = (props: similarFriendsResponse) => {
           //backgroundColor: 'black',
           borderRadius: '15px',
         }}
-      />
+      />*/}
       {props.friend_result === undefined ? (
         <span style={{ marginLeft: '8px', fontSize: '12px', color: '#13402F' }}>
           아직 검사한 친구가 없어요!
