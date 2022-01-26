@@ -36,8 +36,10 @@
   color: rgba(244, 242, 237, 0.8);
 }
 .boyImg {
+  position: relative;
   width: 202px;
   height: 281px;
+  z-index: 500;
 }
 .login_countMsg {
   color: #f4f2ed;
@@ -56,8 +58,11 @@
 }
 
 .vectorImg {
+  max-width: 550px;
+  margin-top: 250px;
+  padding-right: 30px;
   position: absolute;
-  opacity: 0.3;
-  border: 4px solid #e8e0ce;
-  width: 100%;
+  z-index: 300;
+  opacity: 0.5;
+  border: 0;
 }
