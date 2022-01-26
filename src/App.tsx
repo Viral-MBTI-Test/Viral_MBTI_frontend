@@ -32,7 +32,15 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/loading" element={<Loading type="login" />} />
           <Route element={<ProtectedRoute />}>
-            <Route path="/auth" element={<Auth />} />
+            <Route
+              path="/auth"
+              element={
+                <Auth
+                  setUsername={setUsername}
+                  setProfileImage={setProfileImage}
+                />
+              }
+            />
             <Route
               path="/friendsAuth"
               element={

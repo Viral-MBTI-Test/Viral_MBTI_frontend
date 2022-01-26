@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import MBTIProfile from '../share/MBTIProfile';
 import webClient from '../share/webClient';
 import './friendsList.css';
-import question from '../images/questionMark.png';
 import { similarFriendsResponse } from '../result/result';
 import MBTIRanks from './mbtiRanks';
 
@@ -30,9 +29,11 @@ const FriendsList = (props: { userName: string; profile: string }) => {
   ]);
   let flag = -1;
   const userMbti = localStorage.getItem('completeMbti');
+
   const [result, setResult] = useState<string>('');
   const [ranks, setRanks] = useState<ranksProps[]>([]);
-
+  const [userName, setUserName] = useState<string>('익명');
+  const [profile, setProfile] = useState<string>(props.profile);
   const getFriends = async () => {
     const response: AxiosResponse = await webClient.get('/similar-friends/');
     const friends: similarFriendsResponse[] = [...friendsList];
@@ -42,27 +43,26 @@ const FriendsList = (props: { userName: string; profile: string }) => {
     setFriendsList(friends);
   };
   const getRanks = async () => {
-    const ranksList: ranksProps[] = await webClient.get('/mbti-rank/');
-
+    const ranksList: AxiosResponse = await webClient.get('/mbti-rank/');
     const array: ranksProps[] = [...ranks];
     var i = 0;
-    for (i = 0; i < ranksList.length; i++) {
-      if (ranksList[i].mbti === userMbti) {
+    for (i = 0; i < ranksList.data.length; i++) {
+      if (ranksList.data[i].mbti === userMbti) {
         if (i > 3) {
-          array[3] = ranksList[i];
+          array[3] = ranksList.data[i];
           array[3].rank = i;
           break;
         } else {
-          array[i] = ranksList[i];
+          array[i] = ranksList.data[i];
           array[i].rank = i;
         }
         flag = i;
       } else {
         if (i <= 2) {
-          array[i] = ranksList[i];
+          array[i] = ranksList.data[i];
           array[i].rank = i;
         } else if (i === 3 && flag >= 0) {
-          array[i] = ranksList[i];
+          array[i] = ranksList.data[i];
           array[i].rank = i;
           break;
         } else {
@@ -82,18 +82,26 @@ const FriendsList = (props: { userName: string; profile: string }) => {
       console.log(error);
     }
   };
+  const getUser = async () => {
+    const user: AxiosResponse = await webClient.get('/user/');
+    if (user.data[0].kakao_friends_auth) {
+      setUserName(user.data[0].username);
+      setProfile(user.data[0].kakao_profile_img_url);
+    }
+  };
   useEffect(() => {
-    getFriends();
     getRanks();
+    getFriends();
     getResult();
+    getUser();
   }, []);
   return (
     <>
       <div className="friendsList_container">
         {props.userName === '동의하기' ? (
           <MBTIProfile
-            friend_profile_image={props.profile}
-            friend_name="익명"
+            friend_profile_image={profile}
+            friend_name={userName}
             friend_result={result}
             similar_percent={undefined}
           />
@@ -109,7 +117,7 @@ const FriendsList = (props: { userName: string; profile: string }) => {
           <div className="friendsList_text">
             내 친구들은 이런 유형이 가장 많았어요
           </div>
-          {ranks.map((rank) => {
+          {ranks.map((rank, index) => {
             return rank.mbti === userMbti ? (
               <MBTIRanks
                 index={rank.rank}
@@ -117,6 +125,7 @@ const FriendsList = (props: { userName: string; profile: string }) => {
                 percent={rank.percent}
                 backgroundColor="#E8E0CE"
                 color="#134030"
+                key={index}
               />
             ) : (
               <MBTIRanks
@@ -125,6 +134,7 @@ const FriendsList = (props: { userName: string; profile: string }) => {
                 percent={rank.percent}
                 backgroundColor="#ACB4A2"
                 color="#F4F2ED"
+                key={index}
               />
             );
           })}

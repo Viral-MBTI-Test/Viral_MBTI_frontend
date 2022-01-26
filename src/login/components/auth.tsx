@@ -5,7 +5,7 @@ import Loading from '../../Loading';
 import webClient from '../../share/webClient';
 import getInfos from '../../share/getInfos';
 
-const Auth = (props: {}) => {
+const Auth = (props: { setUsername: Function; setProfileImage: Function }) => {
   let response;
   const navigate = useNavigate();
   useEffect(() => {
@@ -14,7 +14,6 @@ const Auth = (props: {}) => {
 
   const checkUser = async () => {
     response = await webClient.get('/user/');
-    console.log(response.data[0]);
     if (response.data[0].is_answered) {
       window.localStorage.setItem('completeMbti', response.data[0].mbti);
       navigate('/result');
