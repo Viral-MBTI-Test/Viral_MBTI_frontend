@@ -1,3 +1,4 @@
+
 import './query.css';
 import { useNavigate } from 'react-router-dom';
 import { Querylist } from './querylist';
@@ -11,6 +12,7 @@ import SameMBTI from './SameMBTI';
 import SameAnswer from './SameAnswer';
 import { ReactComponent as Boy } from '../images/run_boy.svg';
 
+
 const QueryEnd = () => {
   const navigate = useNavigate();
   const [sameAns, setSameAns] = useState<any>([]);
@@ -18,12 +20,12 @@ const QueryEnd = () => {
   const [currentNo, setCurrentNo] = useState(0);
   const [friendAns, setFriendAns] = useState<any>([]);
   const [myAnswer, setMyAnswer] = useState<any>([]);
+
   const [myMBTI, setMyMBTI] = useState<string>('');
+
 
   const myMbti = localStorage.getItem('completeMbti');
   myMbti?.replaceAll('', '');
-
-  let myMbtiIndex = 0;
 
   useEffect(() => {
     const getAnswerStat = async () => {
@@ -47,16 +49,20 @@ const QueryEnd = () => {
       setFriendAns(response.data);
     };
     /*
-    const getMyMbtiIndex = () => {
-      for (let i = 0; i < 16; i++) {
-        if (sameAns[currentNo]?.mbti === myMbti) myMbtiIndex = i;
-      }
+    const getMyMbtiIndex= () =>{
+      sameAns.map((friend: any, index: number) => {
+              if (friend.mbti === myMbti) return (setMyMbtiIndex(index+1));
+      )}
     };
-*/
+  
+    getMyMbtiIndex();
+  */
     getAnswerStat();
+
     getSameMBTI();
     getFriendsAns();
     // getMyMbtiIndex();
+
   }, [currentNo]);
 
   useEffect(() => {
@@ -96,9 +102,11 @@ const QueryEnd = () => {
 
       <div className="queryend_question">{Querylist[currentNo].question}</div>
 
+
       <div className="queryend_selected">
         {myAnswer[currentNo]?.choice_text}
       </div>
+
       <div className="queryend_mbti"> 나와 같은 답을 선택한 MBTI </div>
 
       <div>
@@ -207,6 +215,7 @@ const QueryEnd = () => {
           })
         )}
       </div>
+
       <div className="query-buttons">
         <div className="queryend-btn" onClick={afterClick}>
           {currentNo < 9 ? '다음 문항' : '돌아가기'}
@@ -218,6 +227,7 @@ const QueryEnd = () => {
         ) : (
           <></>
         )}
+
       </div>
     </div>
   );
