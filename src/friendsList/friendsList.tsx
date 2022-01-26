@@ -1,13 +1,18 @@
 import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import MBTIPercent from '../share/MBTIPercent';
 import MBTIProfile from '../share/MBTIProfile';
 import webClient from '../share/webClient';
 import './friendsList.css';
 import question from '../images/questionMark.png';
 import { similarFriendsResponse } from '../result/result';
+import MBTIRanks from './mbtiRanks';
 
+export interface ranksProps {
+  mbti: string;
+  percent: number;
+  rank: number;
+}
 const initValue: similarFriendsResponse = {
   friend_id: undefined,
   friend_name: '',
@@ -19,6 +24,8 @@ const FriendsList = (props: {
   profile: string;
   userName: string;
   friendsList: similarFriendsResponse[];
+  result: string;
+  ranks: ranksProps[];
 }) => {
   const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
     initValue,
@@ -27,6 +34,9 @@ const FriendsList = (props: {
     initValue,
     initValue,
   ]);
+  let flag = -1;
+  const userMbti = localStorage.getItem('completeMbti');
+  const [ranks, setRanks] = useState<ranksProps[]>([]);
   const getFriends = async () => {
     const response: similarFriendsResponse[] = props.friendsList;
     const friends: similarFriendsResponse[] = [...friendsList];
@@ -36,8 +46,34 @@ const FriendsList = (props: {
     setFriendsList(friends);
   };
   const getRanks = async () => {
-    const ranks: AxiosResponse = await webClient.get('/mbti-rank/');
-    console.log(ranks);
+    const ranksList: ranksProps[] = props.ranks;
+
+    const array: ranksProps[] = [...ranks];
+    var i = 0;
+    for (i = 0; i < ranksList.length; i++) {
+      if (ranksList[i].mbti === userMbti) {
+        if (i > 3) {
+          array[3] = ranksList[i];
+          array[3].rank = i;
+        } else {
+          array[i] = ranksList[i];
+          array[i].rank = i;
+        }
+        flag = i;
+      } else {
+        if (i <= 2) {
+          array[i] = ranksList[i];
+          array[i].rank = i;
+        } else if (i === 3 && flag >= 0) {
+          array[i] = ranksList[i];
+          array[i].rank = i;
+          break;
+        } else {
+          continue;
+        }
+      }
+    }
+    setRanks(array);
   };
   useEffect(() => {
     getFriends();
@@ -46,15 +82,44 @@ const FriendsList = (props: {
   return (
     <>
       <div className="friendsList_container">
-        {/*<MBTIProfile img={props.profile} userName={props.userName} />*/}
+        {props.userName === '동의하기' ? (
+          <MBTIProfile
+            friend_profile_image={props.profile}
+            friend_name="익명"
+            friend_result={props.result}
+            similar_percent={undefined}
+          />
+        ) : (
+          <MBTIProfile
+            friend_profile_image={props.profile}
+            friend_name={props.userName}
+            friend_result={props.result}
+            similar_percent={undefined}
+          />
+        )}
         <div className="friendsList_list">
           <div className="friendsList_text">
             내 친구들은 이런 유형이 가장 많았어요
           </div>
-          <MBTIPercent index={0} mbti="ESFJ" percent={50} />
-          <MBTIPercent index={1} mbti="ESFJ" percent={50} />
-          <MBTIPercent index={2} mbti="ESFJ" percent={50} />
-          <MBTIPercent index={3} mbti="ESFJ" percent={50} />
+          {ranks.map((rank) => {
+            return rank.mbti === userMbti ? (
+              <MBTIRanks
+                index={rank.rank}
+                mbti={rank.mbti}
+                percent={rank.percent}
+                backgroundColor="#E8E0CE"
+                color="#134030"
+              />
+            ) : (
+              <MBTIRanks
+                index={rank.rank}
+                mbti={rank.mbti}
+                percent={rank.percent}
+                backgroundColor="#ACB4A2"
+                color="#F4F2ED"
+              />
+            );
+          })}
         </div>
         <div className="friendsList_list">
           <div className="friendsList_text">

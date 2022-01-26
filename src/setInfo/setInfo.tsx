@@ -23,11 +23,7 @@ const authForGetFriendsList = () => {
   });
 };
 
-const SetInfo = (props: {
-  username: string;
-  profileImage: string;
-  setFriendsList: Function;
-}) => {
+const SetInfo = (props: { username: string; profileImage: string }) => {
   const username = props.username;
   const profileImage = props.profileImage;
   const [mbti1, setMbti1] = useState('');
@@ -35,28 +31,19 @@ const SetInfo = (props: {
   const [mbti3, setMbti3] = useState('');
   const [mbti4, setMbti4] = useState('');
   const completeMbti = mbti1 + mbti2 + mbti3 + mbti4;
-  useEffect(() => {
-    window.localStorage.setItem('completeMbti', JSON.stringify(completeMbti));
-  }, [completeMbti]);
-  const getSimilarFriends = async () => {
-    try {
-      console.log('hello');
-      const result: AxiosResponse = await webClient.get('/similar-friends/');
-      props.setFriendsList(result.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
   const putMBTIValue = async () => {
     try {
       await webClient.put('user-mbti/', {
         mbti: `${completeMbti}`,
       });
-      getSimilarFriends();
     } catch (error) {
       console.log(error);
     }
   };
+  useEffect(() => {
+    window.localStorage.setItem('completeMbti', completeMbti);
+  }, [completeMbti]);
 
   return (
     <div className="setInfo_containerWithPadding">

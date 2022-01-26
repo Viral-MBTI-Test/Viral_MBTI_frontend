@@ -4,8 +4,16 @@ import { Querylist } from './querylist';
 import { useEffect, useState } from 'react';
 import webClient from '../share/webClient';
 import { ReactComponent as Boy } from '../images/run_boy.svg';
+import { AxiosResponse } from 'axios';
 
-const Query = () => {
+const Query = (props: {
+  setFriendsList: Function;
+  setResult: Function;
+  setStrongFeatures: Function;
+  setWeakFeatures: Function;
+  setRanking: Function;
+  setRanks: Function;
+}) => {
   const navigate = useNavigate();
   const [currentNo, setCurrentNo] = useState(0);
   const [show, setShow] = useState(false);
@@ -13,6 +21,31 @@ const Query = () => {
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
   ]);
 
+  const getSimilarFriends = async () => {
+    try {
+      const result: AxiosResponse = await webClient.get('/similar-friends/');
+      props.setFriendsList(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getResult = async () => {
+    try {
+      const totalResult: AxiosResponse = await webClient.get(
+        '/total-statistics/'
+      );
+      props.setResult(totalResult.data.result.result);
+      props.setStrongFeatures(totalResult.data.result.features.strong);
+      props.setWeakFeatures(totalResult.data.result.features.weak);
+      props.setRanking(totalResult.data.mbti_ranking);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getRanks = async () => {
+    const ranksList: AxiosResponse = await webClient.get('/mbti-rank/');
+    props.setRanks(ranksList.data);
+  };
   const answerClick = async (selectedAnswer: number) => {
     if (currentNo === Querylist.length - 1) {
       let result = answer.map((a, i) => {
@@ -20,7 +53,9 @@ const Query = () => {
       });
       result[currentNo].choice_number = selectedAnswer;
       await webClient.post('/answer/', result);
-
+      getResult();
+      getSimilarFriends();
+      getRanks();
       navigate('/result');
     } else {
       setShow(true);

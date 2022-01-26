@@ -26,10 +26,10 @@ interface personalityResultProps {
   frequency: string;
   result: featureResponse[];
 }
-interface featureResponse {
+export interface featureResponse {
   feature: string;
 }
-interface rankingResponse {
+export interface rankingResponse {
   mbti: string;
   percent: number;
 }
@@ -40,8 +40,14 @@ export interface similarFriendsResponse {
   friend_result?: string | null;
   similar_percent?: number | null;
 }
-const Result = (props: { friendsList: similarFriendsResponse }) => {
-  const [result, setResult] = useState<string>('결과가 없습니다.');
+const Result = (props: {
+  friendsList: similarFriendsResponse;
+  result: string;
+  strongFeatures: featureResponse[];
+  weakFeatures: featureResponse[];
+  ranking: rankingResponse[];
+}) => {
+  /*const [result, setResult] = useState<string>('결과가 없습니다.');
   const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>([
     {
       feature: '검사를 진행해주세요!',
@@ -68,8 +74,8 @@ const Result = (props: { friendsList: similarFriendsResponse }) => {
   ]);
   const [profileImg, setProfileImg] = useState<string>(
     'https://i.ibb.co/km2c6Zy/Frame-44.png'
-  );
-  const [similarFriends, setSimilarFriends] = useState<
+  );*/
+  /*(const [similarFriends, setSimilarFriends] = useState<
     similarFriendsResponse[]
   >([
     {
@@ -79,8 +85,8 @@ const Result = (props: { friendsList: similarFriendsResponse }) => {
       friend_result: '',
       similar_percent: 0,
     },
-  ]);
-  const getResult = async () => {
+  ]);*/
+  /*const getResult = async () => {
     try {
       const totalResult: AxiosResponse = await webClient.get(
         '/total-statistics/'
@@ -93,63 +99,51 @@ const Result = (props: { friendsList: similarFriendsResponse }) => {
     } catch (error) {
       console.log(error);
     }
-  };
-  /*const getSimilarFriends = async () => {
-        try {
-            const similarFriendsResult: AxiosResponse = await webClient.get(
-                "/similar-friends/"
-            );
-            setSimilarFriends(similarFriendsResult.data);
-            console.log(similarFriends);
-        } catch (error) {
-            console.log(error);
-        }
-    };*/
+  };*/
   const kakaoShare = () => {
     Kakao.Link.sendCustom({
       templateId: 69446,
     });
   };
-  useEffect(() => {
+  /*useEffect(() => {
     getResult();
-    //getSimilarFriends();
-  }, []);
+  }, []);*/
   return (
     <div className="result_container">
       <div className="result_title_container">
         <img src={leftQuote} alt="leftQuote" id="result_quote_left" />
-        <span className="result_title_text">당신은...{result}</span>
+        <span className="result_title_text">당신은...{props.result}</span>
         <img src={RightQuote} alt="RightQuote" id="result_quote_right" />
       </div>
       <MBTIPercent
-        mbti={ranking![0].mbti}
-        percent={ranking![0].percent}
+        mbti={props.ranking![0].mbti}
+        percent={props.ranking![0].percent}
         index={0}
       />
       <MBTIPercent
-        mbti={ranking![1].mbti}
-        percent={ranking![1].percent}
+        mbti={props.ranking![1].mbti}
+        percent={props.ranking![1].percent}
         index={1}
       />
       <MBTIPercent
-        mbti={ranking![2].mbti}
-        percent={ranking![2].percent}
+        mbti={props.ranking![2].mbti}
+        percent={props.ranking![2].percent}
         index={2}
       />
       <p>
         테스트 결과는 참여자가 많아질수록 더 정확해져요!
         <br /> 다음에 또 확인해보세요.😏
       </p>
-      {strongFeatures.length === 0 ? null : (
+      {props.strongFeatures.length === 0 ? null : (
         <div className="result_rectangle_big_container">
           <div className="result_title_small">나는 이런 성격을 갖고 있어요</div>
-          <RectangleResult frequency="often" result={strongFeatures!} />
+          <RectangleResult frequency="often" result={props.strongFeatures!} />
         </div>
       )}
-      {weakFeatures.length === 0 ? null : (
+      {props.weakFeatures.length === 0 ? null : (
         <div className="result_rectangle_big_container">
           <div className="result_title_small">가끔은...</div>
-          <RectangleResult frequency="sometimes" result={weakFeatures!} />
+          <RectangleResult frequency="sometimes" result={props.weakFeatures!} />
         </div>
       )}
       <div className="result_myFriendsContainer">
