@@ -89,7 +89,7 @@ const QueryEnd = () => {
         {Querylist[currentNo].question}
       </div>
 
-      <div className="queryend_selected"> 선택한 답안 </div>
+      <div className="queryend_selected"> 선택한 답안{/*myAnswer*/} </div>
       <div className="queryend_mbti"> 나와 같은 답을 선택한 MBTI </div>
 
       <div>
@@ -199,10 +199,22 @@ const QueryEnd = () => {
         )}
       </div>
 
-      <div className="query_prevBtn" onClick={beforeClick}>
+      <div
+        className="query_prevBtn"
+        onClick={() => {
+          beforeClick();
+          window.scrollTo(0, 0);
+        }}
+      >
         {currentNo > 0 ? `이전 문항` : `결과창으로`}
       </div>
-      <div className="queryend_nextBtn" onClick={afterClick}>
+      <div
+        className="queryend_nextBtn"
+        onClick={() => {
+          afterClick();
+          window.scrollTo(0, 0);
+        }}
+      >
         {currentNo < 9 ? `다음 문항` : `결과창으로`}
       </div>
     </div>

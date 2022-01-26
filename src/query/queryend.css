@@ -23,8 +23,7 @@
 }
 
 .queryend_question {
-  width: 255px;
-  height: 37px;
+  width: 260px;
   margin: 25px0 16px 0;
   font-family: Noto Sans KR;
   font-size: 14px;
@@ -35,6 +34,7 @@
   letter-spacing: normal;
   text-align: center;
   color: #fff;
+  white-space: pre;
 }
 
 .queryend_result {
