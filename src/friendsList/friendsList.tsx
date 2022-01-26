@@ -1,12 +1,12 @@
-import { AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import MBTIProfile from "../share/MBTIProfile";
-import webClient from "../share/webClient";
-import "./friendsList.css";
-import question from "../images/questionMark.png";
-import { similarFriendsResponse } from "../result/result";
-import MBTIRanks from "./mbtiRanks";
+import { AxiosResponse } from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import MBTIProfile from '../share/MBTIProfile';
+import webClient from '../share/webClient';
+import './friendsList.css';
+import question from '../images/questionMark.png';
+import { similarFriendsResponse } from '../result/result';
+import MBTIRanks from './mbtiRanks';
 
 export interface ranksProps {
   mbti: string;
@@ -15,7 +15,7 @@ export interface ranksProps {
 }
 const initValue: similarFriendsResponse = {
   friend_id: undefined,
-  friend_name: "",
+  friend_name: '',
   friend_profile_image: undefined,
   friend_result: undefined,
   similar_percent: undefined,
@@ -35,7 +35,7 @@ const FriendsList = (props: {
     initValue,
   ]);
   let flag = -1;
-  const userMbti = localStorage.getItem("completeMbti");
+  const userMbti = localStorage.getItem('completeMbti');
   const [ranks, setRanks] = useState<ranksProps[]>([]);
   const getFriends = async () => {
     const response: similarFriendsResponse[] = props.friendsList;
@@ -55,6 +55,7 @@ const FriendsList = (props: {
         if (i > 3) {
           array[3] = ranksList[i];
           array[3].rank = i;
+          break;
         } else {
           array[i] = ranksList[i];
           array[i].rank = i;
@@ -82,7 +83,7 @@ const FriendsList = (props: {
   return (
     <>
       <div className="friendsList_container">
-        {props.userName === "동의하기" ? (
+        {props.userName === '동의하기' ? (
           <MBTIProfile
             friend_profile_image={props.profile}
             friend_name="익명"
@@ -129,7 +130,7 @@ const FriendsList = (props: {
             {props.friendsList.length === 0 ? (
               <MBTIProfile
                 friend_profile_image={undefined}
-                friend_name={""}
+                friend_name={''}
                 friend_result={undefined}
                 similar_percent={undefined}
               />
@@ -154,14 +155,14 @@ const FriendsList = (props: {
             <Link
               to="/result"
               className="friendsList_btn"
-              style={{ marginRight: "9px" }}
+              style={{ marginRight: '9px' }}
             >
               돌아가기
             </Link>
             <Link
               to="/all_friendsList"
               className="friendsList_btn"
-              style={{ marginLeft: "9px" }}
+              style={{ marginLeft: '9px' }}
             >
               전체 친구목록
             </Link>

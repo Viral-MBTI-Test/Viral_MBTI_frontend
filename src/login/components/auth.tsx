@@ -37,10 +37,11 @@ const Auth = (props: {
   };
   const checkUser = async () => {
     response = await webClient.get('/user/');
-    console.log(response);
+    console.log(response.data[0]);
     if (response.data[0].is_answered) {
       getInfos(props);
       navigate('/result');
+      window.localStorage.setItem('completeMbti', response.data[0].mbti);
     } else {
     }
   };
