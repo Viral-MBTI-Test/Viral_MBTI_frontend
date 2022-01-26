@@ -32,3 +32,11 @@
   display: flex;
   justify-content: center;
 }
+
+.another-answer {
+  color: #f4f2ed;
+}
+
+.top-answer {
+  color: #1f513f;
+}
