@@ -1,38 +1,45 @@
-import { useState } from "react";
-import "./MBTIPercent.css";
+import "./MBTIAnswer.css";
 
 const MBTIAnswer = (mbtiPercentProps: {
   index: number;
   content: string;
   percent: number;
 }) => {
-  const [color, setColor] = useState<string[]>([
-    "#e8e0ce",
-    "#9aa48e",
-    "#b3bbaa",
-  ]);
   return (
-    <div
-      className="MBTIPercent_box"
-      style={{
-        backgroundColor: `${color[mbtiPercentProps.index]}`,
-        height: mbtiPercentProps.index === 0 ? "24px" : "20px",
-      }}
-    >
-      <span
-        style={{
-          color: mbtiPercentProps.index % 3 === 0 ? "#1f513f" : "#f4f2ed",
-        }}
+    <div>
+      <div
+        className="MBTIAnswer_box"
+        /*style={{
+        backgroundColor: ,
+      }}*/
       >
-        {mbtiPercentProps.index + 1}위 {mbtiPercentProps.content}
-      </span>
-      <span
-        style={{
-          color: mbtiPercentProps.index % 3 === 0 ? "#1f513f" : "#f4f2ed",
-        }}
-      >
-        {mbtiPercentProps.percent}%
-      </span>
+        <span
+          style={{
+            marginLeft: "16px",
+          }}
+        >
+          {mbtiPercentProps.index + 1}위
+        </span>
+
+        <div
+          style={{
+            marginLeft: "20px",
+          }}
+        >
+          {" "}
+          {mbtiPercentProps.content}{" "}
+        </div>
+        <span
+          style={{
+            margin: "0 10px 0 16px",
+            float: "right",
+            flexGrow: 1,
+            textAlign: "end",
+          }}
+        >
+          {mbtiPercentProps.percent.toFixed(1)}%
+        </span>
+      </div>
     </div>
   );
 };
