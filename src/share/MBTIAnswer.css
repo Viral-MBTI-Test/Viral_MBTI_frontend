@@ -1,15 +1,42 @@
 .MBTIAnswer_box {
   width: 312px;
-  height: 56px;
-
+  height: 48px;
   margin-bottom: 8px;
   border-radius: 15px;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
   background-color: #e8e0ce;
   display: flex;
-  /*justify-content: space-between;*/
   align-items: center;
+
   font-size: 12px;
   font-family: Noto Sans KR;
   font-weight: bold;
+}
+
+.rank-font {
+  font-size: 14px;
+}
+
+.rank-div {
+  width: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.content-div {
+  width: 202px;
+}
+
+.percent-div {
+  width: 62px;
+  display: flex;
+  justify-content: center;
+}
+
+.another-answer {
+  color: #f4f2ed;
+}
+
+.top-answer {
+  color: #1f513f;
 }
