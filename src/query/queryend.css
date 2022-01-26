@@ -18,7 +18,7 @@
 .queryend_mbti {
   width: 200px;
   height: 20px;
-  margin: 32px 0 29px 0;
+  margin: 24px 0 20px 0;
   font-family: Noto Sans KR;
   font-size: 14px;
   font-weight: bold;
@@ -31,11 +31,11 @@
 }
 
 .queryend_question {
-  width: 326px;
+  width: 296px;
   height: 100%;
   margin-bottom: 16px;
   font-family: Noto Sans KR;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
@@ -71,12 +71,13 @@
 }
 
 .queryend_selected {
-  width: 294px;
+  width: 280px;
   height: 54px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-family: Noto Sans KR;
   font-style: normal;
   font-weight: bold;
@@ -97,7 +98,7 @@
   padding: 10px;
   border-radius: 15px;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
-  background-color: #e8e0ce;
+  background-color: #968e7a;
 
   font-family: Noto Sans KR;
   font-size: 12px;
