@@ -34,62 +34,63 @@ const FriendsList = (props: { userName: string; profile: string }) => {
   const [ranks, setRanks] = useState<ranksProps[]>([]);
   const [userName, setUserName] = useState<string>('익명');
   const [profile, setProfile] = useState<string>(props.profile);
-  const getFriends = async () => {
-    const response: AxiosResponse = await webClient.get('/similar-friends/');
-    const friends: similarFriendsResponse[] = [...friendsList];
-    response.data.map((response: similarFriendsResponse, index: number) => {
-      friends[index] = response;
-    });
-    setFriendsList(friends);
-  };
-  const getRanks = async () => {
-    const ranksList: AxiosResponse = await webClient.get('/mbti-rank/');
-    const array: ranksProps[] = [...ranks];
-    var i = 0;
-    for (i = 0; i < ranksList.data.length; i++) {
-      if (ranksList.data[i].mbti === userMbti) {
-        if (i > 3) {
-          array[3] = ranksList.data[i];
-          array[3].rank = i;
-          break;
+
+  useEffect(() => {
+    const getRanks = async () => {
+      const ranksList: AxiosResponse = await webClient.get('/mbti-rank/');
+      const array: ranksProps[] = [...ranks];
+      var i = 0;
+      for (i = 0; i < ranksList.data.length; i++) {
+        if (ranksList.data[i].mbti === userMbti) {
+          if (i > 3) {
+            array[3] = ranksList.data[i];
+            array[3].rank = i;
+            break;
+          } else {
+            array[i] = ranksList.data[i];
+            array[i].rank = i;
+          }
+          flag = i;
         } else {
-          array[i] = ranksList.data[i];
-          array[i].rank = i;
-        }
-        flag = i;
-      } else {
-        if (i <= 2) {
-          array[i] = ranksList.data[i];
-          array[i].rank = i;
-        } else if (i === 3 && flag >= 0) {
-          array[i] = ranksList.data[i];
-          array[i].rank = i;
-          break;
-        } else {
-          continue;
+          if (i <= 2) {
+            array[i] = ranksList.data[i];
+            array[i].rank = i;
+          } else if (i === 3 && flag >= 0) {
+            array[i] = ranksList.data[i];
+            array[i].rank = i;
+            break;
+          } else {
+            continue;
+          }
         }
       }
-    }
-    setRanks(array);
-  };
-  const getResult = async () => {
-    try {
-      const totalResult: AxiosResponse = await webClient.get(
-        '/total-statistics/'
-      );
-      setResult(totalResult.data.result.result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const getUser = async () => {
-    const user: AxiosResponse = await webClient.get('/user/');
-    if (user.data[0].kakao_friends_auth) {
-      setUserName(user.data[0].username);
-      setProfile(user.data[0].kakao_profile_img_url);
-    }
-  };
-  useEffect(() => {
+      setRanks(array);
+    };
+    const getFriends = async () => {
+      const response: AxiosResponse = await webClient.get('/similar-friends/');
+      const friends: similarFriendsResponse[] = [...friendsList];
+      response.data.map((response: similarFriendsResponse, index: number) => {
+        friends[index] = response;
+      });
+      setFriendsList(friends);
+    };
+    const getResult = async () => {
+      try {
+        const totalResult: AxiosResponse = await webClient.get(
+          '/total-statistics/'
+        );
+        setResult(totalResult.data.result.result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const getUser = async () => {
+      const user: AxiosResponse = await webClient.get('/user/');
+      if (user.data[0].kakao_friends_auth) {
+        setUserName(user.data[0].username);
+        setProfile(user.data[0].kakao_profile_img_url);
+      }
+    };
     getRanks();
     getFriends();
     getResult();
