@@ -20,132 +20,58 @@ import webClient from './share/webClient';
 import { AxiosResponse } from 'axios';
 
 function App() {
-    const [username, setUsername] = useState<string>('동의하기');
-    const [profileImage, setProfileImage] = useState<string>(
-        'https://i.ibb.co/km2c6Zy/Frame-44.png'
-    );
-    const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
-        {
-            friend_id: undefined,
-            friend_name: '',
-            friend_profile_image: undefined,
-            friend_result: undefined,
-            similar_percent: undefined,
-        },
-    ]);
-    const [result, setResult] = useState<string>('결과가 없습니다.');
-    const [strongFeatures, setStrongFeatures] = useState<featureResponse[]>([
-        {
-            feature: '검사를 진행해주세요!',
-        },
-    ]);
-    const [weakFeatures, setWeakFeatures] = useState<featureResponse[]>([
-        {
-            feature: '검사를 진행해주세요!',
-        },
-    ]);
-    const [ranking, setRanking] = useState<rankingResponse[]>([
-        {
-            mbti: 'XXXX',
-            percent: 0,
-        },
-        {
-            mbti: 'XXXX',
-            percent: 0,
-        },
-        {
-            mbti: 'XXXX',
-            percent: 0,
-        },
-    ]);
-    const [ranks, setRanks] = useState<ranksProps[]>([]);
-    return (
-        <div className='app'>
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Login />} />
-                    <Route path='/loading' element={<Loading type='login' />} />
-                    <Route element={<ProtectedRoute />}>
-                        <Route
-                            path='/auth'
-                            element={
-                                <Auth
-                                    setFriendsList={setFriendsList}
-                                    setResult={setResult}
-                                    setStrongFeatures={setStrongFeatures}
-                                    setWeakFeatures={setWeakFeatures}
-                                    setRanking={setRanking}
-                                    setRanks={setRanks}
-                                />
-                            }
-                        />
-                        <Route
-                            path='/friendsAuth'
-                            element={
-                                <FriendsAuth
-                                    setUsername={setUsername}
-                                    setProfileImage={setProfileImage}
-                                />
-                            }
-                        />
-                        <Route
-                            path='/setinfo'
-                            element={
-                                <SetInfo
-                                    username={username}
-                                    profileImage={profileImage}
-                                />
-                            }
-                        />
-                        <Route
-                            path='/question'
-                            element={
-                                <Query
-                                    setFriendsList={setFriendsList}
-                                    setResult={setResult}
-                                    setStrongFeatures={setStrongFeatures}
-                                    setWeakFeatures={setWeakFeatures}
-                                    setRanking={setRanking}
-                                    setRanks={setRanks}
-                                />
-                            }
-                        />
-                        <Route path='/queryend' element={<Queryend />} />
-                        <Route
-                            path='/result'
-                            element={
-                                <Result
-                                    friendsList={friendsList[0]}
-                                    result={result}
-                                    strongFeatures={strongFeatures}
-                                    weakFeatures={weakFeatures}
-                                    ranking={ranking}
-                                />
-                            }
-                        />
-                        <Route
-                            path='/friends_list'
-                            element={
-                                <FriendsList
-                                    profile={profileImage}
-                                    userName={username}
-                                    friendsList={friendsList}
-                                    result={result}
-                                    ranks={ranks}
-                                />
-                            }
-                        />
-                        <Route
-                            path='/all_friendsList'
-                            element={
-                                <AllFriendsList friendsList={friendsList} />
-                            }
-                        ></Route>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
+  const [username, setUsername] = useState<string>('동의하기');
+  const [profileImage, setProfileImage] = useState<string>(
+    'https://i.ibb.co/km2c6Zy/Frame-44.png'
+  );
+
+  return (
+    <div className="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/loading" element={<Loading type="login" />} />
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="/auth"
+              element={
+                <Auth
+                  setUsername={setUsername}
+                  setProfileImage={setProfileImage}
+                />
+              }
+            />
+            <Route
+              path="/friendsAuth"
+              element={
+                <FriendsAuth
+                  setUsername={setUsername}
+                  setProfileImage={setProfileImage}
+                />
+              }
+            />
+            <Route
+              path="/setinfo"
+              element={
+                <SetInfo username={username} profileImage={profileImage} />
+              }
+            />
+            <Route path="/question" element={<Query />} />
+            <Route path="/queryend" element={<Queryend />} />
+            <Route path="/result" element={<Result />} />
+            <Route
+              path="/friends_list"
+              element={
+                <FriendsList userName={username} profile={profileImage} />
+              }
+            />
+            <Route path="/all_friendsList" element={<AllFriendsList />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+
 }
 
 export default App;

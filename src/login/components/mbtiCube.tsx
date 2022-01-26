@@ -11,7 +11,6 @@ const MbtiCube = (props: MbtiCubeProps) => {
     2: ['F', 'T'],
     3: ['J', 'P'],
   };
-  console.log(typeof props.index);
   return (
     <div className="scene">
       <div className={`cube index${props.index}`}>
