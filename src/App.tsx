@@ -95,7 +95,7 @@ function App() {
               }
             />
             <Route
-              path="/question/0"
+              path="/question"
               element={
                 <Query
                   setFriendsList={setFriendsList}
