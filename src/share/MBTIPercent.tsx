@@ -46,7 +46,7 @@ const MBTIPercent = (mbtiPercentProps: {
               textAlign: 'end',
             }}
           >
-            {Math.floor(mbtiPercentProps.percent)}점
+            {mbtiPercentProps.percent?.toFixed(1)}점
           </span>
         </div>
       )}

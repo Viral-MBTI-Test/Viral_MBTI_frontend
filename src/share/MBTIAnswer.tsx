@@ -1,39 +1,62 @@
-import { useState } from "react";
-import "./MBTIPercent.css";
+import './MBTIAnswer.css';
 
 const MBTIAnswer = (mbtiPercentProps: {
   index: number;
   content: string;
   percent: number;
 }) => {
-  const [color, setColor] = useState<string[]>([
-    "#e8e0ce",
-    "#9aa48e",
-    "#b3bbaa",
-  ]);
   return (
-    <div
-      className="MBTIPercent_box"
-      style={{
-        backgroundColor: `${color[mbtiPercentProps.index]}`,
-        height: mbtiPercentProps.index === 0 ? "24px" : "20px",
-      }}
-    >
-      <span
+    <div>
+      <div
+        className={
+          'MBTIAnswer_box ' +
+          (mbtiPercentProps.index === 0 ? 'top-answer' : 'another-answer')
+        }
         style={{
-          color: mbtiPercentProps.index % 3 === 0 ? "#1f513f" : "#f4f2ed",
+          background: getBackgroundRange(
+            mbtiPercentProps.index,
+            mbtiPercentProps.percent,
+            mbtiPercentProps.percent,
+            100 - mbtiPercentProps.percent
+          ),
         }}
       >
-        {mbtiPercentProps.index + 1}위 {mbtiPercentProps.content}
-      </span>
-      <span
-        style={{
-          color: mbtiPercentProps.index % 3 === 0 ? "#1f513f" : "#f4f2ed",
-        }}
-      >
-        {mbtiPercentProps.percent}%
-      </span>
+        <div className="rank-div">
+          <span className="rank-font">{mbtiPercentProps.index + 1}위</span>
+        </div>
+
+        <div className="content-div">{mbtiPercentProps.content}</div>
+        <div className="percent-div">
+          {mbtiPercentProps.percent?.toFixed(1)}%
+        </div>
+      </div>
     </div>
   );
 };
+
+const getBackgroundRange = (
+  index: number,
+  percent: number,
+  front: number,
+  back: number
+) => {
+  let frontColor = '#C0C6B8';
+  let backColor = '#ACB4A2';
+
+  if (index === 0) {
+    frontColor = '#CDD1C7';
+    backColor = '#E8E0CE';
+  }
+
+  if (front > back) {
+    return `linear-gradient(90deg, ${frontColor} ${percent}%, ${backColor} ${
+      100 - percent
+    }%)`;
+  } else {
+    return `linear-gradient(to left, ${backColor} ${
+      100 - percent
+    }%, ${frontColor} ${percent}%)`;
+  }
+};
+
 export default MBTIAnswer;
