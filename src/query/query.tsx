@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import webClient from '../share/webClient';
 import { ReactComponent as Boy } from '../images/run_boy.svg';
 import { AxiosResponse } from 'axios';
+import getInfos from '../share/getInfos';
 
 const Query = (props: {
   setFriendsList: Function;
@@ -21,15 +22,11 @@ const Query = (props: {
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
   ]);
 
-  const getSimilarFriends = async () => {
-    try {
-      const result: AxiosResponse = await webClient.get('/similar-friends/');
-      props.setFriendsList(result.data);
-    } catch (error) {
-      console.log(error);
-    }
+  const delay = (ms: any) => {
+    const wakeUpTime = Date.now() + ms;
+    while (Date.now() < wakeUpTime) {}
   };
-  const getResult = async () => {
+  /*const getInfos = async() => {
     try {
       const totalResult: AxiosResponse = await webClient.get(
         '/total-statistics/'
@@ -41,17 +38,15 @@ const Query = (props: {
     } catch (error) {
       console.log(error);
     }
-  };
-  const getRanks = async () => {
+    try {
+      const result: AxiosResponse = await webClient.get('/similar-friends/');
+      props.setFriendsList(result.data);
+    } catch (error) {
+      console.log(error);
+    }
     const ranksList: AxiosResponse = await webClient.get('/mbti-rank/');
     props.setRanks(ranksList.data);
-  };
-  
-  const delay = (ms: any) => {
-    const wakeUpTime = Date.now() + ms;
-    while (Date.now() < wakeUpTime) {}
-  };
-
+  }*/
   const answerClick = async (selectedAnswer: number) => {
     if (currentNo === Querylist.length - 1) {
       let result = answer.map((a, i) => {
@@ -59,9 +54,7 @@ const Query = (props: {
       });
       result[currentNo].choice_number = selectedAnswer;
       await webClient.post('/answer/', result);
-      getResult();
-      getSimilarFriends();
-      getRanks();
+      getInfos(props);
       navigate('/result');
     } else {
       setShow(true);
@@ -92,7 +85,7 @@ const Query = (props: {
         </div>
       </div>
 
-      <div className="query_question" style={{ margin: "0 0 42px 0" }}>
+      <div className="query_question" style={{ margin: '0 0 42px 0' }}>
         {Querylist[currentNo].question}
       </div>
 
