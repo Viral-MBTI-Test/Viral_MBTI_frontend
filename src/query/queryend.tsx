@@ -97,7 +97,6 @@ const QueryEnd = () => {
         setCurrentNo((currentNo) => currentNo - 1);
         window.scrollTo(0, 0);
     };
-
     return (
         <div className='queryend_container'>
             <div className='progress-div-end' style={{ width: '296px' }}>
@@ -179,28 +178,36 @@ const QueryEnd = () => {
 
             <div className='queryend_mbti'>
                 {' '}
-                {myMBTI}들은 이런 담을 골랐어요{' '}
+                {myMBTI}들은 이런 답을 골랐어요{' '}
             </div>
 
             <SameMBTI
                 index={0}
+                id={sameMbti[0]?.id}
                 content={sameMbti[0]?.content}
                 percent={sameMbti[0]?.percent}
+                myAnswer={myAnswer[currentNo]}
             />
             <SameMBTI
                 index={1}
+                id={sameMbti[1]?.id}
                 content={sameMbti[1]?.content}
                 percent={sameMbti[1]?.percent}
+                myAnswer={myAnswer[currentNo]}
             />
             <SameMBTI
                 index={2}
+                id={sameMbti[2]?.id}
                 content={sameMbti[2]?.content}
                 percent={sameMbti[2]?.percent}
+                myAnswer={myAnswer[currentNo]}
             />
             <SameMBTI
                 index={3}
+                id={sameMbti[3]?.id}
                 content={sameMbti[3]?.content}
                 percent={sameMbti[3]?.percent}
+                myAnswer={myAnswer[currentNo]}
             />
             <div className='queryend_mbti'> 나랑 같은 답을 선택한 친구들 </div>
 
