@@ -19,6 +19,9 @@ const QueryEnd = () => {
   const [friendAns, setFriendAns] = useState<any>([]);
   // const [myAnswer, setMyAnswer] = useState<any>([]);
 
+  const myMbti = localStorage.getItem("completeMbti");
+  myMbti?.replaceAll("", "");
+
   useEffect(() => {
     const getAnswerStat = async () => {
       const response: any = await webClient.get(
@@ -102,7 +105,7 @@ const QueryEnd = () => {
         myIndex={0}
       />
 
-      <div className="queryend_mbti"> ENTP들은 이런 담을 골랐어요 </div>
+      <div className="queryend_mbti"> {myMbti}들은 이런 담을 골랐어요 </div>
 
       <MBTIAnswer
         index={0}
