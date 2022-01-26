@@ -25,7 +25,7 @@ const QueryEnd = () => {
     myMbti?.replaceAll("", "");
     const settingMyMbtiIndex = () => {
         for (let i = 0; i < 16; i++) {
-            if (sameAns.mbti === myMbti) {
+            if (sameAns[i].mbti === myMBTI) {
                 setMyMbtiIndex(i);
                 break;
             }
@@ -37,7 +37,7 @@ const QueryEnd = () => {
                 `/answer-statistics/?question=${currentNo + 1}`
             );
             setSameAns(response.data);
-            settingMyMbtiIndex();
+            //settingMyMbtiIndex();
         };
 
         const getSameMBTI = async () => {
