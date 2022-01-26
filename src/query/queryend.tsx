@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Querylist } from "./querylist";
 import { useEffect, useState } from "react";
 import "./queryend.css";
-import MBTIPercent from "../share/MBTIPercent";
 import MBTIProfile from "../share/MBTIProfile";
 import webClient from "../share/webClient";
 import { AxiosResponse } from "axios";
@@ -18,11 +17,10 @@ const QueryEnd = () => {
   const [currentNo, setCurrentNo] = useState(0);
   const [friendAns, setFriendAns] = useState<any>([]);
   const [myAnswer, setMyAnswer] = useState<any>([]);
+  const [myMbtiIndex, setMyMbtiIndex] = useState(0);
 
   const myMbti = localStorage.getItem("completeMbti");
   myMbti?.replaceAll("", "");
-
-  let myMbtiIndex = 0;
 
   useEffect(() => {
     const getAnswerStat = async () => {
@@ -43,14 +41,15 @@ const QueryEnd = () => {
       setFriendAns(response_friend.data);
     };
     /*
-    const getMyMbtiIndex = () => {
-      for (let i = 0; i < 16; i++) {
-        if (sameAns[currentNo]?.mbti === myMbti) myMbtiIndex = i;
-      }
+    const getMyMbtiIndex= () =>{
+      sameAns.map((friend: any, index: number) => {
+              if (friend.mbti === myMbti) return (setMyMbtiIndex(index+1));
+      )}
     };
-*/
+  
+    getMyMbtiIndex();
+  */
     getAnswerStat();
-    // getMyMbtiIndex();
   }, [currentNo]);
 
   useEffect(() => {
