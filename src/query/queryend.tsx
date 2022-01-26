@@ -42,15 +42,15 @@ const QueryEnd = () => {
       setSameMbti(response_mbti.data);
       setFriendAns(response_friend.data);
     };
-
+    /*
     const getMyMbtiIndex = () => {
       for (let i = 0; i < 16; i++) {
         if (sameAns[currentNo]?.mbti === myMbti) myMbtiIndex = i;
       }
     };
-
+*/
     getAnswerStat();
-    getMyMbtiIndex();
+    // getMyMbtiIndex();
   }, [currentNo]);
 
   useEffect(() => {
@@ -81,13 +81,15 @@ const QueryEnd = () => {
     <div className="queryend_container">
       <div className="progress-div" style={{ width: "296px" }}>
         <div style={{ width: `${currentNo * 10}%` }} className="progress">
-          {currentNo !== 0 ? <Boy className="progress-boy" /> : <></>}
+          <Boy className="progress-boy" /> : <></>
         </div>
       </div>
 
-      <div className="queryend_question">{Querylist[currentNo].question}</div>
+      <div className="queryend_question" style={{ margin: "24px 0 16px 0" }}>
+        {Querylist[currentNo].question}
+      </div>
 
-      <div className="query_selected"> 선택한 답안 </div>
+      <div className="queryend_selected"> 선택한 답안 </div>
       <div className="queryend_mbti"> 나와 같은 답을 선택한 MBTI </div>
 
       <div>
