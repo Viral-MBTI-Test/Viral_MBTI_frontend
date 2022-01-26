@@ -8,7 +8,7 @@ import MBTIProfile from "../share/MBTIProfile";
 import webClient from "../share/webClient";
 import { AxiosResponse } from "axios";
 import MBTIAnswer from "../share/MBTIAnswer";
-import { ReactComponent as Boy } from '../images/run_boy.svg';
+import { ReactComponent as Boy } from "../images/run_boy.svg";
 
 const QueryEnd = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const QueryEnd = () => {
     getAnswerStat();
   }, [currentNo]);
 
-  /*useEffect(() => {
+  useEffect(() => {
     const getMyAnswer = async () => {
       const response_my: any = await webClient.get(`/my-answer/`);
       setMyAnswer(response_my.data);
@@ -48,7 +48,7 @@ const QueryEnd = () => {
 
     getMyAnswer();
   }, []);
-*/
+
   const afterClick = () => {
     if (currentNo === Querylist.length - 1) {
       navigate("/result");
@@ -66,13 +66,13 @@ const QueryEnd = () => {
 
   return (
     <div className="queryend_container">
-      <div className="progress-div" style={{ width: '296px' }}>
+      <div className="progress-div" style={{ width: "296px" }}>
         <div style={{ width: `${currentNo * 10}%` }} className="progress">
-          {currentNo !== 0 ? <Boy className="progress-boy" /> : <></>}
+          <Boy className="progress-boy" />
         </div>
       </div>
 
-      {/*<div className="queryend_question">{Querylist[currentNo].question}</div>*/}
+      <div className="queryend_question">{Querylist[currentNo].question}</div>
 
       <div className="query_selected"> 선택한 답안 </div>
       <div className="queryend_mbti"> 나와 같은 답을 선택한 MBTI </div>
@@ -148,11 +148,23 @@ const QueryEnd = () => {
         )}
       </div>
 
-      <div className="query_prevBtn" onClick={beforeClick}>
-        이전 문항
+      <div
+        className="query_prevBtn"
+        onClick={() => {
+          beforeClick();
+          window.scrollTo(0, 0);
+        }}
+      >
+        {currentNo > 0 ? `이전 문항` : `결과창으로`}
       </div>
-      <div className="queryend_nextBtn" onClick={afterClick}>
-        다음 문항
+      <div
+        className="queryend_nextBtn"
+        onClick={() => {
+          afterClick();
+          window.scrollTo(0, 0);
+        }}
+      >
+        {currentNo < 9 ? `다음 문항` : `결과창으로`}
       </div>
     </div>
   );
