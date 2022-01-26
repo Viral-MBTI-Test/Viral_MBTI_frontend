@@ -16,7 +16,7 @@ const loginWithKaKao = () => {
 const Login = () => {
   const countParticipants = async () => {
     const participants: AxiosResponse = await axios.get(
-      'http://mbti-test.duckdns.org/participants/'
+      'https://mbti-test.duckdns.org/participants/'
     );
     setCount(participants.data.number_of_users);
   };
