@@ -18,6 +18,7 @@ const Auth = (props: { setUsername: Function; setProfileImage: Function }) => {
       window.localStorage.setItem('completeMbti', response.data[0].mbti);
       navigate('/result');
     } else {
+      navigate('/setinfo');
     }
   };
 
@@ -31,9 +32,6 @@ const Auth = (props: { setUsername: Function; setProfileImage: Function }) => {
       })
       .then(() => {
         checkUser();
-      })
-      .then(() => {
-        navigate('/setinfo');
       })
       .catch((e) => console.log(e));
   };

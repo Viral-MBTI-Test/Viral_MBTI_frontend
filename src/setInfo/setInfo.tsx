@@ -167,7 +167,7 @@ const SetInfo = (props: { username: string; profileImage: string }) => {
         <div className="setInfo_boxContainer">
           {completeMbti.length === 4 ? (
             <Link
-              to="/question/0"
+              to="/question"
               onClick={() => putMBTIValue()}
               className="setInfo_startButton"
               style={{ textDecoration: 'none' }}
