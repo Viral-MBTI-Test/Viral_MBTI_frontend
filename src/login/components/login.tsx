@@ -9,7 +9,7 @@ import axios, { AxiosResponse } from 'axios';
 const { Kakao } = window;
 const loginWithKaKao = () => {
   Kakao.Auth.authorize({
-    redirectUri: 'http://localhost:3000/auth',
+    redirectUri: 'https://mbtigen.es/auth',
   });
 };
 

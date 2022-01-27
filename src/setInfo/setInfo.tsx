@@ -18,7 +18,7 @@ import { AxiosResponse } from 'axios';
 const { Kakao } = window;
 const authForGetFriendsList = () => {
   Kakao.Auth.authorize({
-    redirectUri: 'http://localhost:3000/friendsAuth',
+    redirectUri: 'https://mbtigen.es/friendsAuth',
     scope: 'friends',
   });
 };
