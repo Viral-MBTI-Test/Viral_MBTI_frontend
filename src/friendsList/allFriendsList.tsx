@@ -51,7 +51,7 @@ const AllFriendsList = () => {
             )}
           </div>
 
-          <Link to="/friends_list" className="friendsList_btn">
+          <Link to="/result/friends" className="friendsList_btn">
             돌아가기
           </Link>
         </div>

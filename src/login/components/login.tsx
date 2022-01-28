@@ -27,7 +27,7 @@ const Login = () => {
   return (
     <div className="login_container">
       <div className="login_view">
-        <img className="vectorImg" src={vector} />
+        {/*<img className="vectorImg" src={vector} />*/}
 
         <div className="login_mainTitle">
           <div>나는 정말</div>

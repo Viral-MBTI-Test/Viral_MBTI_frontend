@@ -45,10 +45,6 @@ const Query = () => {
     setCurrentNo(currentNo - 1);
   };
 
-  useEffect(() => {
-    console.log(currentNo);
-  }, [currentNo]);
-
   return (
     <div className="query_container">
       <div className="progress-div" style={{ width: '296px' }}>

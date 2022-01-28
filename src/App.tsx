@@ -5,9 +5,9 @@ import Query from './query/query';
 import Queryend from './query/queryend';
 import SetInfo from './setInfo/setInfo';
 import Result, {
-    featureResponse,
-    rankingResponse,
-    similarFriendsResponse,
+  featureResponse,
+  rankingResponse,
+  similarFriendsResponse,
 } from './result/result';
 import Auth from './login/components/auth';
 import FriendsAuth from './login/components/friendsAuth';
@@ -57,21 +57,23 @@ function App() {
               }
             />
             <Route path="/question" element={<Query />} />
-            <Route path="/queryend" element={<Queryend />} />
+            <Route path="/result/question" element={<Queryend />} />
             <Route path="/result" element={<Result />} />
             <Route
-              path="/friends_list"
+              path="/result/friends"
               element={
                 <FriendsList userName={username} profile={profileImage} />
               }
             />
-            <Route path="/all_friendsList" element={<AllFriendsList />}></Route>
+            <Route
+              path="/result/friends/all"
+              element={<AllFriendsList />}
+            ></Route>
           </Route>
         </Routes>
       </BrowserRouter>
     </div>
   );
-
 }
 
 export default App;

@@ -23,22 +23,22 @@ import RightQuote from '../images/quote_right.svg';
 const { Kakao } = window;
 
 interface personalityResultProps {
-    frequency: string;
-    result: featureResponse[];
+  frequency: string;
+  result: featureResponse[];
 }
 export interface featureResponse {
-    feature: string;
+  feature: string;
 }
 export interface rankingResponse {
-    mbti: string;
-    percent: number;
+  mbti: string;
+  percent: number;
 }
 export interface similarFriendsResponse {
-    friend_id?: number | null;
-    friend_name: string;
-    friend_profile_image?: string | undefined;
-    friend_result?: string | null;
-    similar_percent?: number | null;
+  friend_id?: number | null;
+  friend_name: string;
+  friend_profile_image?: string | undefined;
+  friend_result?: string | null;
+  similar_percent?: number | null;
 }
 const Result = () => {
   const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
@@ -81,7 +81,6 @@ const Result = () => {
   );
 
   const getResult = async () => {
-
     try {
       const totalResult: AxiosResponse = await webClient.get(
         '/total-statistics/'
@@ -90,7 +89,6 @@ const Result = () => {
       setStrongFeatures(totalResult.data.result.features.strong);
       setWeakFeatures(totalResult.data.result.features.weak);
       setRanking(totalResult.data.mbti_ranking);
-      console.log(weakFeatures);
     } catch (error) {
       console.log(error);
     }
@@ -98,7 +96,8 @@ const Result = () => {
   const getSimilarFriends = async () => {
     try {
       const friends: AxiosResponse = await webClient.get('/similar-friends/');
-      setFriendsList(friends.data);
+
+      if (friends.data.length !== 0) setFriendsList(friends.data);
     } catch (error) {
       console.log(error);
     }
@@ -152,7 +151,9 @@ const Result = () => {
         </div>
       )}
       <div className="result_myFriendsContainer">
-        <span style={{ fontSize: '14px' }}>나와 비슷한 성향의 친구들</span>
+        <span style={{ fontSize: '14px' }}>
+          나와 가장 성격유형이 비슷한 친구
+        </span>
         <div style={{ height: '20px' }} />
         <MBTIProfile
           friend_profile_image={friendsList[0].friend_profile_image}
@@ -162,10 +163,10 @@ const Result = () => {
         />
       </div>
       <div className="result_buttonContainer">
-        <Link to="/friends_list" className="result_button">
+        <Link to="/result/friends" className="result_button">
           친구들 결과 보기
         </Link>
-        <Link to="/queryend" style={{ textDecoration: 'none' }}>
+        <Link to="/result/question" style={{ textDecoration: 'none' }}>
           <button className="result_button">질문별 결과 보기</button>
         </Link>
       </div>
@@ -175,8 +176,15 @@ const Result = () => {
           <button className="result_button" onClick={kakaoShare}>
             카톡 공유하기
           </button>
-          <CopyToClipboard text={'zz'}>
-            <button className="result_button">링크 복사하기</button>
+          <CopyToClipboard text={'https://mbtigen.es/'}>
+            <button
+              className="result_button"
+              onClick={() => {
+                alert('링크가 복사되었습니다!');
+              }}
+            >
+              링크 복사하기
+            </button>
           </CopyToClipboard>
         </div>
       </div>
@@ -185,26 +193,26 @@ const Result = () => {
 };
 
 const RectangleResult = (props: personalityResultProps) => {
-    return (
-        <div className='result_rectangle_result_box'>
-            {props.result.map((result, index) => {
-                return (
-                    <ResultText
-                        key={index}
-                        result={
-                            props.frequency === 'often'
-                                ? `📍 ${result.feature}`
-                                : `✅ ${result.feature}`
-                        }
-                    />
-                );
-            })}
-        </div>
-    );
+  return (
+    <div className="result_rectangle_result_box">
+      {props.result.map((result, index) => {
+        return (
+          <ResultText
+            key={index}
+            result={
+              props.frequency === 'often'
+                ? `📍 ${result.feature}`
+                : `✅ ${result.feature}`
+            }
+          />
+        );
+      })}
+    </div>
+  );
 };
 
 const ResultText = (props: { result: string }) => {
-    return <div className='result_personality_text'>{props.result}</div>;
+  return <div className="result_personality_text">{props.result}</div>;
 };
 
 export default Result;

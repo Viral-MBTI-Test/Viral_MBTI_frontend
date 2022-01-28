@@ -1,6 +1,7 @@
 import './FriendProfile.css';
 import { similarFriendsResponse } from '../result/result';
 import { useState } from 'react';
+import kakao_default_image from '../images/kakao_default_img.png';
 const MBTIProfile = (props: similarFriendsResponse) => {
   const [profileDefaultImage, setProfileDefaultImage] = useState<string>(
     'https://i.ibb.co/km2c6Zy/Frame-44.png'
@@ -11,6 +12,8 @@ const MBTIProfile = (props: similarFriendsResponse) => {
         src={
           props.friend_profile_image === undefined
             ? profileDefaultImage
+            : props.friend_profile_image === ''
+            ? kakao_default_image
             : props.friend_profile_image
         }
         alt="profile"

@@ -20,13 +20,7 @@ const initValue: similarFriendsResponse = {
   similar_percent: undefined,
 };
 const FriendsList = (props: { userName: string; profile: string }) => {
-  const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
-    initValue,
-    initValue,
-    initValue,
-    initValue,
-    initValue,
-  ]);
+  const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([]);
   let flag = -1;
   const userMbti = localStorage.getItem('completeMbti');
 
@@ -68,11 +62,7 @@ const FriendsList = (props: { userName: string; profile: string }) => {
     };
     const getFriends = async () => {
       const response: AxiosResponse = await webClient.get('/similar-friends/');
-      const friends: similarFriendsResponse[] = [...friendsList];
-      response.data.map((response: similarFriendsResponse, index: number) => {
-        friends[index] = response;
-      });
-      setFriendsList(friends);
+      setFriendsList(response.data);
     };
     const getResult = async () => {
       try {
@@ -142,7 +132,7 @@ const FriendsList = (props: { userName: string; profile: string }) => {
         </div>
         <div className="friendsList_list">
           <div className="friendsList_text">
-            전체 친구들의 성격유형 확인하기
+            나와 비슷한 성격유형을 가진 친구들
           </div>
           <div>
             {friendsList.length === 0 ? (
@@ -155,8 +145,7 @@ const FriendsList = (props: { userName: string; profile: string }) => {
             ) : (
               friendsList.map(
                 (friend: similarFriendsResponse, index: number) => {
-                  if (index >= 5 || index >= friendsList.length) return <></>;
-                  else
+                  if (index <= 4 && friend.friend_name) {
                     return (
                       <MBTIProfile
                         friend_profile_image={friend.friend_profile_image}
@@ -166,6 +155,7 @@ const FriendsList = (props: { userName: string; profile: string }) => {
                         key={index}
                       />
                     );
+                  }
                 }
               )
             )}
@@ -179,7 +169,7 @@ const FriendsList = (props: { userName: string; profile: string }) => {
               돌아가기
             </Link>
             <Link
-              to="/all_friendsList"
+              to="/result/friends/all"
               className="friendsList_btn"
               style={{ marginLeft: '9px' }}
             >
