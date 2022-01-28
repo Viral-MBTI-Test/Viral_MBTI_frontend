@@ -39,7 +39,7 @@ const Login = () => {
           </div>
         </div>
         <div className="login_subTitle">
-          나와 같은 유형의 사람들은 정말 나와 비슷할까?
+          나와 같은 유형의 사람들은 정말 나와 비슷할까???
           <br />
           나랑 같은 MBTI를 가진 사람들은 어떤 생각을 가지고
           <br />
