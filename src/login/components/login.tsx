@@ -27,8 +27,6 @@ const Login = () => {
   return (
     <div className="login_container">
       <div className="login_view">
-        {/*<img className="vectorImg" src={vector} />*/}
-
         <div className="login_mainTitle">
           <div>나는 정말</div>
           <div className="login_mbti">
@@ -49,7 +47,7 @@ const Login = () => {
           <img src={boy} alt="boy"></img>
         </div>
         <div className="login_countMsg">{`지금까지 ${count}명이 참여했어요`}</div>
-        <div style={{ zIndex: '1000' }}>
+        <div>
           <img
             src={kakao_login_large_wide}
             alt="kakao login"
