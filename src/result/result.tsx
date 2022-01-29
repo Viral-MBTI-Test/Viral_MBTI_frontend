@@ -201,8 +201,8 @@ const RectangleResult = (props: personalityResultProps) => {
             key={index}
             result={
               props.frequency === 'often'
-                ? `📍 ${result.feature}`
-                : `✅ ${result.feature}`
+                ? `✅ ${result.feature}`
+                : `📍 ${result.feature}`
             }
           />
         );
