@@ -213,17 +213,15 @@ const QueryEnd = () => {
           />
         ) : (
           friendAns.map((friend: any, index: number) => {
-            if (index >= 3) return <></>;
-            else
-              return (
-                <FriendProfile
-                  friend_profile_image={friend?.friend_profile_image}
-                  friend_result={friend?.friend_result}
-                  similar_percent={friend?.percent}
-                  friend_name={friend?.friend_name}
-                  key={index}
-                />
-              );
+            return (
+              <FriendProfile
+                friend_profile_image={friend?.friend_profile_image}
+                friend_result={friend?.friend_result}
+                similar_percent={friend?.percent}
+                friend_name={friend?.friend_name}
+                key={index}
+              />
+            );
           })
         )}
       </div>

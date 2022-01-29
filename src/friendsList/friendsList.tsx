@@ -89,7 +89,7 @@ const FriendsList = (props: { userName: string; profile: string }) => {
   return (
     <>
       <div className="friendsList_container">
-        {props.userName === '동의하기' ? (
+        {props.userName === '눌러서 동의하기' ? (
           <MBTIProfile
             friend_profile_image={profile}
             friend_name={userName}
