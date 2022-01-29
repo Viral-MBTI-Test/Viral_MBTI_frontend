@@ -32,7 +32,7 @@
   border-radius: 15px;
   border: 0;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
-  background-color: #cdd1c7;
+  background-color: #e8e0ce;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,12 +43,12 @@
   width: 44px;
   height: 44px;
   border-radius: 16px;
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .setInfo_name {
-  width: 59px;
+  width: 124px;
   height: 20px;
-  padding-top: 2px;
+  padding-top: 1px;
   font-family: Noto Sans KR;
   font-size: 16px;
   font-weight: bold;
@@ -62,7 +62,7 @@
 .setInfo_explain {
   white-space: pre-line;
   width: 312px;
-  height: 72px;
+  height: 54px;
   margin-top: 5px;
   margin-bottom: 29px;
   font-family: Noto Sans KR;

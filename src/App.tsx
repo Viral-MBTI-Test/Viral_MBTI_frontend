@@ -20,7 +20,7 @@ import webClient from './share/webClient';
 import { AxiosResponse } from 'axios';
 
 function App() {
-  const [username, setUsername] = useState<string>('동의하기');
+  const [username, setUsername] = useState<string>('눌러서 동의하기');
   const [profileImage, setProfileImage] = useState<string>(
     'https://i.ibb.co/km2c6Zy/Frame-44.png'
   );

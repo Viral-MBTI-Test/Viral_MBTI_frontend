@@ -46,7 +46,7 @@ const Login = () => {
         <div className="boyImg">
           <img src={boy} alt="boy"></img>
         </div>
-        <div className="login_countMsg">{`지금까지 ${count}명이 참여했어요`}</div>
+        <div className="login_countMsg">{`현재까지 ${count}명의 답변이 결과에 반영되었어요!`}</div>
         <div>
           <img
             src={kakao_login_large_wide}

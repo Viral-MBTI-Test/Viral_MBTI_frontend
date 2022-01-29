@@ -171,7 +171,7 @@ const Result = () => {
         </Link>
       </div>
       <div className="result_shareContainer">
-        <span style={{ fontSize: '14px' }}>결과 공유하기</span>
+        <span style={{ fontSize: '14px' }}>링크 공유하기</span>
         <div className="result_shareIcons">
           <button className="result_button" onClick={kakaoShare}>
             카톡 공유하기
@@ -180,7 +180,7 @@ const Result = () => {
             <button
               className="result_button"
               onClick={() => {
-                alert('링크가 복사되었습니다!');
+                alert('링크를 복사했어요!');
               }}
             >
               링크 복사하기

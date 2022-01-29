@@ -64,9 +64,8 @@ const SetInfo = (props: { username: string; profileImage: string }) => {
           내 친구들의 MBTI 알아보기 등 서비스를 완전하게 즐기기
           <br />
           위해서는 선택 항목 동의가 필요해요.
-          <br />위 프로필 버튼을 눌러 동의를 진행해주세요.
           <br />
-          동의 없이도 검사 이용은 가능해요.
+          응답내용은 서비스 통계를 위해 서버에 저장돼요.
         </div>
         <div
           className="setInfo_boldTitle"
