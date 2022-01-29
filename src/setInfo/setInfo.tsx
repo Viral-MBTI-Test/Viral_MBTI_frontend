@@ -49,6 +49,13 @@ const SetInfo = (props: { username: string; profileImage: string }) => {
     <div className="setInfo_containerWithPadding">
       <div className="setInfo_container">
         <div className="setInfo_boldTitle">카카오톡 프로필 연동하기</div>
+        <div className="setInfo_explain">
+          내 친구들의 MBTI 알아보기 등 서비스를 완전하게 즐기기
+          <br />
+          위해서는 선택 항목 동의가 필요해요.
+          <br />
+          응답내용은 서비스 통계를 위해 서버에 저장돼요.
+        </div>
         <button
           className="setInfo_profile"
           onClick={() => authForGetFriendsList()}
@@ -60,12 +67,17 @@ const SetInfo = (props: { username: string; profileImage: string }) => {
           />
           <span className="setInfo_name">{username}</span>
         </button>
-        <div className="setInfo_explain">
-          내 친구들의 MBTI 알아보기 등 서비스를 완전하게 즐기기
-          <br />
-          위해서는 선택 항목 동의가 필요해요.
-          <br />
-          응답내용은 서비스 통계를 위해 서버에 저장돼요.
+        <div
+          className="setInfo_boxContainer"
+          style={{ marginTop: '0', height: '36px', marginBottom: '24px' }}
+        >
+          <button
+            className="setInfo_agreeButton"
+            onClick={() => authForGetFriendsList()}
+            style={{ textDecoration: 'none' }}
+          >
+            동의하기
+          </button>
         </div>
         <div
           className="setInfo_boldTitle"

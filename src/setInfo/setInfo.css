@@ -32,11 +32,11 @@
   border-radius: 15px;
   border: 0;
   box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
-  background-color: #e8e0ce;
+  background-color: #cdd1c7;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 8px;
+  margin-bottom: 24px;
   cursor: pointer;
 }
 .setInfo_profileImg {
@@ -46,9 +46,9 @@
   margin-left: 4px;
 }
 .setInfo_name {
-  width: 124px;
+  width: 142px;
   height: 20px;
-  padding-top: 1px;
+  /* padding-top: 1px; */
   font-family: Noto Sans KR;
   font-size: 16px;
   font-weight: bold;
@@ -63,8 +63,8 @@
   white-space: pre-line;
   width: 312px;
   height: 54px;
-  margin-top: 5px;
-  margin-bottom: 29px;
+  margin-top: 4px;
+  margin-bottom: 12px;
   font-family: Noto Sans KR;
   font-size: 12px;
   font-weight: 500;
@@ -152,10 +152,12 @@
   text-decoration: none;
   cursor: pointer;
 }
-.setInfo_startButton:active {
+.setInfo_startButton:active,
+setInfo_agreeButton:active {
   background-color: #dadcd2;
 }
-.setInfo_startButton:hover {
+.setInfo_startButton:hover,
+setInfo_agreeButton:hover {
   background-color: #dadcd2;
 }
 .mbti_E,
@@ -169,4 +171,27 @@
   width: 168px;
   height: 48px;
   object-fit: contain;
+}
+
+.setInfo_agreeButton {
+  width: 72px;
+  height: 36px;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 3px 0 rgba(172, 180, 162, 0.25);
+  background-color: #acb4a2;
+  /* margin-bottom: 24px; */
+  font-family: Noto Sans KR;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #f4f2ed;
+  text-decoration: none;
+  cursor: pointer;
 }
