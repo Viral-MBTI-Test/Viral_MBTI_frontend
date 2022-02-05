@@ -29,7 +29,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync ./build s3://negbinbucket --profile=negbin"
+    "deploy": "aws s3 sync ./build s3://mbtigene --profile=negbin"
   },
   "eslintConfig": {
     "extends": [
