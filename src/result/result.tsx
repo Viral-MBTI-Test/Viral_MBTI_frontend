@@ -187,6 +187,17 @@ const Result = () => {
             </button>
           </CopyToClipboard>
         </div>
+        <button
+          className="result_button"
+          style={{
+            width: '213px',
+            marginTop: '10px',
+            backgroundColor: '#e8e0ce',
+            color: '#1f513f',
+          }}
+        >
+          검사 다시하기
+        </button>
       </div>
     </div>
   );

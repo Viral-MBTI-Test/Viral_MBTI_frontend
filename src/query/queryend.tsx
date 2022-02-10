@@ -1,5 +1,5 @@
 import './query.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Querylist } from './querylist';
 import { useEffect, useState } from 'react';
 import './queryend.css';
@@ -10,7 +10,7 @@ import { AxiosResponse } from 'axios';
 import SameMBTI from './SameMBTI';
 import SameAnswer from './SameAnswer';
 import { ReactComponent as Boy } from '../images/run_boy.svg';
-
+import XBtn from '../images/XBtn.svg';
 const QueryEnd = () => {
   const navigate = useNavigate();
   const [sameAns, setSameAns] = useState<any>([]);
@@ -99,6 +99,14 @@ const QueryEnd = () => {
   };
   return (
     <div className="queryend_container">
+      <div className="queryend_X_button_container">
+        <img
+          src={XBtn}
+          onClick={() => {
+            navigate('/result');
+          }}
+        ></img>
+      </div>
       <div className="progress-div-end" style={{ width: '296px' }}>
         <div style={{ width: `${currentNo * 10}%` }} className="progress">
           <Boy className="progress-boy" />
