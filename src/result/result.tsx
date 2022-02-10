@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 import leftQuote from '../images/quote_left.svg';
 import RightQuote from '../images/quote_right.svg';
 
+import { useNavigate } from 'react-router';
 const { Kakao } = window;
 
 interface personalityResultProps {
@@ -41,6 +42,7 @@ export interface similarFriendsResponse {
   similar_percent?: number | null;
 }
 const Result = () => {
+  const navigate = useNavigate();
   const [friendsList, setFriendsList] = useState<similarFriendsResponse[]>([
     {
       friend_id: undefined,
@@ -194,6 +196,9 @@ const Result = () => {
             marginTop: '10px',
             backgroundColor: '#e8e0ce',
             color: '#1f513f',
+          }}
+          onClick={() => {
+            navigate('/question');
           }}
         >
           검사 다시하기
