@@ -198,7 +198,7 @@ const Result = () => {
             color: '#1f513f',
           }}
           onClick={() => {
-            navigate('/question');
+            navigate('/setinfo');
           }}
         >
           검사 다시하기
