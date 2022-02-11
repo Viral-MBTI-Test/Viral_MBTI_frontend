@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 //axios
-import { AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import webClient from './share/webClient';
 //router
 import { RouteProps, Route, useNavigate, Outlet } from 'react-router-dom';
@@ -18,10 +18,10 @@ const ProtectedRoute = ({ ...routeProps }: RouteProps) => {
     if (!access) setIsAuth(false);
     else {
       try {
-        webClient.get('/user/');
+        await webClient.get('/user/');
         setIsAuth(true);
       } catch (error) {
-        console.log('error');
+        console.log(error);
         try {
           let response: AxiosResponse = await webClient.post('/refresh/', {
             refresh: refresh,
