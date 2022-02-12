@@ -36,7 +36,6 @@ const ProtectedRoute = ({ ...routeProps }: RouteProps) => {
   };
 
   useEffect(() => {
-    alert('hello');
     check();
   }, []);
 
